@@ -1,0 +1,302 @@
+div.map {
+	width: 1202px;
+	height: 800px;
+}
+
+canvas.cv_clock {
+	padding-top: 130px;
+	padding-left: 580px;
+}
+
+iframe.map {
+	width: 1202px;
+	height: 801px;
+	border: 0;
+}
+
+html {
+	background: #ffffff;
+}
+
+body {
+	background-color: #403030;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:10pt;
+	font-weight:normal;
+	font-style:normal;
+	color: #c0c0c0;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+	width: 1920px;
+	height: 1079px;
+}
+
+table {
+	width: 100%;
+	border: 0 0 0 0 none;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	border-collapse: collapse;
+}
+
+tr.header {
+	color: #808080;
+	background:#ffffff;
+	text-align: center;
+	vertical-align: middle;
+	font-size:40pt;
+	font-weight:normal;
+	font-style:normal;
+	font-family: Arial, Helvetica, sans-serif;
+	height:279px;
+}
+
+td {
+	border: 0 0 0 0 none;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	border-collapse: collapse;
+	border-color: #808080;
+}
+
+td.logo {
+	padding-top: 60px;
+	text-align: center;
+	width: 220px;
+	border-bottom: solid 1px;
+}
+
+td.schlag {
+	border-bottom: solid 1px;
+	text-align: center;
+	width: 715px;
+}
+
+td.addr {
+	border-left: solid 1px;
+	border-bottom: solid 1px;
+	width: 979px;
+}
+
+td.gmap {
+	border: 0 0 0 0 none;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	width: 1202px;
+	height: 800px;
+}
+
+td.mittel {
+	margin-left: 20px;
+	margin-right: 20px;
+	height: 695px;
+	vertical-align: middle;
+	border-collapse: collapse;
+}
+
+div.datum {
+	text-align: center;
+	font-weight: bold;
+	font-size: 60pt;
+}
+
+div.time {
+	background: #000000;
+}
+
+div {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-align:left;
+	list-style-type:none;
+	font-size: 25pt;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+div.gefahr {
+	margin-right: 20px;
+	margin-left: 20px;
+	background: #a00000;
+	color: #ffffff;
+	font-size: 50pt;
+	font-weight:bold;
+	text-align: center;
+}
+
+div.clock {
+	position: absolute;
+	height: 50px;
+	width: 180px;
+	left: 1720px; top: 20px;
+	color: #605050;
+	text-align: center;
+	font-size: 30pt;
+	font-weight: bold;
+}
+
+div.info {
+	margin-right: 20px;
+	margin-left: 20px;
+	font-weight:bold;
+	font-size: 20pt;
+	text-align: center;
+}
+div.schlagw {
+	margin-right: 20px;
+	margin-left: 20px;
+	font-size: 50pt;
+	font-weight:bold;
+	text-align: center;
+	color:#000000;
+}
+div.addr {
+	margin-right: 20px;
+	margin-left: 20px;
+	font-weight:bold;
+	color:#000000;
+	font-size: 40pt;
+}
+div.header {
+	margin-right: 20px;
+	margin-left: 20px;
+	font-size: 25pt;
+	font-weight:bold;
+}
+
+div.andere {
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-top: solid 4px #403030;
+	color: #a09090;
+	background:#554545;
+	font-size: 25pt;
+}
+div.mittel {
+	color: #ffffff;
+	font-weight:bold;
+	background:#a06800;
+	font-size: 25pt;
+}
+div.geraet {
+	color: #ffffff;
+	font-weight:normal;
+	background:#a06800;
+	font-size: 25pt;
+}
+div.eigene {
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-top: solid 4px #403030;
+	color: #ffffff;
+	font-weight:bold;
+	background:#a06800;
+	font-size: 25pt;
+}
+
+div.alarm_txt {
+	padding-top: 5px;
+	height: 20px;
+	text-align: center;
+	color: #c0c0c0;
+	font-weight:bold;
+	font-size: 15pt;
+}
+
+div.alarm {
+	height: 80px;
+	text-align: center;
+	color: #ffffff;
+	font-weight:bold;
+	font-size: 50pt;
+}
+
+div.penalty_txt {
+	padding-top: 5px;
+	height: 20px;
+	text-align: center;
+	color: #c0c0c0;
+	font-weight:bold;
+	font-size: 15pt;
+}
+
+div.penalty {
+	height: 80px;
+	color: #ff4040;
+	text-align: center;
+	font-weight:bold;
+	font-size: 50pt;
+}
+
+h1 {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18pt;
+	font-weight: bold;
+	font-style: normal;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+h2 {
+	text-align: center;
+	font-family: Arial, helvetica, sans-serif;
+	margin-bottom:20px;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 14pt;
+}
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14pt;
+}
+
+a {
+	font-weight:bold;
+	color:#606060;
+	text-decoration:dotted;
+	border: none 0px
+}
+
+
+p {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+dl {
+	margin: 2pt 0 0 0;
+	padding: 0 0 0 0;
+	top: 0;
+	bottom: 0;
+}
+
+dt {
+	position: relative;
+	left: 0;
+	width: 5em;
+	font-weight: bold;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+dd {
+	margin: -12pt 0 0 6em;
+	padding: 0 0 0 0;
+}
+
+.left {
+	text-align:left;
+}
+
+.right {
+	text-align:right;
+}
+
+.center {
+	text-align:center;
+}
