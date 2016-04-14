@@ -1,28 +1,13 @@
 #!/usr/bin/perl -W
 
-## Benötigt libfile-changenotify-perl
-#use File::ChangeNotify;
 use Time::localtime;
 use File::stat;
-
-#use Filesys::Notify::Simple;
-
-my %gps_a7 = (
-	"850" => "48.41328, 10.09394",
-	"851" => "48.41328, 10.09394"
-);
-
-#hittistetten 122 48.32510, 10.08901
-#nersingen 121 48.41368, 10.09401
-#AK Elchingen 120 48.46505, 10.11562
-#Vöhringen 123 48.28546, 10.11483
 
 my $template_alarm = "template/index.tpl";
 my $html_name = "html/index.html";
 my $template_idle = "template/idle.tpl";
 my $timestamp_name = "html/timestamp.txt";
 my $fax_path = "fax";
-#my $remote_path = "/media/fritzbox/Generic-FlashDisk-01/FRITZ/faxbox";
 my $remote_path = "/media/fritzbox/FRITZ/faxbox";
 my $extract_path = "/tmp/extract";
 my $ocr_path = "/tmp/ocr";
@@ -36,20 +21,10 @@ my @remote_files;
 
 my $timestamp = 0;
 
-#my $watcher = File::ChangeNotify->instantiate_watcher
-#       ( directories => [ "./$fax_path/" ],
-#         regex       => qr/\.(?:tif)$/,
-#       );
-
 my $event;
 
 my $idle = 0;
 my $ffile;
-
-# Fax zuerst ausdrucken, dann rendern!
-
-# TODO download link zum Fax bereitstellen für Tablet auf Fahrzeug
-#//fritz.nas/fritz.nas /media/fritzbox  cifs noauto,user,username=,password=,uid=1000,gid=1000,actimeo=0 0 0
 
 `mkdir -p $extract_path`;
 `mkdir -p $ocr_path`;
@@ -82,28 +57,8 @@ while (1) {
 			$idle = render_alarm("$fax_path/$rfile");
 		}
 	}
-
-
-#	Alte Methode
-#	# Können wir einen Idle-Screen zeigen?
-#       if (!$idle) {
-#		# Ja, aber nur wenn timestamp noch nicht gesetzt ist (startup) oder der Alarm min 30 Minuten zurückliegt.
-#  		if (!$timestamp || $timestamp + 30 * 60 < time()) {
-#			render_idle();
-#			$idle = 1;
-#		}
-#	}
-#	# Nach neuen Faxen prüfen
-#	for $event ( $watcher->new_events() ) {
-#		if ($event->type eq "create") {
-#			#print "test! " . $event->path() . " " . $event->type() . "\n";
-#			# Idle nur zurücksetzen wenn wirklich eine neue Seite generiert wurde (also z.B. ILS Fax kam und keine Werbung)
-#			$idle = render_alarm($event->path());
-#		}
-#	}
 	sleep (5);
 }
-#exit 1;
 
 sub purge {
 	@fax_files = `ls --color=never -tx1 $fax_path/`;
@@ -224,7 +179,6 @@ sub render_alarm {
 	$alarmzeit =~ s/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/$1/;
 
 	# Alle möglichen Infos aus dem generierten Text herausparsen
-	# TODO mittel + geraet erst ab Zeile EINSATZMITTEL parsen
 	# $mittel = `grep -v 'Rufnummer' $ocr_txt_name | grep 'Name.*' | sed -e 's/Name.*\\(\\[:alphanum:\\]*\\)/\\1/' | sed -e '7\\.3\\..\\s\\(.*\\)/\\1/' | sed -e 's/Name\\s*.s*\\(.*\\)/\\1/'`;
 	$mittel = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Name' | sed -e 's/7\\.3\\..\\s//' | sed -e 's/Name\\s*.\\s*//'`;
 	@mittel = split /^/, $mittel;
@@ -305,7 +259,6 @@ sub render_alarm {
 	$ort =~ s/([[:alpha:]])B/$1ß/g;	# B nach Kleinmbuchstabe wird zu ß
 
 	if ($strasse =~ m/A7/) {
-#		$query = $gps_a7{ int($hausnummer) };
 		$query = "";
 
 		$map_script = "";
