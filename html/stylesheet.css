@@ -199,6 +199,63 @@ div.eigene {
 	font-size: 25pt;
 }
 
+div.status {
+	position: absolute;
+	height: 80px;
+	width: 1000px;
+	left: 920px; top: 999px;
+	text-align: center;
+	vertical-align: middle;
+	font-size:20pt;
+	font-weight: bold;
+}
+
+span.status1 {
+	float: right;
+	width: 78px;
+	height: 78px;
+	background: #000000;
+	margin: 1px 1px 1px 1px;
+	color: #ffffff;
+	background: #888800;
+}
+
+span.status2 {
+	float: right;
+	width: 78px;
+	height: 78px;
+	color: #ffffff;
+	background: #008800;
+	margin: 1px 1px 1px 1px;
+}
+
+span.status3 {
+	float: right;
+	width: 78px;
+	height: 78px;
+	color: #ffffff;
+	background: #4466cc;
+	margin: 1px 1px 1px 1px;
+}
+
+span.status4 {
+	float: right;
+	width: 78px;
+	height: 78px;
+	color: #ffffff;
+	background: #dd4411;
+	margin: 1px 1px 1px 1px;
+}
+
+span.status6 {
+	float: right;
+	width: 78px;
+	height: 78px;
+	color: #808080;
+	background: #000000;
+	margin: 1px 1px 1px 1px;
+}
+
 div.alarm_txt {
 	padding-top: 5px;
 	height: 20px;

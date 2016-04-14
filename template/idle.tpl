@@ -6,7 +6,7 @@
 <title>Alarm</title>
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
 </head>
-<body onload="reloadWatch(); startDate();">
+<body onload="reloadWatch(); reloadFMS(); startDate();">
 <canvas id="clock" class="cv_clock" width="800px", height="800px">
   Dieser Browser wird leider nicht unterstützt.
 </canvas>
@@ -31,6 +31,7 @@
 
 </script>
 <div id="datum" class="datum"></div>
+<div id="status" class="status"></div>
 </body>
 <script src="scripts.js"></script>
 </html>

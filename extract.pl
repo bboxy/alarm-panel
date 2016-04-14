@@ -7,11 +7,22 @@ use File::stat;
 
 #use Filesys::Notify::Simple;
 
+my %gps_a7 = (
+	"850" => "48.41328, 10.09394",
+	"851" => "48.41328, 10.09394"
+);
+
+#hittistetten 122 48.32510, 10.08901
+#nersingen 121 48.41368, 10.09401
+#AK Elchingen 120 48.46505, 10.11562
+#Vöhringen 123 48.28546, 10.11483
+
 my $template_alarm = "template/index.tpl";
 my $html_name = "html/index.html";
 my $template_idle = "template/idle.tpl";
 my $timestamp_name = "html/timestamp.txt";
 my $fax_path = "fax";
+#my $remote_path = "/media/fritzbox/Generic-FlashDisk-01/FRITZ/faxbox";
 my $remote_path = "/media/fritzbox/FRITZ/faxbox";
 my $extract_path = "/tmp/extract";
 my $ocr_path = "/tmp/ocr";
@@ -36,6 +47,9 @@ my $idle = 0;
 my $ffile;
 
 # Fax zuerst ausdrucken, dann rendern!
+
+# TODO download link zum Fax bereitstellen für Tablet auf Fahrzeug
+#//fritz.nas/fritz.nas /media/fritzbox  cifs noauto,user,username=,password=,uid=1000,gid=1000,actimeo=0 0 0
 
 `mkdir -p $extract_path`;
 `mkdir -p $ocr_path`;
@@ -162,7 +176,7 @@ sub render_alarm {
 	my $gefahr;
 
 	print "printing...\n";
-	`lp $path`;
+	`lp -o orientation-requested=3 $path`;
 
 	# Bilder aus .pdf angeln
 	print "extracting images from .pdf ...\n";
@@ -174,8 +188,8 @@ sub render_alarm {
 	# Ausdrucken
 	# OCR auf neuem Fax
 	print "doing ocr...\n";
-	`tesseract $extract_path/fax.tif $ocr_path/$ocr_file -psm 4 -l ils`;
-        #`./cheap_ocr -f font.tif -o $ocr_txt_name $extract_path/fax.tif`;
+	`tesseract $extract_path/fax.tif $ocr_path/$ocr_file -psm 3 -l ils`;
+        #`./cheap_ocr -f font/font.tif -o $ocr_txt_name $extract_path/fax.tif`;
 
 	# Aufräumen
 	print "cleaning up...\n";
@@ -210,11 +224,12 @@ sub render_alarm {
 	$alarmzeit =~ s/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/$1/;
 
 	# Alle möglichen Infos aus dem generierten Text herausparsen
+	# TODO mittel + geraet erst ab Zeile EINSATZMITTEL parsen
 	# $mittel = `grep -v 'Rufnummer' $ocr_txt_name | grep 'Name.*' | sed -e 's/Name.*\\(\\[:alphanum:\\]*\\)/\\1/' | sed -e '7\\.3\\..\\s\\(.*\\)/\\1/' | sed -e 's/Name\\s*.s*\\(.*\\)/\\1/'`;
-	$mittel = `grep -v 'Rufnummer' $ocr_txt_name | grep 'Name.*' | grep -v 'Rufnummer' $ocr_txt_name | grep 'Name.*' | sed -e 's/7\\.3\\..\\s//' | sed -e 's/Name\\s*.\\s*//'`;
+	$mittel = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Name' | sed -e 's/7\\.3\\..\\s//' | sed -e 's/Name\\s*.\\s*//'`;
 	@mittel = split /^/, $mittel;
 
-	$geraet = `grep 'Gef.Ger.t.*' $ocr_txt_name | sed -e 's/Gef.Ger.t\\s*.\\s*//'`;
+	$geraet = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t\\s*.\\s*//'`;
 	@geraet = split /^/, $geraet;
 
 	##echo 'Angeforderte Geräte:'
@@ -222,7 +237,7 @@ sub render_alarm {
 	##echo 'Alarmiert:'
 	##grep 'Alarmiert' $ocr_txt_name | sed -e 's/Alarmiert\s*.\s*\(.*\)/\1/'
 	#sed -e '/^Einsatznummer\s*.\s*/!d; s///;q' < $ocr_txt_name
-	$strasse = `grep 'Stra.e.*' $ocr_txt_name | sed -e 's/ *(.*)//; s/\\sHaus.Nr.*//; s/Stra.e\\s*.\\s*//;'`;
+	$strasse = `grep '^Stra.e.*' $ocr_txt_name | sed -e 's/ *(.*)//; s/\\sHaus.Nr.*//; s/Stra.e\\s*.\\s*//;'`;
 	$strasse =~ s/^\s+|\s+$//g;
 
 	$hausnummer = `sed -e '/^.*Haus.Nr.\\s*.\\s*/!d; s///;q' < $ocr_txt_name`;
@@ -290,6 +305,7 @@ sub render_alarm {
 	$ort =~ s/([[:alpha:]])B/$1ß/g;	# B nach Kleinmbuchstabe wird zu ß
 
 	if ($strasse =~ m/A7/) {
+#		$query = $gps_a7{ int($hausnummer) };
 		$query = "";
 
 		$map_script = "";

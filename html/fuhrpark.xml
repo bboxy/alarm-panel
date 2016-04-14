@@ -1,0 +1,44 @@
+<fuhrpark>
+  <fahrzeug>
+    <id>12345678</id>
+    <kennung>11/1</kennung>
+    <name>MZF</name>
+    <status>2</status>
+    <timestamp></timestamp>
+  </fahrzeug>
+  <fahrzeug>
+    <id>12345678</id>
+    <kennung>87/1</kennung>
+    <name>SW1000</name>
+    <status>2</status>
+    <timestamp></timestamp>
+  </fahrzeug>
+  <fahrzeug>
+    <id>12345678</id>
+    <kennung>21/1</kennung>
+    <name>TLF 16/25</name>
+    <status>2</status>
+    <timestamp></timestamp>
+  </fahrzeug>
+  <fahrzeug>
+    <id>12345678</id>
+    <kennung>40/1</kennung>
+    <name>HLF 20/16</name>
+    <status>2</status>
+    <timestamp></timestamp>
+  </fahrzeug>
+  <fahrzeug>
+    <id>12345678</id>
+    <kennung>81/1</kennung>
+    <name>GW-L</name>
+    <status>2</status>
+    <timestamp></timestamp>
+  </fahrzeug>
+  <fahrzeug>
+    <id>12345678</id>
+    <kennung>93/1</kennung>
+    <name>GW-Licht</name>
+    <status>2</status>
+    <timestamp></timestamp>
+  </fahrzeug>
+</fuhrpark>

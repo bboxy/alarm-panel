@@ -7,7 +7,7 @@
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
 %map_script
 </head>
-<body onload="reloadWatch(); startTime(); initMap(&quot;%query&quot;);">
+<body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query&quot;);">
 <table>
 	<tr class="header">
 		<td class="schlag">
@@ -53,6 +53,7 @@
 	</tr>
 </table>
 <div id="clock" class="clock"></div>
+<div id="status" class="status"></div>
 </body>
 <script src="scripts.js"></script>
 </html>
