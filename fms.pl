@@ -34,6 +34,7 @@ while(my $stdin = <STDIN>) {
 						print ("FMS: $fms\n");
 						print "Found in XML, updating status for $id to $status\n";
 						$fuhrpark->{fuhrpark}->{fahrzeug}->[$fzg]->{status} = $status;
+						$fuhrpark->{fuhrpark}->{fahrzeug}->[$fzg]->{timestamp} = time();
 						$xml->XMLout($fuhrpark);
 					}
 				}
