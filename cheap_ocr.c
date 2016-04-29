@@ -6,8 +6,8 @@
 #include <string.h>
 
 // Achieve UTF-8 output
-const static wchar_t char_tab[] = L"abcdefghijklmnopqrstuvwxyzäöüß.:-/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ (){}";
-const static int font_size = 78;
+const static wchar_t char_tab[] = L"abcdefghijklmnopqrstuvwxyzäöüß.:-/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ (){},";
+const static int font_size = 79;
 
 // Char dimensions
 #define CHAR_WIDTH	21
@@ -26,7 +26,7 @@ typedef struct {
     int height;
 } letter;
 
-int find_best_char(char* font, char* fax, unsigned fwidth, unsigned width, int x, int y) {
+int find_best_char(char* font, char* fax, unsigned fwidth, unsigned width, int x, int y, int pheight) {
     int fax_pos = x + y * width;
     int x_, y_;
 
@@ -36,9 +36,13 @@ int find_best_char(char* font, char* fax, unsigned fwidth, unsigned width, int x
     int index;
     int err;
 
+    int ysize = CHAR_HEIGHT;
+
+    if (pheight - y < CHAR_HEIGHT) ysize = pheight - y;
+
     for (index = 0; index < font_size; index++) {
     	err = 0;
-        for (y_ = 0; y_ < CHAR_HEIGHT; y_++) {
+        for (y_ = 0; y_ < ysize; y_++) {
             for (x_ = 0; x_ < CHAR_WIDTH; x_++) {
                 err += abs(fax[fax_pos + x_ + y_ * width] - font[index * CHAR_WIDTH + x_ + y_ * fwidth]);
             }
@@ -209,7 +213,7 @@ int main(int argc, char* argv[]) {
                 if (fax_data[x + y * width]) break;
             }
             if (x != width) {
-                yoffset = y - 3;
+                yoffset = y - 4;
                 break;
             }
         }
@@ -227,9 +231,9 @@ int main(int argc, char* argv[]) {
         wprintf(L"first chars @ y=%d x=%d\n",yoffset,xoffset);
 
         // Now match all chars against each cell in grid and emit matches
-        for (y = yoffset; y < pheight - CHAR_HEIGHT; y += CHAR_HEIGHT) {
+        for (y = yoffset; y < pheight; y += CHAR_HEIGHT) {
             for (x = xoffset; x < width; x += CHAR_WIDTH) {
-                best_index = find_best_char(font_data, fax_data, fwidth, width, x, y);
+                best_index = find_best_char(font_data, fax_data, fwidth, width, x, y, pheight);
                 fwprintf(fw, L"%lc", char_tab[best_index]);
                 wprintf(L"%lc", char_tab[best_index]);
             }
