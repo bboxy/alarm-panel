@@ -130,12 +130,13 @@ sub render_alarm {
 
 	my $gefahr;
 
-	print "printing...\n";
-	`lp -o orientation-requested=3 $path`;
-
 	# Bilder aus .pdf angeln
 	print "extracting images from .pdf ...\n";
 	`pdfimages -p $path $extract_path/`;
+
+	print "printing...\n";
+	`lp -o orientation-requested=3 -o position=top $extract_path/*`;
+
 	# Zusammenkleben
 	print "concatenating ...\n";
         `convert $extract_path/*.* -append $extract_path/fax.tif`;
@@ -183,7 +184,7 @@ sub render_alarm {
 	$mittel = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Name' | sed -e 's/7\\.3\\..\\s//' | sed -e 's/Name\\s*.\\s*//'`;
 	@mittel = split /^/, $mittel;
 
-	$geraet = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t\\s*.\\s*//'`;
+	$geraet = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t\\s*.//'`;
 	@geraet = split /^/, $geraet;
 
 	##echo 'Angeforderte Geräte:'
@@ -225,6 +226,7 @@ sub render_alarm {
 	print "$#mittel $#geraet\n";
 	for my $i (0 .. $#mittel) {
 		if ($mittel[$i] =~ m/Straß/) {
+			$geraet[$i] =~ s/^\s+|\s+$//g;
 			$smittel .= "<div class=\"eigene\">";
 			$smittel .= "<div class=\"mittel\">\n$mittel[$i]</div>";
 			$smittel .= "<div class=\"geraet\">\nGef. Gerät: $geraet[$i]</div>";
