@@ -4,6 +4,7 @@ use Time::localtime;
 use File::stat;
 use File::Copy qw(copy);
 
+#config vars
 my $template_alarm = "template/index.tpl";
 my $html_name = "html/index.html";
 my $template_idle = "template/idle.tpl";
@@ -16,6 +17,8 @@ my $ocr_file = "out";
 my $ocr_txt_name = $ocr_path . "/" . $ocr_file . ".txt";
 my $fms_path = "/tmp/fms";
 my $fms_file = "fms.txt";
+my $own_ffw_name = "Straß";
+my $print_fax = 0;
 
 my @fax_files;
 my @remote_files;
@@ -156,8 +159,10 @@ sub render_alarm {
 	print "extracting images from .pdf ...\n";
 	`pdfimages -p $path $extract_path/`;
 
-	print "printing...\n";
-	`lp -o orientation-requested=3 -o position=top $extract_path/*`;
+	if ($print_fax) {
+		print "printing...\n";
+		`lp -o orientation-requested=3 -o position=top $extract_path/*`;
+	}
 
 	# Zusammenkleben
 	print "concatenating ...\n";
@@ -251,7 +256,7 @@ sub render_alarm {
 
 	print "$#mittel $#geraet\n";
 	for my $i (0 .. $#mittel) {
-		if ($mittel[$i] =~ m/Straß/) {
+		if ($mittel[$i] =~ m/$own_ffw_name/) {
 			$geraet[$i] =~ s/^\s+|\s+$//g;
 			$smittel .= "<div class=\"eigene\">";
 			$smittel .= "<div class=\"mittel\">\n$mittel[$i]</div>";
