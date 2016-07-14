@@ -38,6 +38,7 @@ int find_best_char(char* font, char* fax, unsigned fwidth, unsigned width, int x
 
     int ysize = CHAR_HEIGHT;
 
+    // If we have a partial letter at the bottom of a page, we limit our height
     if (pheight - y < CHAR_HEIGHT) ysize = pheight - y;
 
     for (index = 0; index < font_size; index++) {
@@ -186,7 +187,7 @@ int main(int argc, char* argv[]) {
     }
     TIFFGetField(fax, TIFFTAG_IMAGEWIDTH, &width);
     TIFFGetField(fax, TIFFTAG_IMAGELENGTH, &height);
-    pixels = width*height;
+    pixels = width * height;
     data = (unsigned int*) _TIFFmalloc(pixels *sizeof(unsigned int));
     fax_data = (char*) malloc(pixels *sizeof(char));
     TIFFReadRGBAImage(fax, width, height, data, 0);
