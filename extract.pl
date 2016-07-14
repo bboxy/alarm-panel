@@ -2,6 +2,7 @@
 
 use Time::localtime;
 use File::stat;
+use File::Copy qw(copy);
 
 my $template_alarm = "template/index.tpl";
 my $html_name = "html/index.html";
@@ -26,10 +27,10 @@ my $event;
 my $idle = 0;
 my $ffile;
 
-`mkdir -p $extract_path`;
-`mkdir -p $ocr_path`;
-`mkdir -p $fax_path`;
-`mkdir -p $fms_path`;
+mkdir ($extract_path);
+mkdir ($ocr_path);
+mkdir ($fax_path);
+mkdir ($fms_path);
 
 # Auf neues Fax warten:
 while (1) {
@@ -43,36 +44,56 @@ while (1) {
 			$idle = 1;
 		}
 	}
-	@fax_files = `ls --color=never -tx1 $fax_path/`;
-	@remote_files = `ls --color=never -tx1 $remote_path/`;
-	chomp(@fax_files);
-	chomp(@remote_files);
-	for my $rfile (@remote_files) {
-		chomp($rfile);
-		#print "checking " . $rfile . "\n";
-		if ( my @list = grep /^$rfile$/, @fax_files) {
-	        } else {
-			`cp $remote_path/$rfile $fax_path/$rfile`;
-			print "copying new file $rfile\n";
-			$idle = render_alarm("$fax_path/$rfile");
+	if (opendir my($dh), "$fax_path") {
+		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
+		closedir $dh;
+		if (opendir my($dh), "$remote_path") {
+			@remote_files = grep { !/^\.\.?$/ } readdir $dh;
+			closedir $dh;
+			chomp(@fax_files);
+			chomp(@remote_files);
+			for my $rfile (@remote_files) {
+				chomp($rfile);
+				#print "checking " . $rfile . "\n";
+				if ( my @list = grep /^$rfile$/, @fax_files) {
+			        } else {
+					copy "$remote_path/$rfile", "$fax_path/$rfile";
+					print "copying new file $rfile\n";
+					$idle = render_alarm("$fax_path/$rfile");
+				}
+			}
+		} else {
+			print "ERROR: $remote_path not found\n";
 		}
+	} else {
+		print "ERROR: $fax_path not found\n";
 	}
 	sleep (5);
 }
 
 sub purge {
-	@fax_files = `ls --color=never -tx1 $fax_path/`;
-	@remote_files = `ls --color=never -tx1 $remote_path/`;
-	chomp(@fax_files);
-	chomp(@remote_files);
-	for my $ffile (@fax_files) {
-		chomp($ffile);
-		#print "checking " . $rfile . "\n";
-		if ( my @list = grep /^$ffile$/, @remote_files) {
-	        } else {
-			print "purging $fax_path/$ffile\n";
-			`rm $fax_path/$ffile`;
+	if (opendir my($dh), "$fax_path") {
+		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
+		closedir $dh;
+		if (opendir my($dh), "$remote_path") {
+			@remote_files = grep { !/^\.\.?$/ } readdir $dh;
+			closedir $dh;
+			chomp(@fax_files);
+			chomp(@remote_files);
+			for my $ffile (@fax_files) {
+				chomp($ffile);
+				#print "checking " . $rfile . "\n";
+				if ( my @list = grep /^$ffile$/, @remote_files) {
+			        } else {
+					print "purging $fax_path/$ffile\n";
+					unlink "$fax_path/$ffile";
+				}
+			}
+		} else {
+			print "ERROR: $remote_path not found\n";
 		}
+	} else {
+		print "ERROR: $fax_path not found\n";
 	}
 }
 
@@ -129,6 +150,7 @@ sub render_alarm {
 	my $alarmzeit;
 
 	my $gefahr;
+	my @clean;
 
 	# Bilder aus .pdf angeln
 	print "extracting images from .pdf ...\n";
@@ -149,7 +171,11 @@ sub render_alarm {
 
 	# Aufräumen
 	print "cleaning up...\n";
-	`rm $extract_path/*`;
+
+	@clean = glob ("$extract_path/*");
+	if (@clean) {
+		 unlink @clean;
+	}
 
 	local $/=undef;
 	if (!open FILE, $ocr_txt_name) {
