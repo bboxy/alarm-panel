@@ -212,10 +212,10 @@ sub render_alarm {
 
 	# Alle möglichen Infos aus dem generierten Text herausparsen
 	# $mittel = `grep -v 'Rufnummer' $ocr_txt_name | grep 'Name.*' | sed -e 's/Name.*\\(\\[:alphanum:\\]*\\)/\\1/' | sed -e '7\\.3\\..\\s\\(.*\\)/\\1/' | sed -e 's/Name\\s*.s*\\(.*\\)/\\1/'`;
-	$mittel = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Name' | sed -e 's/7\\.3\\..\\s//' | sed -e 's/Name\\s*.\\s*//'`;
+	$mittel = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Name' | sed -e 's/Name\\s*.\\s*7\\.3\\..\\s*//' | sed -e 's/Name\\s*.\\s*//'`;
 	@mittel = split /^/, $mittel;
 
-	$geraet = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t\\s*.//'`;
+	$geraet = `cat $ocr_txt_name | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
 	@geraet = split /^/, $geraet;
 
 	##echo 'Angeforderte Geräte:'
@@ -254,13 +254,15 @@ sub render_alarm {
  	$smittel = "";
  	$omittel = "";
 
-	print "$#mittel $#geraet\n";
+	#print "$#mittel $#geraet\n";
 	for my $i (0 .. $#mittel) {
 		if ($mittel[$i] =~ m/$own_ffw_name/) {
 			$geraet[$i] =~ s/^\s+|\s+$//g;
 			$smittel .= "<div class=\"eigene\">";
 			$smittel .= "<div class=\"mittel\">\n$mittel[$i]</div>";
-			$smittel .= "<div class=\"geraet\">\nGef. Gerät: $geraet[$i]</div>";
+			if (length($geraet[$i]) > 0) {
+				$smittel .= "<div class=\"geraet\">\n$geraet[$i]</div>";
+			}
 			$smittel .= "</div>";
 		} else {
 			$omittel .= "<div class=\"andere\">\n$mittel[$i]</div>";
