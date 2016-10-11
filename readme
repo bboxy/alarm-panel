@@ -2,6 +2,7 @@ Einrichtung:
 mount einrichten für .tif/.pdf vom fax/fritzbox/
 sudo cp apacheconfig/000-default.conf /etc/apache/sites/available/000-default.conf
 000-default.conf anpassen (vor allem document root)
+a2enmod expires
 sudo cp alarmon.cfg /etc/
 alarmmon.cfg anpassen falls nötig
 sudo cp alarmmon.init /etc/init.d/
