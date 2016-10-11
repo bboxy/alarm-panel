@@ -1,0 +1,65 @@
+#!/bin/sh
+
+# Quick start-stop-daemon example, derived from Debian /etc/init.d/ssh
+set -e
+
+# Must be a valid filename
+NAME=alarmmon
+PIDFILE=/var/run/$NAME.pid
+DAEMON=/localhome/bindhammer/ffw_pfuhl/alarmmon.pl
+DAEMON_OPTS=""
+OPTIONS=""
+DIR="$(dirname "$DAEMON")"
+
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+
+case "$1" in
+  start)
+	echo -n "Starting Alarmmonitor: "$NAME
+	if start-stop-daemon --quiet --status --pidfile $PIDFILE
+	then
+		echo " [already running]"
+	else
+		start-stop-daemon -b --start --quiet --chdir $DIR --make-pidfile --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
+		echo "."
+	fi
+	;;
+  stop)
+	echo -n "Stopping Alarmmonitor: "$NAME
+	start-stop-daemon --quiet --stop --oknodo --pidfile $PIDFILE
+	echo "."
+	;;
+  restart)
+	$0 stop
+	sleep 1
+	$0 start
+	;;
+  *)
+	echo "Usage: "$1" {start|stop|restart}"
+	exit 1
+esac
+
+#case "$1" in
+#  start)
+#        echo -n "Starting daemon: "$NAME
+#	start-stop-daemon -b --start --quiet --make-pidfile --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
+#        echo "."
+#	;;
+#  stop)
+#        echo -n "Stopping daemon: "$NAME
+#	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+#        echo "."
+#	;;
+#  restart)
+#        echo -n "Restarting daemon: "$NAME
+#	start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $PIDFILE
+#	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
+#	echo "."
+#	;;
+#
+#  *)
+#	echo "Usage: "$1" {start|stop|restart}"
+#	exit 1
+#esac
+#
+exit 0

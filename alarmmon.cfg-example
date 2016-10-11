@@ -1,0 +1,18 @@
+#Ablageort für empfangene Faxe lokal
+fax_path	/var/lib/alarmmon/fax
+#Ablageort für empfangene Faxe (Fritzbox)
+remote_path	/media/fritzbox/FRITZ/faxbox
+#temporärer Pfad für Textextraktion
+extract_path	/tmp/extract
+#Name der FFW die hervorgehoben werden soll
+own_ffw_name	Straß
+#Empfangene Faxe drucken?
+print_fax	1
+#FMS Status empfangen/anzeigen
+enable_fms	0
+#Maximale Anzahl angezeigter Mittel
+max_mittel	10
+#Default Ort
+default_ort	Straß
+#Schnelle und bessere Texterkennung aber nur bei vorgegebenem Font
+fast_ocr	1
