@@ -211,7 +211,9 @@ function reloadFMS() {
                     }
                     html += "<span class=\"status" + stat + "\"><p class=\"fp_kennung\">" + kennung + "</p><p class=\"fp_status\">" + stat + "</p><p class=\"fp_name\">" + name + "</p></span>";
                 }
-                document.getElementById('status').innerHTML = html;
+                if(document.getElementById('status')) {
+                    document.getElementById('status').innerHTML = html;
+                }
             }
         }
         x.send();
