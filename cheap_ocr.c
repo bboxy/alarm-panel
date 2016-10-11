@@ -6,8 +6,8 @@
 #include <string.h>
 
 // Achieve UTF-8 output
-const static wchar_t char_tab[] = L"abcdefghijklmnopqrstuvwxyzäöüß.:-/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ (){},";
-const static int font_size = 79;
+const static wchar_t char_tab[] = L"abcdefghijklmnopqrstuvwxyzäöüß.:-/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ (){},[]+&";
+const static int font_size = 83;
 
 // Char dimensions
 #define CHAR_WIDTH	21
@@ -17,7 +17,7 @@ const static int font_size = 79;
 #define PHEIGHT		2438
 
 #define X_START		0
-#define Y_START		45
+#define Y_START		47
 
 typedef struct {
     int y_offset;
@@ -58,6 +58,7 @@ int find_best_char(char* font, char* fax, unsigned fwidth, unsigned width, int x
         // Perfect match, no need to seek further
         if (err == 0) break;
     }
+    if (best_err != 0) fprintf(stderr,"best_index: %c @%d/%d\n",best_index,x,y);
     return best_index;
 }
 
@@ -210,6 +211,7 @@ int main(int argc, char* argv[]) {
 
         // Find first line that contains set pixels
         for (y = Y_START + page; y < pheight; y++) {
+            printf("y: %d\n",y);
             for (x = X_START; x < width; x++) {
                 if (fax_data[x + y * width]) break;
             }
@@ -218,6 +220,7 @@ int main(int argc, char* argv[]) {
                 break;
             }
         }
+        yoffset = Y_START + page;
 
         // Find first column that contains set pixels
         for (x = X_START; x < width; x++) {
@@ -225,10 +228,11 @@ int main(int argc, char* argv[]) {
                 if (fax_data[x + y * width]) break;
             }
             if (y != pheight) {
-                xoffset = 63;//x - 4 + CHAR_WIDTH;
+                xoffset = 42;//x - 4 + CHAR_WIDTH;
                 break;
             }
         }
+        xoffset = 42;
         wprintf(L"first chars @ y=%d x=%d\n",yoffset,xoffset);
 
         // Now match all chars against each cell in grid and emit matches

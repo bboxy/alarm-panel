@@ -3,57 +3,85 @@
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<meta http-equiv="cache-control" content="no-cache">
 <title>Alarm</title>
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
-%map_script
+%map_script%
 </head>
-<body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query&quot;);">
-<table>
-	<tr class="header">
-		<td class="schlag">
-			%schlagwort
-			<div class="info">%bemerkung</div>
-		</td>
-		<td class="addr">
-			<div class="addr">%strasse %nummer</div>
-			<div class="addr">%ort</div>
-			<div class="addr">%abschnitt</div>
-		</td>
-		<td class="logo">
-			<img src="logo.jpg" width="120px">
-		</td>
-	</tr>
-</table>
+<body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query%&quot;);">
 <table>
 	<tr>
-		<td>
+		<td class="header">
 			<table>
 				<tr>
-					<td class="mittel">%mittel</td>
+					<td class="header_left">
+						<div class="schlagwort">
+							%schlagwort%
+						<div>
+						<div class="info">
+							%bemerkung%
+						</div>
+					</td>
+					<td class="header_right">
+						<table>
+							<tr>
+								<td>
+									<div class="addr">
+										%strasse% %nummer%<br>
+										%ort%<br>
+										%abschnitt%
+									</div>
+								</td>
+								<td>
+									<div class="logo">
+										<img src="logo.png" class="logo">
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
 				</tr>
 			</table>
-			<div class="time">
+		</td>
+	</tr>
+	<tr>
+		<td class="main">
 			<table>
 				<tr>
-					<td class="time">
-						<div class="alarm_txt">Alarmierungszeit:</div>
-						<div id="alarmzeit" class="alarm">%alarmzeit</div>
+					<td class="main_left">
+						%mittel%
 					</td>
-					<td class="time">
+					<td class="main_right">
+						%map_tag%
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="bottom">
+			<table>
+				<tr>
+					<td class="bottom_tile">
+						<div class="alarm_txt">Alarmierungszeit:</div>
+						<div id="alarmzeit" class="alarm">%alarmzeit%</div>
+					</td>
+					<td class="bottom_tile">
 						<div class="penalty_txt">Zeit seit Alarmierung:</div>
 						<div id="penalty" class="penalty"></div>
 					</td>
+					<td class="bottom_tile">
+						<div class="alarm_txt">aktuelle Zeit:</div>
+						<div id="clock" class="clock"></div>
+					</td>
+					<td class="bottom_status">
+						%status%
+					</td>
 				</tr>
 			</table>
-			</div>
-		</td>
-		<td class="gmap">
-			%map_tag
 		</td>
 	</tr>
 </table>
-<div id="clock" class="clock"></div>
-<div id="status" class="status"></div>
 </body>
 <script src="scripts.js"></script>
 </html>

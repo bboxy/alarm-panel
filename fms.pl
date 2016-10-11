@@ -15,7 +15,7 @@ my $status;
 
 local $SIG{ALRM} = sub {
 	alarm(60);
-	print "timeout\n";
+	#print "timeout\n";
 	# Suche in unseren Fahrzeugen nach alten Einträgen
 	for (my $fzg = 0; $fzg <= $#{$fuhrpark->{fuhrpark}->{fahrzeug}}; $fzg++) {
 		if (time() > $fuhrpark->{fuhrpark}->{fahrzeug}->[$fzg]->{timestamp} + 6 * 60 * 60) {

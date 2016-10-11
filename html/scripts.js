@@ -1,21 +1,22 @@
     var timestamp = null;
     var map;
+    var map_sat;
     var geocoder;
+    var geocoder_sat;
+
     function initMap(addr) {
-        //var addr;
-        geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(48.41523, 10.14069);
-        var mapDiv = document.getElementById('map');
+	var zoomlevel = 16;
+        geocoder      = new google.maps.Geocoder();
+        var latlng    = new google.maps.LatLng(48.41523, 10.14069);
+        var mapDiv    = document.getElementById('map');
+        var width     = mapDiv.offsetWidth;
         map = new google.maps.Map(mapDiv, {
             center: latlng,
-            zoom: 16
+            zoom: zoomlevel,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        //addr = document.getElementById('query').innerHTML;
-        codeAddress(addr);
-    }
-    function codeAddress(address) {
         // ACHTUNG: Adresse muss UTF-8-codiert von PHP übergeben werden!!!! Sonst Umlaute kaputt.
-        geocoder.geocode( { 'address': address}, function(results, status) {
+        geocoder.geocode( { 'address': addr}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 map.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
@@ -26,13 +27,38 @@
             // alert("Geocode was not successful for the following reason: " + status);
             }
         });
-        zoom();
+        map.setZoom(zoomlevel);
     }
+
+    function initMapSat(addr) {
+	var zoomlevel = 16;
+        geocoder_sat  = new google.maps.Geocoder();
+        var latlngSat = new google.maps.LatLng(48.41523, 10.14069);
+        var mapDivSat = document.getElementById('map_sat');
+        map_sat = new google.maps.Map(mapDivSat, {
+            center: latlngSat,
+            zoom: zoomlevel,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        });
+        // ACHTUNG: Adresse muss UTF-8-codiert von PHP übergeben werden!!!! Sonst Umlaute kaputt.
+        geocoder_sat.geocode( { 'address': addr}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map_sat.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map_sat,
+                    position: results[0].geometry.location
+                });
+            } else {
+            // alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+        map_sat.setZoom(zoomlevel);
+    }
+
     function zoom() {
         // Feststellen, ob wir noch in unserem Ortsgebiet sind
 //	var ortaufkarte = document.getElementById("ortaufkarte").value;
 //	var ergebnis = ortaufkarte.search(25i);
-	var zoomlevel = 16;
 //	if (ergebnis != -1)
 //	{
 //		// Wir sind im Ortsgebiet
@@ -41,7 +67,6 @@
 //		// Wir sind auf dem Land
 //		zoomlevel = 2;
 //	}
-        map.setZoom(zoomlevel);
     }
 
 function startTime() {
@@ -82,9 +107,9 @@ function startTime() {
     document.getElementById('penalty').innerHTML = penalty;
 
     if (dh == 0 && dm < 5) {
-        document.getElementById('penalty').style.color = "#ffffff";
+        document.getElementById('penalty').style.color = "#000000";
     } else {
-        document.getElementById('penalty').style.color = "#ff4040";
+        document.getElementById('penalty').style.color = "#c02020";
     }
     var t = setTimeout(startTime, 500);
 }
@@ -94,33 +119,21 @@ function checkTime(i) {
 }
 
 function startDate() {
-    var months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Ockober", "November", "Dezember"];
+    var months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
     var today = new Date();
     var date = today.getDate() + ". " + months[today.getMonth()] + " " + today.getFullYear();
-    document.getElementById('datum').innerHTML = date;
+    document.getElementById('idle_datum').innerHTML = date;
     var d = setTimeout(startDate, 5000);
 }
 
 function reloadWatch() {
-    if (!document.getElementById('penalty')) {
-    } else {
-        var penalty = document.getElementById('penalty').innerHTML;
-        var ph = penalty.substring(0, 2);
-        var pm = penalty.substring(3, 5);
-        var ps = penalty.substring(6, 8);
-
-        var time_penalty = ph * 3600 + pm * 60 + ps * 1;
-        if (time_penalty > 60 * 60) {
-            //window.location.replace('idle.html');
-        }
-    }
-
     var ajax = null;
     if(window.XMLHttpRequest) { //Google Chrome, Mozilla Firefox, Opera, Safari, IE 7
         ajax = new XMLHttpRequest();
     }
 
     if (ajax != null) {
+        //ajax.open("GET","timestamp.txt?" + new Date().getTime() ,true);
         ajax.open("GET","timestamp.txt",true);
         ajax.setRequestHeader("timestamp","timestamp");
         ajax.onreadystatechange = function(){
@@ -130,69 +143,21 @@ function reloadWatch() {
     		else if (timestamp != this.responseText) {
                         timestamp = this.responseText;
                         //window.location.reload(false);
-                        window.location.replace('index.html');
+                        window.location.replace(window.location.href);
                     }
+                    //console.log("status " + this.status);
+                    //console.log("readyState " + this.readyState);
                     //console.log(timestamp);
-                }
+                } else {
+                    //console.log("status " + this.status);
+		}
+            } else {
+                //console.log("readyState " + this.readyState);
             }
         }
         ajax.send(null);
     }
 
-    // fuhrpark.xml parsen und Status der Fahrzeuge anzeigen
-    // TODO place in own function so others don't fail if this fails
-    var x = null;
-    if(window.XMLHttpRequest) { //Google Chrome, Mozilla Firefox, Opera, Safari, IE 7
-        x = new XMLHttpRequest();
-    }
-
-    if (x != null) {
-        x.open("GET","fuhrpark.xml",true);
-        x.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200) {
-                var html = "";
-                var fuhrpark = x.responseXML.getElementsByTagName("fuhrpark")[0].getElementsByTagName("fahrzeug");
-                for (i = 0; i < fuhrpark.length; i++) {
-                    var id;
-                    var name;
-                    var kennung;
-                    var stat = 0;
-                    var timestamp = 0;
-
-                    var nodes;
-
-                    nodes = fuhrpark[i].getElementsByTagName("id");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) id = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("timestamp");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) timestamp = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("status");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) stat = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("name");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) name = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("kennung");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) kennung = nodes[0].nodeValue;
-                    }
-                    html += "<span class=\"status" + stat + "\">" + kennung + "<br>" + stat + "</span>";
-                }
-                document.getElementById('status').innerHTML = html;
-            }
-        }
-        x.send();
-    }
     var t = setTimeout(reloadWatch, 5000);
 }
 
@@ -204,6 +169,7 @@ function reloadFMS() {
     }
 
     if (x != null) {
+        //x.open("GET","fuhrpark.xml?" + new Date().getTime() ,true);
         x.open("GET","fuhrpark.xml",true);
         x.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200) {
@@ -243,12 +209,12 @@ function reloadFMS() {
                         nodes = nodes[0].childNodes;
                         if (nodes.length) kennung = nodes[0].nodeValue;
                     }
-                    html += "<span class=\"status" + stat + "\">" + kennung + "<br>" + stat + "</span>";
+                    html += "<span class=\"status" + stat + "\"><p class=\"fp_kennung\">" + kennung + "</p><p class=\"fp_status\">" + stat + "</p><p class=\"fp_name\">" + name + "</p></span>";
                 }
                 document.getElementById('status').innerHTML = html;
             }
         }
         x.send();
     }
-    var t = setTimeout(reloadFMS, 2000);
+    var t = setTimeout(reloadFMS, 5000);
 }
