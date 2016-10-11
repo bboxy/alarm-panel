@@ -6,7 +6,7 @@ set -e
 # Must be a valid filename
 NAME=alarmmon
 PIDFILE=/var/run/$NAME.pid
-DAEMON=/localhome/bindhammer/ffw_pfuhl/alarmmon.pl
+DAEMON=/opt/alarm-panel/alarmmon.pl
 DAEMON_OPTS=""
 OPTIONS=""
 DIR="$(dirname "$DAEMON")"

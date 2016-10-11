@@ -1,7 +1,7 @@
 #Ablageort für empfangene Faxe lokal
 fax_path	/var/lib/alarmmon/fax
 #Ablageort für empfangene Faxe (Fritzbox)
-remote_path	/media/fritzbox/FRITZ/faxbox
+remote_path	/vol/fax
 #temporärer Pfad für Textextraktion
 extract_path	/tmp/extract
 #Name der FFW die hervorgehoben werden soll

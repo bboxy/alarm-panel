@@ -9,4 +9,4 @@ sudo cp alarmmon.init /etc/init.d/
 sudo update-rc.d /etc/init.d/alarmmon.init defaults
 sudo /etc/init.d/alarmmon.init start
 #ils.traineddata kopieren falls Tesseract benutzt wird, wohin? /usr/lib/tesseract?
-apt-get install libxml-simple-perl libconfig-simple-perl
+apt-get install libxml-simple-perl libconfig-simple-perl libproc-daemon-perl make gcc libtiff-dev arecord
