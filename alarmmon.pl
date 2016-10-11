@@ -163,26 +163,27 @@ sub process_fax {
 		} else {
 			`tesseract $fax_file basename($ocr_out, ".txt") -psm 3 -l ils`;
 		}
+
+		print "checking if from ILS Donau Iller...";
+		local $/=undef;
+		if (!open FILE, $ocr_out) {
+			print "Couldn't open file: $!";
+			return 1;
+		}
+
+		$ocr_txt= <FILE>;
+		close FILE;
+
+		if ($ocr_txt !~ m/.LS\sDonau/) {
+			print "No.\n";
+			return 1;
+		}
+		print "Yes!\n";
+
 	}
 
 	# Spaces am Zeilenanfang und Ende entfernen
 	`cat $ocr_out | sed -e 's/^\\s*//g;s/\\s*\$//g' > $ocr_file`;
-
-	local $/=undef;
-	if (!open FILE, $ocr_file) {
-		print "Couldn't open file: $!";
-		return 1;
-	}
-
-	print "checking if from ILS Donau Iller...";
-	$ocr_txt= <FILE>;
-	close FILE;
-
-	if ($ocr_txt !~ m/.LS\sDonau/) {
-		print "No.\n";
-		return 1;
-	}
-	print "Yes!\n";
 
 	print "parsing and rendering...\n";
 
