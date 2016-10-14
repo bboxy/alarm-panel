@@ -1,12 +1,49 @@
 Einrichtung:
-mount einrichten für .tif/.pdf vom fax/fritzbox/
-sudo cp apacheconfig/000-default.conf /etc/apache/sites/available/000-default.conf
-000-default.conf anpassen (vor allem document root)
-a2enmod expires
-sudo cp alarmon.cfg /etc/
-alarmmon.cfg anpassen falls nötig
+
+cd /opt/
+
+sudo git clone https://github.com/bboxy/alarm-panel.git
+
+cd alarm-panel
+
+sudo apt-get install apache2 libxml-simple-perl libconfig-simple-perl libproc-daemon-perl make gcc libtiff-dev arecord
+
+Ggf. tesseract installieren und einrichten:
+sudo apt-get install tesseract-ocr tesseract-ocr-deu
+sudo cp ils.traineddata /usr/share/tesseract-ocr/tessdata/
+
+Binaries erstellen:
+sudo make
+
+mount/dir einrichten für .tif/.pdf von fax/fritzbox/hylafax
+
+Default config für apache kopieren:
+sudo cp apacheconfig/000-default.conf /etc/apache/sites-available/000-default.conf
+
+Apache config anpassen (vor allem document root, falls nicht /opt/alarm-apnel/html):
+sudo vim /etc/apache/sites-available/000-default.conf
+
+Um Caching abzuschalten mod_expires aktivieren:
+sudo a2enmod expires
+
+Apache neu starten:
+sudo apachectl restart
+
+sudo cp alarmon.cfg-example /etc/alarmmon.cfg
+
+Konfiguration in alarmmon.cfg anpassen:
+sudo vim /etc/alarmmon.cfg
+
+Initscript installieren:
 sudo cp alarmmon.init /etc/init.d/
+
+Initscript anpassen (vor allem pfad):
+sudo vim /etc/init.d/alarmmon.init
+
+Initscript in allen nötigen runlevels aktivieren:
 sudo update-rc.d /etc/init.d/alarmmon.init defaults
+
+Dienst starten mit:
 sudo /etc/init.d/alarmmon.init start
-#ils.traineddata kopieren falls Tesseract benutzt wird, wohin? /usr/lib/tesseract?
-apt-get install libxml-simple-perl libconfig-simple-perl libproc-daemon-perl make gcc libtiff-dev arecord
+
+Mit Browser Webseite von entsprechender IP des alarmon-hosts laden und prüfen.
