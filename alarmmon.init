@@ -11,6 +11,10 @@ DAEMON_OPTS=""
 OPTIONS=""
 DIR="$(dirname "$DAEMON")"
 
+LANG=de_DE.UTF-8
+LC_CTYPE="de_DE.UTF-8"
+LC_NUMERIC="de_DE.UTF-8"
+
 export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 
 case "$1" in
