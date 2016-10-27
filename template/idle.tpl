@@ -29,9 +29,9 @@
 			  clock.secondHand = StationClock.HoleShapedSecondHand;
 			  clock.boss = StationClock.NoBoss;
 			  clock.minuteHandBehavoir = StationClock.BouncingMinuteHand;
-			  clock.secondHandBehavoir = StationClock.OverhastySecondHand;
+			  clock.secondHandBehavoir = StationClock.BouncingSecondHand;
 
-			  window.setInterval(function() { clock.draw() }, 50);
+			  window.setInterval(function() { clock.draw() }, 5);
 
 			</script>
 			<div id="idle_datum" class="idle_datum"></div>

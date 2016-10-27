@@ -9,6 +9,8 @@ use Config::Simple;
 use Proc::Daemon;
 use File::Path qw(make_path);
 use File::Basename;
+use Mail::POP3Client;
+use MIME::Parser;
 
 my $cfg = new Config::Simple('/etc/alarmmon.cfg') or die ("ERROR: can't find alarmmon.cfg.\n");
 my %Config = $cfg->vars();
@@ -28,7 +30,8 @@ my $fax_file = $Config{extract_path} . "/fax.tif";
 
 my $continue = 1;
 
-mkdir ($Config{extract_path});
+make_path($Config{pop3_path});
+make_path($Config{extract_path});
 make_path($Config{fax_path},{mode=>0777});
 
 $SIG{TERM} = sub { $continue = 0 };
@@ -38,6 +41,15 @@ if ($Config{enable_fms}) {
 	print "starting FMS decoder";
 	system("arecord -f S16_LE -t raw -c 1 -r 20000 | ./fms_decoder | ./fms.pl &");
 }
+
+my $parser = new MIME::Parser;
+my $pop = new Mail::POP3Client(
+	DEBUG    => 0,
+	HOST     => $Config{pop3_server},
+	USESSL   => "true"
+);
+$pop->User($Config{pop3_user});
+$pop->Pass($Config{pop3_password});
 
 # Auf neues Fax warten:
 while ($continue) {
@@ -52,6 +64,37 @@ while ($continue) {
 			$idle = 1;
 		}
 	}
+
+	if ($Config{fax_source} eq "pop3") {
+		$pop->Connect() >= 0 || print $pop->Message();
+
+		$parser->output_dir($Config{pop3_path});
+		$parser->output_to_core();
+		my $i;
+
+		for ($i = 1; $i <= $pop->Count(); $i++) {
+			print "$i \n";
+			my $msg;
+			$msg = $pop->HeadAndBody($i);
+			my $entity = $parser->parse_data($msg);
+			if (opendir my($dh), "$Config{pop3_path}") {
+				my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
+				for my $efile (@extract_files) {
+					if ($efile =~ m/\.(pdf|tif)$/i) {
+						print "$Config{pop3_path}/$efile $Config{remote_path}/\n";
+						copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
+					}
+				}
+				my @clean = glob ("$Config{pop3_path}/*");
+				if (@clean) {
+					 unlink @clean;
+				}
+			}
+			$pop->Delete($i);
+		}
+		$pop->Close();
+	}
+
 	if (opendir my($dh), "$Config{fax_path}") {
 		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
 		closedir $dh;
@@ -65,9 +108,7 @@ while ($continue) {
 				#print "checking " . $rfile . "\n";
 				if ( my @list = grep /^$rfile$/, @fax_files) {
 			        } else {
-					print "copying new file $rfile\n";
-					copy $Config{remote_path} . "/$rfile", $Config{fax_path} . "/$rfile";
-					$idle = process_fax("$Config{fax_path}/$rfile");
+					$idle = process_fax($rfile);
 					print "updating timestamp...\n";
 					update_timestamp();
 					print "all done.\n";
@@ -79,6 +120,7 @@ while ($continue) {
 	} else {
 		print "ERROR: $Config{fax_path} not found\n";
 	}
+
 	sleep (5);
 }
 
@@ -110,11 +152,16 @@ sub purge {
 
 sub process_fax {
 	# Parameterübergabe
-	my $path = shift(@_);
+	my $rfile = shift(@_);
+	my $path = "$Config{fax_path}/$rfile";
+	my $source = "$Config{remote_path}/$rfile";
 
 	my %Parsed;
 	my $ocr_txt;
 	my @clean;
+
+	print "copying new file $rfile\n";
+	copy $source, $path;
 
 	# Aufräumen
 	print "cleaning up...\n";

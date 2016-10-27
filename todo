@@ -1,1 +1,2 @@
 add sds support
+add watchdog and visualize if alarmmon is still running (->needs to update a separate timestamp that is checked by the browser? -> check timestamp functions in .js)
