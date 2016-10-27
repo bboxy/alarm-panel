@@ -12,7 +12,7 @@ use File::Basename;
 use Mail::POP3Client;
 use MIME::Parser;
 
-my $cfg = new Config::Simple('/etc/alarmmon.cfg') or die ("ERROR: can't find alarmmon.cfg.\n");
+my $cfg = new Config::Simple('/etc/alarmmon.cfg') or die ("ERROR: Can't open /etc/alarmmon.cfg\n");
 my %Config = $cfg->vars();
 
 my @fax_files;
@@ -59,7 +59,6 @@ if ($Config{enable_pop3}) {
 # Auf neues Fax warten:
 while ($continue) {
 	# Können wir einen Idle-Screen zeigen?
-        purge();
         if (!$idle) {
 		# Ja, aber nur wenn timestamp noch nicht gesetzt ist (startup) oder der Alarm min 30 Minuten zurückliegt.
    		if (!$timestamp || $timestamp + 60 * 60 < time()) {
@@ -75,12 +74,14 @@ while ($continue) {
 		$parser->output_dir($Config{pop3_path});
 		$parser->output_to_core();
 
-		my $i;
-
-		for ($i = 1; $i <= $pop->Count(); $i++) {
+		for (my $i = 1; $i <= $pop->Count(); $i++) {
+			# Anhänge jeder Mail in pop3_path speichern
 			my $msg = $pop->HeadAndBody($i);
 			my $entity = $parser->parse_data($msg);
+
+			# Alle Anhänge durchgehen
 			if (opendir my($dh), "$Config{pop3_path}") {
+				# .tif unf .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
 				my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
 				for my $efile (@extract_files) {
 					if ($efile =~ m/\.(pdf|tif)$/i) {
@@ -88,16 +89,20 @@ while ($continue) {
 					}
 				}
 
+				# danach aufräumen
 				my @clean = glob ("$Config{pop3_path}/*");
 				if (@clean) {
 					 unlink @clean;
 				}
 			}
+
+			# E-Mail auf Server löschen
 			$pop->Delete($i);
 		}
 		$pop->Close();
 	}
 
+	# TODO vorher prüfen mit nem notifyWatch ob sich was am Pfad ändert? Email nicht so oft abrufen?
 	if (opendir my($dh), "$Config{fax_path}") {
 		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
 		closedir $dh;
@@ -106,10 +111,12 @@ while ($continue) {
 			closedir $dh;
 			chomp(@fax_files);
 			chomp(@remote_files);
+
+			# nach neuen Dateien suchen
 			for my $rfile (@remote_files) {
 				chomp($rfile);
-				#print "checking " . $rfile . "\n";
 				if ( my @list = grep /^$rfile$/, @fax_files) {
+					# File existiert bereits in fax_path
 			        } else {
 					$idle = process_fax($rfile);
 					print "updating timestamp...\n";
@@ -117,28 +124,10 @@ while ($continue) {
 					print "all done.\n";
 				}
 			}
-		} else {
-			print "ERROR: $Config{remote_path} not found\n";
-		}
-	} else {
-		print "ERROR: $Config{fax_path} not found\n";
-	}
 
-	sleep ($Config{check_interval});
-}
-
-sub purge {
-	if (opendir my($dh), "$Config{fax_path}") {
-		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
-		closedir $dh;
-		if (opendir my($dh), "$Config{remote_path}") {
-			@remote_files = grep { !/^\.\.?$/ } readdir $dh;
-			closedir $dh;
-			chomp(@fax_files);
-			chomp(@remote_files);
+			# nicht mehr vorhandene Dateien löschen
 			for my $ffile (@fax_files) {
 				chomp($ffile);
-				#print "checking " . $rfile . "\n";
 				if ( my @list = grep /^$ffile$/, @remote_files) {
 			        } else {
 					print "purging $Config{fax_path}/$ffile\n";
@@ -146,17 +135,20 @@ sub purge {
 				}
 			}
 		} else {
-			print "ERROR: $Config{remote_path} not found\n";
+			print "ERROR: Can't open $Config{remote_path}\n";
 		}
 	} else {
-		print "ERROR: $Config{fax_path} not found\n";
+		print "ERROR: Can't open $Config{fax_path}\n";
 	}
+
+	sleep ($Config{check_interval});
 }
 
 sub process_fax {
 	# Parameterübergabe
 	my $rfile = shift(@_);
-	my $path = "$Config{fax_path}/$rfile";
+
+	my $dest = "$Config{fax_path}/$rfile";
 	my $source = "$Config{remote_path}/$rfile";
 
 	my %Parsed;
@@ -164,7 +156,7 @@ sub process_fax {
 	my @clean;
 
 	print "copying new file $rfile\n";
-	copy $source, $path;
+	copy $source, $dest;
 
 	# Aufräumen
 	print "cleaning up...\n";
@@ -174,10 +166,10 @@ sub process_fax {
 	}
 
 	# pdf-Datei - Bilder extrahieren, drucken, dann Texterkennung
-	if ($path =~ /\.pdf$/i) {
+	if ($dest =~ /\.pdf$/i) {
 		# Bilder aus .pdf angeln
 		print "extracting images from .pdf ...\n";
-		`pdfimages -p $path $Config{extract_path}/`;
+		`pdfimages -p $dest $Config{extract_path}/`;
 
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
@@ -191,8 +183,8 @@ sub process_fax {
 	}
 
 	# tif-Datei - nur drucken und dann Texterkennung
-	if ($path =~ /\.tif$/i) {
-		copy $path, $fax_file;
+	if ($dest =~ /\.tif$/i) {
+		copy $dest, $fax_file;
 
 		# TODO split up file to pages
 		# Ausdrucken
@@ -203,8 +195,8 @@ sub process_fax {
 	}
 
 	# .txt datei direkt parsen
-	if ($path =~ /\.txt$/i) {
-		copy $path, $ocr_out;
+	if ($dest =~ /\.txt$/i) {
+		copy $dest, $ocr_out;
 	} else {
 		# OCR auf neuem Fax
 		print "doing ocr...\n";
@@ -238,7 +230,7 @@ sub process_fax {
 	print "parsing and rendering...\n";
 
 	# ocr.txt parsen
-	%Parsed = parse_txt($path, $ocr_txt);
+	%Parsed = parse_txt($dest, $ocr_txt);
 
 	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
