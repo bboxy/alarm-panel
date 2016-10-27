@@ -1,5 +1,3 @@
-#filesystem, pop3, imap
-fax_source	filesystem
 #Ablageort für empfangene Faxe lokal
 fax_path	/var/lib/alarmmon/fax
 #Ablageort für empfangene Faxe (Fritzbox)
@@ -18,7 +16,11 @@ max_mittel	10
 default_ort	Straß
 #Schnelle und bessere Texterkennung aber nur bei vorgegebenem Font
 fast_ocr	1
+#Zeit in Sekunden bis zum nächsten Check auf neue Daten
+check_interval	5
 
+#Auch im pop3 Postfach nach neuen Faxen suchen?
+enable_pop3	1
 #Username für pop3
 pop3_user	user
 #Passwort für pop3

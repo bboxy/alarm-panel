@@ -42,14 +42,19 @@ if ($Config{enable_fms}) {
 	system("arecord -f S16_LE -t raw -c 1 -r 20000 | ./fms_decoder | ./fms.pl &");
 }
 
-my $parser = new MIME::Parser;
-my $pop = new Mail::POP3Client(
-	DEBUG    => 0,
-	HOST     => $Config{pop3_server},
-	USESSL   => "true"
-);
-$pop->User($Config{pop3_user});
-$pop->Pass($Config{pop3_password});
+my $parser;
+my $pop;
+
+if ($Config{enable_pop3}) {
+	$parser = new MIME::Parser;
+	$pop = new Mail::POP3Client(
+		DEBUG    => 0,
+		HOST     => $Config{pop3_server},
+		USESSL   => "true"
+	);
+	$pop->User($Config{pop3_user});
+	$pop->Pass($Config{pop3_password});
+}
 
 # Auf neues Fax warten:
 while ($continue) {
@@ -65,26 +70,24 @@ while ($continue) {
 		}
 	}
 
-	if ($Config{fax_source} eq "pop3") {
+	if ($Config{enable_pop3}) {
 		$pop->Connect() >= 0 || print $pop->Message();
-
 		$parser->output_dir($Config{pop3_path});
 		$parser->output_to_core();
+
 		my $i;
 
 		for ($i = 1; $i <= $pop->Count(); $i++) {
-			print "$i \n";
-			my $msg;
-			$msg = $pop->HeadAndBody($i);
+			my $msg = $pop->HeadAndBody($i);
 			my $entity = $parser->parse_data($msg);
 			if (opendir my($dh), "$Config{pop3_path}") {
 				my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
 				for my $efile (@extract_files) {
 					if ($efile =~ m/\.(pdf|tif)$/i) {
-						print "$Config{pop3_path}/$efile $Config{remote_path}/\n";
 						copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
 					}
 				}
+
 				my @clean = glob ("$Config{pop3_path}/*");
 				if (@clean) {
 					 unlink @clean;
@@ -121,7 +124,7 @@ while ($continue) {
 		print "ERROR: $Config{fax_path} not found\n";
 	}
 
-	sleep (5);
+	sleep ($Config{check_interval});
 }
 
 sub purge {
