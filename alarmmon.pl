@@ -256,7 +256,7 @@ sub parse_txt {
 	$geraet = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
 	$Parsed{geraet} = [split /^/, $geraet];
 
-	$Parsed{strasse} = `grep '^Stra.e.*' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Haus.Nr.*//; s/^Stra.e\\s*.\\s*//;'`;
+	$Parsed{strasse} = `grep '^Stra.s\\?e.*' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Haus.Nr.*//; s/^Stra.s\\?e\\s*.\\s*//;'`;
 	$Parsed{strasse} =~ s/^\s+|\s+$//g;
 
 	$Parsed{hausnummer} = `sed -e '/^.*Haus.Nr.\\s*.\\s*/!d; s///;q' < $ocr_file`;
