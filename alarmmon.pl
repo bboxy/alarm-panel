@@ -276,8 +276,10 @@ sub parse_txt {
 	$Parsed{station} =~ s/^\s+|\s+$//g;
 	$Parsed{schlagwort} = `sed -e '/^Schlag..\\s*.\\s*/!d; s///;q' < $ocr_file`;
 	$Parsed{schlagwort} =~ s/^\s+|\s+$//g;
-	$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
+	#$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
+	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
 	$Parsed{bemerkung} =~ s/^\s+|\s+$//g;
+	$Parsed{bemerkung} =~ s/$/<br>/mg;
 
 	print "Strasse: '" . $Parsed{strasse} . "'\n";
 	print "Hausnummer: '" . $Parsed{hausnummer} . "'\n";
