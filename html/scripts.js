@@ -31,7 +31,7 @@
     }
 
     function initMapSat(addr) {
-	var zoomlevel = 16;
+	var zoomlevel = 19;
         geocoder_sat  = new google.maps.Geocoder();
         var latlngSat = new google.maps.LatLng(48.41523, 10.14069);
         var mapDivSat = document.getElementById('map_sat');
