@@ -27,9 +27,7 @@
 							<tr>
 								<td>
 									<div class="addr">
-										%strasse% %nummer%<br>
-										%ort%<br>
-										%abschnitt%
+										%adresse%
 									</div>
 								</td>
 								<td>

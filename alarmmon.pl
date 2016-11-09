@@ -247,41 +247,56 @@ sub parse_txt {
 	my $mittel;
 	my $geraet;
 
+	#cat /tmp/extract/out.txt | sed -n '/^Str.Abschn\s*.\s*/,/^Ort\s*.\s*/p' | grep -v '^Ort\s*.\s*'
+
 	$Parsed{alarmzeit} = ctime( stat($path)->ctime);
 	$Parsed{alarmzeit} =~ s/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/$1/;
 
 	# Alle möglichen Infos aus dem generierten Text herausparsen
 	# $mittel = `grep -v 'Rufnummer' $ocr_file | grep 'Name.*' | sed -e 's/Name.*\\(\\[:alphanum:\\]*\\)/\\1/' | sed -e '7\\.3\\..\\s\\(.*\\)/\\1/' | sed -e 's/Name\\s*.s*\\(.*\\)/\\1/'`;
-	$mittel = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Name' | sed -e 's/Name\\s*.\\s*7\\.3\\..\\s*//' | sed -e 's/Name\\s*.\\s*//'`;
+	$mittel = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep '^Name' | sed -e 's/^Name\\s*.\\s7\\.3\\..\\s*//' | sed -e 's/^Name\\s*.\\s//'`;
 	$Parsed{mittel} = [split /^/, $mittel];
 
 	$geraet = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
 	$Parsed{geraet} = [split /^/, $geraet];
 
 	$Parsed{strasse} = `grep '^Stra.s\\?e.*' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Haus.Nr.*//; s/^Stra.s\\?e\\s*.\\s*//;'`;
+	$Parsed{strasse} =~ s/\n//g;
 	$Parsed{strasse} =~ s/^\s+|\s+$//g;
 
 	$Parsed{hausnummer} = `sed -e '/^.*Haus.Nr.\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{hausnummer} =~ s/\n//g;
 	$Parsed{hausnummer} =~ s/^\s+|\s+$//g;
 
-	$Parsed{abschnitt} = `sed -e '/^Str.A.schn\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	#kann über mehrere Zeilen gehen
+	$Parsed{abschnitt} = `cat $ocr_file | sed -n '/^Str.Abschn\\s*.\\s*/,/^Ort\\s*.\\s*/p' | sed -e 's/^Str.Abschn\\s*.\\s*//' -e 's/^Ort\\s*.\\s*.*//'`;
+	$Parsed{abschnitt} =~ s/\n//g;
 	$Parsed{abschnitt} =~ s/^\s+|\s+$//g;
 
 	$Parsed{ort} = `sed -e '/^Ort\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{ort} =~ s/\\n//;
 	$Parsed{ort} =~ s/^\s+|\s+$//g;
 	# Alles nach ' - ' abschneiden
 	$Parsed{ort} =~ s/\s-\s.*$//;
 
-	$Parsed{objekt} = `sed -e '/^Objekt\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	#kann über mehrere Zeilen gehen
+	$Parsed{objekt} = `cat $ocr_file | sed -n '/^Objekt\\s*.\\s*/,/^Station\\s*.\\s*/p' | sed -e 's/^Objekt\\s*.\\s*//' -e 's/^Station\\s*.\\s*.*//'`;
+	$Parsed{objekt} =~ s/\n//g;
 	$Parsed{objekt} =~ s/^\s+|\s+$//g;
+
 	$Parsed{station} = `sed -e '/^Station\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{station} =~ s/\n//g;
 	$Parsed{station} =~ s/^\s+|\s+$//g;
+
 	$Parsed{schlagwort} = `sed -e '/^Schlag..\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{schlagwort} =~ s/\n//g;
 	$Parsed{schlagwort} =~ s/^\s+|\s+$//g;
+
 	#$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
 	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
 	$Parsed{bemerkung} =~ s/^\s+|\s+$//g;
 	$Parsed{bemerkung} =~ s/$/<br>/mg;
+
 
 	print "Strasse: '" . $Parsed{strasse} . "'\n";
 	print "Hausnummer: '" . $Parsed{hausnummer} . "'\n";
@@ -335,10 +350,12 @@ sub render_alarm_templates {
 
 	for my $i (0 .. $#mittel) {
 		if ($mittel[$i] =~ m/$Config{own_ffw_name}/) {
-			$geraet[$i] =~ s/^\s+|\s+$//g;
 			$smittel .= "<div class=\"eigene_mittel\">\n$mittel[$i]";
-			if (length($geraet[$i]) > 0) {
-				$smittel .= "<div class=\"geraet\">\n$geraet[$i]</div>";
+			if ($#geraet >= $i) {
+				$geraet[$i] =~ s/^\s+|\s+$//g;
+				if (length($geraet[$i]) > 0) {
+					$smittel .= "<div class=\"geraet\">\n$geraet[$i]</div>";
+				}
 			}
 			$smittel .= "</div>";
 			$maxm++;
@@ -371,8 +388,51 @@ sub render_alarm_templates {
 	$Parsed{strasse} =~ s/</&lt;/g;
 	$Parsed{abschnitt} =~ s/</&lt;/g;
 
-	if (!$Parsed{ort} || $Parsed{ort} =~ m/Default/) {
-		$Parsed{ort} = $Config{default_ort}
+	if(($Parsed{ort} eq '' or $Parsed{ort} =~ m/Default/) and $Parsed{strasse} =~ m/(A7|A8|B28|B30|B10)/) {
+		if ($Parsed{abschnitt} ne '') {
+			$Parsed{adresse} .= "$Parsed{abschnitt}<br>";
+		}
+		if ($Parsed{objekt} ne '') {
+			$Parsed{adresse} .= "$Parsed{objekt}<br>";
+		}
+		$Parsed{adresse} .= "(KM: $Parsed{hausnummer})";
+
+		$Parsed{query} = "";
+		$Parsed{map_tag_sat} = '';
+		$Parsed{map_script} = '';
+
+		if($Parsed{strasse} =~ m/A7/) {
+			$Parsed{map_tag} = '<div class="map"><iframe class="map" src="http://autobahnatlas-online.de/A7.htm#Ulm" scrolling="no"></iframe></div>';
+		}
+		if($Parsed{strasse} =~ m/A8/) {
+			$Parsed{map_tag} = '<div class="map"><iframe class="map" src="http://autobahnatlas-online.de/A8.htm#UlmO_86" scrolling="no"></iframe></div>';
+		}
+		if($Parsed{strasse} =~ m/B10/) {
+			$Parsed{map_tag} = '<div class="map"><iframe class="map" src="http://autobahnatlas-online.de/A89.htm" scrolling="no"></iframe></div>';
+		}
+		if($Parsed{strasse} =~ m/B28/) {
+			$Parsed{map_tag} = '<div class="map"><iframe class="map" src="http://autobahnatlas-online.de/A80.htm#Hittistetten_7" scrolling="no"></iframe></div>';
+		}
+		if($Parsed{strasse} =~ m/B30/) {
+			$Parsed{map_tag} = '<div class="map"><iframe class="map" src="http://autobahnatlas-online.de/A89.htm#Neuulm_80" scrolling="no"></iframe></div>';
+		}
+	} else {
+		if (!$Parsed{ort} || $Parsed{ort} =~ m/Default/) {
+			$Parsed{ort} = $Config{default_ort}
+		}
+
+		if ($Parsed{abschnitt} eq $Parsed{strasse} or $Parsed{abschnitt} eq '') {
+			$Parsed{adresse} = "$Parsed{strasse} $Parsed{hausnummer}<br>$Parsed{ort}";
+		} else {
+			$Parsed{adresse} = "$Parsed{strasse} $Parsed{hausnummer}<br>$Parsed{abschnitt}<br>$Parsed{ort}";
+		}
+
+		$Parsed{query} = $Parsed{strasse} . " " . $Parsed{hausnummer} . ", " . $Parsed{ort};
+		$Parsed{query} =~ s/\n//g;
+
+		$Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
+		$Parsed{map_tag} = '<div class="map" id="map"></div>';
+		$Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
 	}
 
 	# query für Maps vorbereiten
@@ -387,25 +447,6 @@ sub render_alarm_templates {
 	# #$Parsed{ort} =~ s/1/l/g;		# 1 wird zu l
 	# #$Parsed{ort} =~ s/0/O/g;		# 0 wird zu O
 	# $Parsed{ort} =~ s/([[:alpha:]])B/$1ß/g;	# B nach Kleinmbuchstabe wird zu ß
-
-#	if ($Parsed{strasse} =~ m/A7/) {
-#		$Parsed{query} = "";
-#
-#		$Parsed{map_script} = "";
-#		$Parsed{map_tag} = '<iframe class="map" src="http://autobahnatlas-online.de/A7.htm#Ulm" scrolling="no"></iframe>';
-#		$Parsed{map_tag_sat} = '';
-#	} else {
-		# $Parsed{strasse} =~ s/1/l/g;
-		# $Parsed{strasse} =~ s/0/O/g;
-		# $Parsed{strasse} =~ s/([[:alpha:]])B/$1ß/g;
-
-		$Parsed{query} = $Parsed{strasse} . " " . $Parsed{hausnummer} . ", " . $Parsed{ort};
-		$Parsed{query} =~ s/\n//g;
-
-		$Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
-		$Parsed{map_tag} = '<div class="map" id="map"></div>';
-		$Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
-#	}
 
 	if (opendir my($dh), "template") {
 		@templates = grep { !/^\.\.?$/ } readdir $dh;
@@ -452,6 +493,7 @@ sub render_template {
 	$template =~ s/%ort%/$Parsed{ort}/g;
 	$template =~ s/%objekt%/$Parsed{objekt}/g;
 	$template =~ s/%station%/$Parsed{station}/g;
+	$template =~ s/%adresse%/$Parsed{adresse}/g;
 	$template =~ s/%schlagwort%/$Parsed{schlagwort}/g;
 	$template =~ s/%bemerkung%/$Parsed{bemerkung}/g;
 	$template =~ s/%alarmzeit%/$Parsed{alarmzeit}/g;
