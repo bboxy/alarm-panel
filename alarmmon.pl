@@ -119,8 +119,10 @@ while ($continue) {
 					# File existiert bereits in fax_path
 			        } else {
 					$idle = process_fax($rfile);
-					print "updating timestamp...\n";
-					update_timestamp();
+					if (!$idle) {
+						print "updating timestamp...\n";
+						update_timestamp();
+					}
 					print "all done.\n";
 				}
 			}
