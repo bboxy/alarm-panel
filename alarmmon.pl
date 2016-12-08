@@ -260,6 +260,7 @@ sub parse_txt {
 	my %Parsed;
 	my $mittel;
 	my $geraet;
+	my @coord;
 
 	#cat /tmp/extract/out.txt | sed -n '/^Str.Abschn\s*.\s*/,/^Ort\s*.\s*/p' | grep -v '^Ort\s*.\s*'
 
@@ -306,10 +307,25 @@ sub parse_txt {
 	$Parsed{schlagwort} =~ s/\n//g;
 	$Parsed{schlagwort} =~ s/^\s+|\s+$//g;
 
+	$Parsed{x_coord} = `grep '^X-Koordinate.*' $ocr_file | sed -e 's/*(.)//; s/\\s*Y-Koordinate.*//; s/^X-Koordinate\\s*.\\s*//;'`;
+	$Parsed{x_coord} =~ s/\n//g;
+	$Parsed{x_coord} =~ s/^\s+|\s+$//g;
+
+	$Parsed{y_coord} = `sed -e '/^.*Y-Koordinate\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{y_coord} =~ s/\n//g;
+	$Parsed{y_coord} =~ s/^\s+|\s+$//g;
+
 	#$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
 	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
 	$Parsed{bemerkung} =~ s/^\s+|\s+$//g;
 
+	if ($Parsed{x_coord} != '' && $Parsed{Y_coord} != '') {
+		@coord = split(/\s+/, `cs2cs -f "%.13f" +init=epsg:31468 +to +init=epsg:4326 <<EOF\n$Parsed{x_coord} $Parsed{y_coord}\nEOF`);
+		($Parsed{gps_long}, $Parsed{gps_lat}, @_)=@coord;
+	} else {
+		$Parsed{gps_long} = '';
+		$Parsed{gps_lat} = '';
+	}
 
 	print "Strasse: '" . $Parsed{strasse} . "'\n";
 	print "Hausnummer: '" . $Parsed{hausnummer} . "'\n";
@@ -319,6 +335,11 @@ sub parse_txt {
 	print "Station: '" . $Parsed{station} . "'\n";
 	print "Schlagwort: '" . $Parsed{schlagwort} . "'\n";
 	print "Bemerkung: '" . $Parsed{bemerkung} . "'\n";
+	print "x-coord: '" . $Parsed{x_coord} . "'\n";
+	print "y-coord: '" . $Parsed{y_coord} . "'\n";
+	print "lat: '" . $Parsed{gps_lat} . "'\n";
+	print "long: '" . $Parsed{gps_long} . "'\n";
+
 
 	return %Parsed;
 }
