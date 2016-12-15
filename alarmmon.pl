@@ -84,36 +84,41 @@ while ($continue) {
 	}
 
 	if ($Config{enable_pop3}) {
-		$pop->Connect() >= 0 || print $pop->Message();
-		$parser->output_dir($Config{pop3_path});
-		$parser->output_to_core();
+		print "Checking for new mail...\n";
+		if($pop->Connect() >= 0) {
+			$parser->output_dir($Config{pop3_path});
+			$parser->output_to_core();
 
-		for (my $i = 1; $i <= $pop->Count(); $i++) {
-			# Anhänge jeder Mail in pop3_path speichern
-			my $msg = $pop->HeadAndBody($i);
-			my $entity = $parser->parse_data($msg);
-
-			# Alle Anhänge durchgehen
-			if (opendir my($dh), "$Config{pop3_path}") {
-				# .tif unf .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
-				my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
-				for my $efile (@extract_files) {
-					if ($efile =~ m/\.(pdf|tif)$/i) {
-						copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
+			for (my $i = 1; $i <= $pop->Count(); $i++) {
+				# Anhänge jeder Mail in pop3_path speichern
+				print "Fetching message #$i\n";
+				my $msg = $pop->HeadAndBody($i);
+				my $entity = $parser->parse_data($msg);
+	
+				# Alle Anhänge durchgehen
+				if (opendir my($dh), "$Config{pop3_path}") {
+					# .tif unf .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
+					my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
+					for my $efile (@extract_files) {
+						if ($efile =~ m/\.(pdf|tif)$/i) {
+							copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
+						}
+					}
+	
+					# danach aufräumen
+					my @clean = glob ("$Config{pop3_path}/*");
+					if (@clean) {
+						 unlink @clean;
 					}
 				}
-
-				# danach aufräumen
-				my @clean = glob ("$Config{pop3_path}/*");
-				if (@clean) {
-					 unlink @clean;
-				}
+	
+				# E-Mail auf Server löschen
+				$pop->Delete($i);
 			}
-
-			# E-Mail auf Server löschen
-			$pop->Delete($i);
+			$pop->Close();
+ 		} else {
+			print $pop->Message();
 		}
-		$pop->Close();
 	}
 
 	# TODO vorher prüfen mit nem notifyWatch ob sich was am Pfad ändert? Email nicht so oft abrufen?
