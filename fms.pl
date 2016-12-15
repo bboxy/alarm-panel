@@ -45,7 +45,7 @@ while(<>) {
 			# 48 Bit FMS ausschneiden
 			$fms = $1;
 			# ID ausschneiden
-			$id = substr($fms,4,8);
+			$id = lc substr($fms,4,8);
 			# Status ausschneiden
 			$status = substr($fms,3,1);
 
