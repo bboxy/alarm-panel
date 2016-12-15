@@ -45,20 +45,6 @@ if ($Config{enable_fms}) {
 my $parser;
 my $pop;
 
-	#match against abschnitt if no objekt, else against objekt
-	#AS Nersingen / Behelfsumfahrung Moserrampe
-	#B10 Neu-Ulm > Ulm AS Neu-Ulm / Landesgrenze BW (9,25 bis 10,8)
-	#Fl Donau
-my @highways = (
-	['B28','AS Senden','https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25226.797278690363!2d10.02952679108558!3d48.34821641268395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1478694917637'],
-	['B28','Überleitung B28 / B30 Wiblingen','https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12609.22130206609!2d9.994767973980975!3d48.3650920095004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1478694966011'],
-	['A7','Parkplatz Leibisee-Ost AS Nersingen','https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4451.793257854581!2d10.11034860612837!3d48.436339672831785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1478693521362'],
-	['A7','Parkplatz Hahnenberg-West AS Nersingen','https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5299.121489491573!2d10.086086083483618!3d48.388173690688355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1478695330295'],
-	['A7','AS Nersingen / Behelfsumfahrung Moserrampe','https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d17804.93034756187!2d10.113632555731657!3d48.44273782889928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1478693046054'],
-	['Donau','Fl Donau','https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14980.068153241617!2d10.043441491120616!3d48.415707168750416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1478693697358'],
-	['A7','AS Nersingen / AD Hittistetten','https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29989.158628853886!2d10.05740052741409!3d48.36643831730517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1478694868275']
-);
-
 if ($Config{enable_pop3}) {
 	$parser = new MIME::Parser;
 	$pop = new Mail::POP3Client(
@@ -379,7 +365,6 @@ sub render_alarm_templates {
 	my @templates;
 	my $html_file;
 
-	my $is_hw = 0;
 	my $url = "";
 
 	# Für das Einsetzen ins HTML-Template vorbereiten
@@ -433,76 +418,36 @@ sub render_alarm_templates {
 
 	# TODO in ein config-array auslagern?
 
-        $is_hw = 0;
-	if($Parsed{ort} eq '' or $Parsed{ort} =~ m/Default/) {
-		$Parsed{adresse} = "";
-		if ($Parsed{abschnitt} ne '') {
-			$Parsed{adresse} .= "$Parsed{abschnitt}<br>";
-		}
-		if ($Parsed{objekt} ne '') {
-			$Parsed{adresse} .= "$Parsed{objekt}<br>";
-		}
-		$Parsed{adresse} .= "(KM: $Parsed{hausnummer})";
-
-		$Parsed{query} = "";
-		$Parsed{map_tag} = '';
-		$Parsed{map_tag_sat} = '';
-		$Parsed{map_script} = '';
-
-		# Erst mit Objekt vergleichen falsl vorhanden
-		foreach my $loc (@highways) {
-			if ($Parsed{strasse} =~ m/@$loc[0]/) {
-				print "@$loc[0]\n";
-				if ($Parsed{objekt} ne '' and $Parsed{objekt} =~ m/@$loc[1]/) {
-					$is_hw = 1;
-					print "@$loc[1]\n";
-					$url = @$loc[2];
-				}
-                	}   
-		}
-
-		# Dann gegen Abshcnitt
-		if (!$is_hw) {
-			foreach my $loc (@highways) {
-				if ($Parsed{strasse} =~ m/@$loc[0]/) {
-					print "@$loc[0]\n";
-					if ($Parsed{abschnitt} ne '' and $Parsed{abschnitt} =~ m/@$loc[1]/) {
-						$is_hw = 1;
-						print "@$loc[1]\n";
-						$url = @$loc[2];
-					}
-       		         	}   
-			}
-		}
-
-		$Parsed{map_tag} = '<div class="map"><iframe class="map" src="' . $url . '" scrolling="no"></iframe></div>';
+	$Parsed{adresse} = "";
+	if (!$Parsed{ort} || $Parsed{ort} =~ m/Default/) {
+		$Parsed{ort} = $Config{default_ort}
 	}
-	if (!$is_hw) {
-		$Parsed{adresse} = "";
-		if (!$Parsed{ort} || $Parsed{ort} =~ m/Default/) {
-			$Parsed{ort} = $Config{default_ort}
-		}
 
-		if ($Parsed{objekt} ne '') {
-			$Parsed{adresse} .= "$Parsed{objekt}<br>";
-		}
+	if ($Parsed{objekt} ne '') {
+		$Parsed{adresse} .= "$Parsed{objekt}<br>";
+	}
 
-		$Parsed{adresse} .= "$Parsed{strasse} $Parsed{hausnummer}<br>";
+	$Parsed{adresse} .= "$Parsed{strasse} $Parsed{hausnummer}<br>";
 
-		if ($Parsed{abschnitt} ne $Parsed{strasse} and $Parsed{abschnitt} ne '') {
-			$Parsed{adresse} .= "$Parsed{abschnitt}<br>";
-		}
+	if ($Parsed{abschnitt} ne $Parsed{strasse} and $Parsed{abschnitt} ne '') {
+		$Parsed{adresse} .= "$Parsed{abschnitt}<br>";
+	}
 
-		$Parsed{adresse} .= "$Parsed{ort}";
+	$Parsed{adresse} .= "$Parsed{ort}";
 
+	if ($Parsed{gps_lat} ne '' and $Parsed{gps_long} ne '') {
+		$Parsed{query} = $Parsed{gps_lat} . " " . $Parsed{gps_long};
+	} else {
 		$Parsed{query} = $Parsed{strasse} . " " . $Parsed{hausnummer} . ", " . $Parsed{ort};
-		$Parsed{query} =~ s/\n//g;
-
-		$Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
-
-		$Parsed{map_tag} = '<div class="map" id="map"></div>';
-		$Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
 	}
+	$Parsed{query} =~ s/\n//g;
+
+	print "query: $Parsed{query}\n";
+
+	$Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
+
+	$Parsed{map_tag} = '<div class="map" id="map"></div>';
+	$Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
 
 	# query für Maps vorbereiten
 
@@ -567,6 +512,10 @@ sub render_template {
 	$template =~ s/%bemerkung%/$Parsed{bemerkung}/g;
 	$template =~ s/%alarmzeit%/$Parsed{alarmzeit}/g;
 	$template =~ s/%status%/$Parsed{status}/g;
+	$template =~ s/%home_lat%/$Config{home_lat}/g;
+	$template =~ s/%home_long%/$Config{home_long}/g;
+	$template =~ s/%zoom_map%/$Config{zoom_map}/g;
+	$template =~ s/%zoom_sat%/$Config{zoom_sat}/g;
 
         # Neue index.html ausgeben
         if (!open(FILE, '>', $html_path)) {
