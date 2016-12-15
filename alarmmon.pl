@@ -397,10 +397,10 @@ sub render_alarm_templates {
 			if ($#geraet >= $i) {
 				$geraet[$i] =~ s/^\s+|\s+$//g;
 				if (length($geraet[$i]) > 0) {
-					$smittel .= "<div class=\"geraet\">\n$geraet[$i]</div>";
+					$smittel .= "<div class=\"geraet\">\n$geraet[$i]\n</div>\n";
 				}
 			}
-			$smittel .= "</div>";
+			$smittel .= "</div>\n";
 			$maxm++;
 		}
 	}
