@@ -6,6 +6,12 @@ remote_path	/vol/fax
 extract_path	/tmp/extract
 #Name der FFW die hervorgehoben werden soll
 own_ffw_name	Straß
+#GPS-Koordinaten der eigenen Wache
+home_lat	48.41523
+home_long	10.14069
+#Zoomevel für Karten
+zoom_sat	19
+zoom_map	16
 #Empfangene Faxe drucken?
 print_fax	1
 #FMS Status empfangen/anzeigen
