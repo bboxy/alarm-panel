@@ -325,7 +325,7 @@ sub parse_txt {
 	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
 	$Parsed{bemerkung} =~ s/^\s+|\s+$//g;
 
-	if ($Parsed{x_coord} != '' && $Parsed{Y_coord} != '') {
+	if ($Parsed{x_coord} ne '' && $Parsed{y_coord} ne '') {
 		@coord = split(/\s+/, `cs2cs -f "%.13f" +init=epsg:31468 +to +init=epsg:4326 <<EOF\n$Parsed{x_coord} $Parsed{y_coord}\nEOF`);
 		($Parsed{gps_long}, $Parsed{gps_lat}, @_)=@coord;
 	} else {
