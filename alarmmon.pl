@@ -48,12 +48,13 @@ my $pop;
 if ($Config{enable_pop3}) {
 	$parser = new MIME::Parser;
 	$pop = new Mail::POP3Client(
+		TIMEOUT  => 30,
 		DEBUG    => 0,
+		USER     => $Config{pop3_user},
+		PASSWORD => $Config{pop3_password},
 		HOST     => $Config{pop3_server},
 		USESSL   => "true"
 	);
-	$pop->User($Config{pop3_user});
-	$pop->Pass($Config{pop3_password});
 }
 
 # Auf neues Fax warten:
@@ -69,44 +70,12 @@ while ($continue) {
 		}
 	}
 
-	if ($Config{enable_pop3}) {
-		print "Checking for new mail...\n";
-		if($pop->Connect() >= 0) {
-			$parser->output_dir($Config{pop3_path});
-			$parser->output_to_core();
+	check_pop3();
+	check_new_alarm();
+	sleep ($Config{check_interval});
+}
 
-			for (my $i = 1; $i <= $pop->Count(); $i++) {
-				# Anhänge jeder Mail in pop3_path speichern
-				print "Fetching message #$i\n";
-				my $msg = $pop->HeadAndBody($i);
-				my $entity = $parser->parse_data($msg);
-	
-				# Alle Anhänge durchgehen
-				if (opendir my($dh), "$Config{pop3_path}") {
-					# .tif unf .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
-					my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
-					for my $efile (@extract_files) {
-						if ($efile =~ m/\.(pdf|tif)$/i) {
-							copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
-						}
-					}
-	
-					# danach aufräumen
-					my @clean = glob ("$Config{pop3_path}/*");
-					if (@clean) {
-						 unlink @clean;
-					}
-				}
-	
-				# E-Mail auf Server löschen
-				$pop->Delete($i);
-			}
-			$pop->Close();
- 		} else {
-			print $pop->Message();
-		}
-	}
-
+sub check_new_alarm {
 	# TODO vorher prüfen mit nem notifyWatch ob sich was am Pfad ändert? Email nicht so oft abrufen?
 	if (opendir my($dh), "$Config{fax_path}") {
 		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
@@ -147,8 +116,54 @@ while ($continue) {
 	} else {
 		print "ERROR: Can't open $Config{fax_path}\n";
 	}
+}
 
-	sleep ($Config{check_interval});
+sub check_pop3 {
+	my $count;
+	if ($Config{enable_pop3}) {
+		print "Checking for new mail...\n";
+		if ($pop->Connect()) {
+			if ($pop->Alive()) {
+				$parser->output_dir($Config{pop3_path});
+				$parser->output_to_core();
+
+				my $count = $pop->Count();
+
+				print "$count messages to fetch\n";
+
+				for (my $i = 1; $i <= $count; $i++) {
+					# Anhänge jeder Mail in pop3_path speichern
+					print "Fetching message #$i\n";
+					my $msg = $pop->HeadAndBody($i);
+					my $entity = $parser->parse_data($msg);
+	
+					# Alle Anhänge durchgehen
+					if (opendir my($dh), "$Config{pop3_path}") {
+						# .tif und .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
+						my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
+						for my $efile (@extract_files) {
+							if ($efile =~ m/\.(pdf|tif)$/i) {
+								print "Extracted file $efile\n";
+								copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
+							}
+						}
+	
+						# danach aufräumen
+						my @clean = glob ("$Config{pop3_path}/*");
+						if (@clean) {
+							 unlink @clean;
+						}
+					}
+		
+					# E-Mail auf Server löschen
+					$pop->Delete($i);
+				}
+				$pop->Close();
+			}
+		} else {
+			print $pop->Message();
+		}
+	}
 }
 
 sub process_fax {
