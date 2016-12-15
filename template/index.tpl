@@ -7,7 +7,7 @@
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
 %map_script%
 </head>
-<body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query%&quot;);">
+<body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query%&quot;,%zoom_map%,%home_lat%,%home_long%);">
 <table>
 	<tr>
 		<td class="header">
