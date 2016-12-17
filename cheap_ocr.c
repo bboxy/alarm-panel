@@ -6,8 +6,8 @@
 #include <string.h>
 
 // Achieve UTF-8 output
-const static wchar_t char_tab[] = L"abcdefghijklmnopqrstuvwxyzäöüß.:-/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ (){},[]+&";
-const static int font_size = 83;
+const static wchar_t char_tab[] = L"abcdefghijklmnopqrstuvwxyzäöüß.:-/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ (){},[]+&>;*=\"!";
+const static int font_size = 89;
 
 // Char dimensions
 #define CHAR_WIDTH	21

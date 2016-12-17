@@ -1,14 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<META http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache">
 <title>Alarm</title>
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
 %map_script%
 </head>
-<body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query%&quot;); initMapSat(&quot;%query%&quot;);">
+<body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query%&quot;,%zoom_map%,%home_lat%,%home_long%); initMapSat(&quot;%query%&quot;,%zoom_sat%,%home_lat%,%home_long%);">
 <table>
 	<tr>
 		<td class="header">
@@ -27,9 +26,7 @@
 							<tr>
 								<td>
 									<div class="addr">
-										%strasse% %nummer%<br>
-										%ort%<br>
-										%abschnitt%
+										%adresse%
 									</div>
 								</td>
 								<td>

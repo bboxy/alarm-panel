@@ -9,8 +9,10 @@ use Config::Simple;
 use Proc::Daemon;
 use File::Path qw(make_path);
 use File::Basename;
+use Mail::POP3Client;
+use MIME::Parser;
 
-my $cfg = new Config::Simple('/etc/alarmmon.cfg') or die ("ERROR: can't find alarmmon.cfg.\n");
+my $cfg = new Config::Simple('/etc/alarmmon.cfg') or die ("ERROR: Can't open /etc/alarmmon.cfg\n");
 my %Config = $cfg->vars();
 
 my @fax_files;
@@ -28,7 +30,8 @@ my $fax_file = $Config{extract_path} . "/fax.tif";
 
 my $continue = 1;
 
-mkdir ($Config{extract_path});
+make_path($Config{pop3_path});
+make_path($Config{extract_path});
 make_path($Config{fax_path},{mode=>0777});
 
 $SIG{TERM} = sub { $continue = 0 };
@@ -39,10 +42,24 @@ if ($Config{enable_fms}) {
 	system("arecord -f S16_LE -t raw -c 1 -r 20000 | ./fms_decoder | ./fms.pl &");
 }
 
+my $parser;
+my $pop;
+
+if ($Config{enable_pop3}) {
+	$parser = new MIME::Parser;
+	$pop = new Mail::POP3Client(
+		TIMEOUT  => 30,
+		DEBUG    => 0,
+		USER     => $Config{pop3_user},
+		PASSWORD => $Config{pop3_password},
+		HOST     => $Config{pop3_server},
+		USESSL   => "true"
+	);
+}
+
 # Auf neues Fax warten:
 while ($continue) {
 	# Können wir einen Idle-Screen zeigen?
-        purge();
         if (!$idle) {
 		# Ja, aber nur wenn timestamp noch nicht gesetzt ist (startup) oder der Alarm min 30 Minuten zurückliegt.
    		if (!$timestamp || $timestamp + 60 * 60 < time()) {
@@ -52,6 +69,14 @@ while ($continue) {
 			$idle = 1;
 		}
 	}
+
+	check_pop3();
+	check_new_alarm();
+	sleep ($Config{check_interval});
+}
+
+sub check_new_alarm {
+	# TODO vorher prüfen mit nem notifyWatch ob sich was am Pfad ändert? Email nicht so oft abrufen?
 	if (opendir my($dh), "$Config{fax_path}") {
 		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
 		closedir $dh;
@@ -60,40 +85,25 @@ while ($continue) {
 			closedir $dh;
 			chomp(@fax_files);
 			chomp(@remote_files);
+
+			# nach neuen Dateien suchen
 			for my $rfile (@remote_files) {
 				chomp($rfile);
-				#print "checking " . $rfile . "\n";
 				if ( my @list = grep /^$rfile$/, @fax_files) {
+					# File existiert bereits in fax_path
 			        } else {
-					print "copying new file $rfile\n";
-					copy $Config{remote_path} . "/$rfile", $Config{fax_path} . "/$rfile";
-					$idle = process_fax("$Config{fax_path}/$rfile");
-					print "updating timestamp...\n";
-					update_timestamp();
+					$idle = process_fax($rfile);
+					if (!$idle) {
+						print "updating timestamp...\n";
+						update_timestamp();
+					}
 					print "all done.\n";
 				}
 			}
-		} else {
-			print "ERROR: $Config{remote_path} not found\n";
-		}
-	} else {
-		print "ERROR: $Config{fax_path} not found\n";
-	}
-	sleep (5);
-}
 
-sub purge {
-	if (opendir my($dh), "$Config{fax_path}") {
-		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
-		closedir $dh;
-		if (opendir my($dh), "$Config{remote_path}") {
-			@remote_files = grep { !/^\.\.?$/ } readdir $dh;
-			closedir $dh;
-			chomp(@fax_files);
-			chomp(@remote_files);
+			# nicht mehr vorhandene Dateien löschen
 			for my $ffile (@fax_files) {
 				chomp($ffile);
-				#print "checking " . $rfile . "\n";
 				if ( my @list = grep /^$ffile$/, @remote_files) {
 			        } else {
 					print "purging $Config{fax_path}/$ffile\n";
@@ -101,20 +111,74 @@ sub purge {
 				}
 			}
 		} else {
-			print "ERROR: $Config{remote_path} not found\n";
+			print "ERROR: Can't open $Config{remote_path}\n";
 		}
 	} else {
-		print "ERROR: $Config{fax_path} not found\n";
+		print "ERROR: Can't open $Config{fax_path}\n";
+	}
+}
+
+sub check_pop3 {
+	my $count;
+	if ($Config{enable_pop3}) {
+		print "Checking for new mail...\n";
+		if ($pop->Connect()) {
+			if ($pop->Alive()) {
+				$parser->output_dir($Config{pop3_path});
+				$parser->output_to_core();
+
+				my $count = $pop->Count();
+
+				print "$count messages to fetch\n";
+
+				for (my $i = 1; $i <= $count; $i++) {
+					# Anhänge jeder Mail in pop3_path speichern
+					print "Fetching message #$i\n";
+					my $msg = $pop->HeadAndBody($i);
+					my $entity = $parser->parse_data($msg);
+	
+					# Alle Anhänge durchgehen
+					if (opendir my($dh), "$Config{pop3_path}") {
+						# .tif und .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
+						my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
+						for my $efile (@extract_files) {
+							if ($efile =~ m/\.(pdf|tif)$/i) {
+								print "Extracted file $efile\n";
+								copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
+							}
+						}
+	
+						# danach aufräumen
+						my @clean = glob ("$Config{pop3_path}/*");
+						if (@clean) {
+							 unlink @clean;
+						}
+					}
+		
+					# E-Mail auf Server löschen
+					$pop->Delete($i);
+				}
+				$pop->Close();
+			}
+		} else {
+			print $pop->Message();
+		}
 	}
 }
 
 sub process_fax {
 	# Parameterübergabe
-	my $path = shift(@_);
+	my $rfile = shift(@_);
+
+	my $dest = "$Config{fax_path}/$rfile";
+	my $source = "$Config{remote_path}/$rfile";
 
 	my %Parsed;
 	my $ocr_txt;
 	my @clean;
+
+	print "copying new file $rfile\n";
+	copy $source, $dest;
 
 	# Aufräumen
 	print "cleaning up...\n";
@@ -124,10 +188,10 @@ sub process_fax {
 	}
 
 	# pdf-Datei - Bilder extrahieren, drucken, dann Texterkennung
-	if ($path =~ /\.pdf$/i) {
+	if ($dest =~ /\.pdf$/i) {
 		# Bilder aus .pdf angeln
 		print "extracting images from .pdf ...\n";
-		`pdfimages -p $path $Config{extract_path}/`;
+		`pdfimages -p $dest $Config{extract_path}/`;
 
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
@@ -141,8 +205,8 @@ sub process_fax {
 	}
 
 	# tif-Datei - nur drucken und dann Texterkennung
-	if ($path =~ /\.tif$/i) {
-		copy $path, $fax_file;
+	if ($dest =~ /\.tif$/i) {
+		copy $dest, $fax_file;
 
 		# TODO split up file to pages
 		# Ausdrucken
@@ -153,8 +217,8 @@ sub process_fax {
 	}
 
 	# .txt datei direkt parsen
-	if ($path =~ /\.txt$/i) {
-		copy $path, $ocr_out;
+	if ($dest =~ /\.txt$/i) {
+		copy $dest, $ocr_out;
 	} else {
 		# OCR auf neuem Fax
 		print "doing ocr...\n";
@@ -188,7 +252,7 @@ sub process_fax {
 	print "parsing and rendering...\n";
 
 	# ocr.txt parsen
-	%Parsed = parse_txt($path, $ocr_txt);
+	%Parsed = parse_txt($dest, $ocr_txt);
 
 	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
@@ -202,40 +266,72 @@ sub parse_txt {
 	my %Parsed;
 	my $mittel;
 	my $geraet;
+	my @coord;
+
+	#cat /tmp/extract/out.txt | sed -n '/^Str.Abschn\s*.\s*/,/^Ort\s*.\s*/p' | grep -v '^Ort\s*.\s*'
 
 	$Parsed{alarmzeit} = ctime( stat($path)->ctime);
 	$Parsed{alarmzeit} =~ s/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/$1/;
 
 	# Alle möglichen Infos aus dem generierten Text herausparsen
 	# $mittel = `grep -v 'Rufnummer' $ocr_file | grep 'Name.*' | sed -e 's/Name.*\\(\\[:alphanum:\\]*\\)/\\1/' | sed -e '7\\.3\\..\\s\\(.*\\)/\\1/' | sed -e 's/Name\\s*.s*\\(.*\\)/\\1/'`;
-	$mittel = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Name' | sed -e 's/Name\\s*.\\s*7\\.3\\..\\s*//' | sed -e 's/Name\\s*.\\s*//'`;
+	$mittel = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep '^Name' | sed -e 's/^Name\\s*.\\s7\\.3\\..\\s*//' | sed -e 's/^Name\\s*.\\s//'`;
 	$Parsed{mittel} = [split /^/, $mittel];
 
 	$geraet = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
 	$Parsed{geraet} = [split /^/, $geraet];
 
-	$Parsed{strasse} = `grep '^Stra.e.*' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Haus.Nr.*//; s/^Stra.e\\s*.\\s*//;'`;
+	$Parsed{strasse} = `grep '^Stra.s\\?e.*' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Haus.Nr.*//; s/^Stra.s\\?e\\s*.\\s*//;'`;
+	$Parsed{strasse} =~ s/\n//g;
 	$Parsed{strasse} =~ s/^\s+|\s+$//g;
 
 	$Parsed{hausnummer} = `sed -e '/^.*Haus.Nr.\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{hausnummer} =~ s/\n//g;
 	$Parsed{hausnummer} =~ s/^\s+|\s+$//g;
 
-	$Parsed{abschnitt} = `sed -e '/^Str.A.schn\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	#kann über mehrere Zeilen gehen
+	$Parsed{abschnitt} = `cat $ocr_file | sed -n '/^Str.Abschn\\s*.\\s*/,/^Ort\\s*.\\s*/p' | sed -e 's/^Str.Abschn\\s*.\\s*//' -e 's/^Ort\\s*.\\s*.*//'`;
+	$Parsed{abschnitt} =~ s/\n//g;
 	$Parsed{abschnitt} =~ s/^\s+|\s+$//g;
 
 	$Parsed{ort} = `sed -e '/^Ort\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{ort} =~ s/\\n//;
 	$Parsed{ort} =~ s/^\s+|\s+$//g;
 	# Alles nach ' - ' abschneiden
 	$Parsed{ort} =~ s/\s-\s.*$//;
 
-	$Parsed{objekt} = `sed -e '/^Objekt\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	#kann über mehrere Zeilen gehen
+	$Parsed{objekt} = `cat $ocr_file | sed -n '/^Objekt\\s*.\\s*/,/^Station\\s*.\\s*/p' | sed -e 's/^Objekt\\s*.\\s*//' -e 's/^Station\\s*.\\s*.*//'`;
+	$Parsed{objekt} =~ s/\n//g;
 	$Parsed{objekt} =~ s/^\s+|\s+$//g;
+
 	$Parsed{station} = `sed -e '/^Station\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{station} =~ s/\n//g;
 	$Parsed{station} =~ s/^\s+|\s+$//g;
+
 	$Parsed{schlagwort} = `sed -e '/^Schlag..\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{schlagwort} =~ s/\n//g;
 	$Parsed{schlagwort} =~ s/^\s+|\s+$//g;
-	$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
+
+	$Parsed{x_coord} = `grep '^X-Koordinate.*' $ocr_file | sed -e 's/*(.)//; s/\\s*Y-Koordinate.*//; s/^X-Koordinate\\s*.\\s*//;'`;
+	$Parsed{x_coord} =~ s/\n//g;
+	$Parsed{x_coord} =~ s/^\s+|\s+$//g;
+
+	$Parsed{y_coord} = `sed -e '/^.*Y-Koordinate\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{y_coord} =~ s/\n//g;
+	$Parsed{y_coord} =~ s/^\s+|\s+$//g;
+
+	#$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
+	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
 	$Parsed{bemerkung} =~ s/^\s+|\s+$//g;
+
+	if ($Parsed{x_coord} ne '' && $Parsed{y_coord} ne '') {
+		@coord = split(/\s+/, `cs2cs -f "%.13f" +init=epsg:31468 +to +init=epsg:4326 <<EOF\n$Parsed{x_coord} $Parsed{y_coord}\nEOF`);
+		($Parsed{gps_long}, $Parsed{gps_lat}, @_)=@coord;
+	} else {
+		$Parsed{gps_long} = '';
+		$Parsed{gps_lat} = '';
+	}
 
 	print "Strasse: '" . $Parsed{strasse} . "'\n";
 	print "Hausnummer: '" . $Parsed{hausnummer} . "'\n";
@@ -245,6 +341,11 @@ sub parse_txt {
 	print "Station: '" . $Parsed{station} . "'\n";
 	print "Schlagwort: '" . $Parsed{schlagwort} . "'\n";
 	print "Bemerkung: '" . $Parsed{bemerkung} . "'\n";
+	print "x-coord: '" . $Parsed{x_coord} . "'\n";
+	print "y-coord: '" . $Parsed{y_coord} . "'\n";
+	print "lat: '" . $Parsed{gps_lat} . "'\n";
+	print "long: '" . $Parsed{gps_long} . "'\n";
+
 
 	return %Parsed;
 }
@@ -279,7 +380,10 @@ sub render_alarm_templates {
 	my @templates;
 	my $html_file;
 
+	my $url = "";
+
 	# Für das Einsetzen ins HTML-Template vorbereiten
+	$Parsed{bemerkung} =~ s/$/<br>/mg;
 
 	if ($Parsed{schlagwort} =~ m/Gefahr/) {
 		$Parsed{schlagwort}="<div class=\"gefahr\">$Parsed{schlagwort}</div>";
@@ -289,12 +393,14 @@ sub render_alarm_templates {
 
 	for my $i (0 .. $#mittel) {
 		if ($mittel[$i] =~ m/$Config{own_ffw_name}/) {
-			$geraet[$i] =~ s/^\s+|\s+$//g;
 			$smittel .= "<div class=\"eigene_mittel\">\n$mittel[$i]";
-			if (length($geraet[$i]) > 0) {
-				$smittel .= "<div class=\"geraet\">\n$geraet[$i]</div>";
+			if ($#geraet >= $i) {
+				$geraet[$i] =~ s/^\s+|\s+$//g;
+				if (length($geraet[$i]) > 0) {
+					$smittel .= "<div class=\"geraet\">\n$geraet[$i]\n</div>\n";
+				}
 			}
-			$smittel .= "</div>";
+			$smittel .= "</div>\n";
 			$maxm++;
 		}
 	}
@@ -325,9 +431,38 @@ sub render_alarm_templates {
 	$Parsed{strasse} =~ s/</&lt;/g;
 	$Parsed{abschnitt} =~ s/</&lt;/g;
 
+	# TODO in ein config-array auslagern?
+
+	$Parsed{adresse} = "";
 	if (!$Parsed{ort} || $Parsed{ort} =~ m/Default/) {
 		$Parsed{ort} = $Config{default_ort}
 	}
+
+	if ($Parsed{objekt} ne '') {
+		$Parsed{adresse} .= "$Parsed{objekt}<br>";
+	}
+
+	$Parsed{adresse} .= "$Parsed{strasse} $Parsed{hausnummer}<br>";
+
+	if ($Parsed{abschnitt} ne $Parsed{strasse} and $Parsed{abschnitt} ne '') {
+		$Parsed{adresse} .= "$Parsed{abschnitt}<br>";
+	}
+
+	$Parsed{adresse} .= "$Parsed{ort}";
+
+	if ($Parsed{gps_lat} ne '' and $Parsed{gps_long} ne '') {
+		$Parsed{query} = $Parsed{gps_lat} . " " . $Parsed{gps_long};
+	} else {
+		$Parsed{query} = $Parsed{strasse} . " " . $Parsed{hausnummer} . ", " . $Parsed{ort};
+	}
+	$Parsed{query} =~ s/\n//g;
+
+	print "query: $Parsed{query}\n";
+
+	$Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
+
+	$Parsed{map_tag} = '<div class="map" id="map"></div>';
+	$Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
 
 	# query für Maps vorbereiten
 
@@ -341,25 +476,6 @@ sub render_alarm_templates {
 	# #$Parsed{ort} =~ s/1/l/g;		# 1 wird zu l
 	# #$Parsed{ort} =~ s/0/O/g;		# 0 wird zu O
 	# $Parsed{ort} =~ s/([[:alpha:]])B/$1ß/g;	# B nach Kleinmbuchstabe wird zu ß
-
-#	if ($Parsed{strasse} =~ m/A7/) {
-#		$Parsed{query} = "";
-#
-#		$Parsed{map_script} = "";
-#		$Parsed{map_tag} = '<iframe class="map" src="http://autobahnatlas-online.de/A7.htm#Ulm" scrolling="no"></iframe>';
-#		$Parsed{map_tag_sat} = '';
-#	} else {
-		# $Parsed{strasse} =~ s/1/l/g;
-		# $Parsed{strasse} =~ s/0/O/g;
-		# $Parsed{strasse} =~ s/([[:alpha:]])B/$1ß/g;
-
-		$Parsed{query} = $Parsed{strasse} . " " . $Parsed{hausnummer} . ", " . $Parsed{ort};
-		$Parsed{query} =~ s/\n//g;
-
-		$Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
-		$Parsed{map_tag} = '<div class="map" id="map"></div>';
-		$Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
-#	}
 
 	if (opendir my($dh), "template") {
 		@templates = grep { !/^\.\.?$/ } readdir $dh;
@@ -406,10 +522,15 @@ sub render_template {
 	$template =~ s/%ort%/$Parsed{ort}/g;
 	$template =~ s/%objekt%/$Parsed{objekt}/g;
 	$template =~ s/%station%/$Parsed{station}/g;
+	$template =~ s/%adresse%/$Parsed{adresse}/g;
 	$template =~ s/%schlagwort%/$Parsed{schlagwort}/g;
 	$template =~ s/%bemerkung%/$Parsed{bemerkung}/g;
 	$template =~ s/%alarmzeit%/$Parsed{alarmzeit}/g;
 	$template =~ s/%status%/$Parsed{status}/g;
+	$template =~ s/%home_lat%/$Config{home_lat}/g;
+	$template =~ s/%home_long%/$Config{home_long}/g;
+	$template =~ s/%zoom_map%/$Config{zoom_map}/g;
+	$template =~ s/%zoom_sat%/$Config{zoom_sat}/g;
 
         # Neue index.html ausgeben
         if (!open(FILE, '>', $html_path)) {

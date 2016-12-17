@@ -4,15 +4,14 @@
     var geocoder;
     var geocoder_sat;
 
-    function initMap(addr) {
-	var zoomlevel = 16;
+    function initMap(addr, zoomlevel, lat, lng) {
         geocoder      = new google.maps.Geocoder();
-        var latlng    = new google.maps.LatLng(48.41523, 10.14069);
+        var latlng    = new google.maps.LatLng(lat,lng);
         var mapDiv    = document.getElementById('map');
         var width     = mapDiv.offsetWidth;
         map = new google.maps.Map(mapDiv, {
             center: latlng,
-            zoom: zoomlevel,
+            //zoom: zoomlevel,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         // ACHTUNG: Adresse muss UTF-8-codiert von PHP übergeben werden!!!! Sonst Umlaute kaputt.
@@ -30,10 +29,9 @@
         map.setZoom(zoomlevel);
     }
 
-    function initMapSat(addr) {
-	var zoomlevel = 16;
+    function initMapSat(addr, zoomlevel, lat,lng) {
         geocoder_sat  = new google.maps.Geocoder();
-        var latlngSat = new google.maps.LatLng(48.41523, 10.14069);
+        var latlngSat = new google.maps.LatLng(lat,lng);
         var mapDivSat = document.getElementById('map_sat');
         map_sat = new google.maps.Map(mapDivSat, {
             center: latlngSat,

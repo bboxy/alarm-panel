@@ -6,6 +6,12 @@ remote_path	/vol/fax
 extract_path	/tmp/extract
 #Name der FFW die hervorgehoben werden soll
 own_ffw_name	Straß
+#GPS-Koordinaten der eigenen Wache
+home_lat	48.41523
+home_long	10.14069
+#Zoomevel für Karten
+zoom_sat	19
+zoom_map	16
 #Empfangene Faxe drucken?
 print_fax	1
 #FMS Status empfangen/anzeigen
@@ -16,3 +22,18 @@ max_mittel	10
 default_ort	Straß
 #Schnelle und bessere Texterkennung aber nur bei vorgegebenem Font
 fast_ocr	1
+#Zeit in Sekunden bis zum nächsten Check auf neue Daten
+check_interval	5
+
+#Auch im pop3 Postfach nach neuen Faxen suchen?
+enable_pop3	1
+#Username für pop3
+pop3_user	user
+#Passwort für pop3
+pop3_password	secret
+#Server für pop3
+pop3_server	pop.mail.server
+#Verbindung SSL verschlüsselt?
+pop3_use_ssl	true
+#Ablageort für extrahierte Dokumente aus E-Mails
+pop3_path	/tmp/pop3
