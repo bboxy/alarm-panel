@@ -9,6 +9,7 @@ use Config::Simple;
 use Proc::Daemon;
 use File::Path qw(make_path);
 use File::Basename;
+use File::DirCompare;
 use Mail::POP3Client;
 use MIME::Parser;
 
@@ -76,7 +77,29 @@ while ($continue) {
 }
 
 sub check_new_alarm {
-	# TODO vorher prüfen mit nem notifyWatch ob sich was am Pfad ändert? Email nicht so oft abrufen?
+	if (opendir my($dh), "$Config{fax_path}") {
+		closedir $dh;
+		if (opendir my($dh), "$Config{remote_path}") {
+			closedir $dh;
+			File::DirCompare->compare($Config{remote_path},$Config{fax_path}, sub {
+				my ($remote, $fax) = @_;
+				if (! $remote) {
+					print "purging $fax\n";
+					unlink "$fax";
+				} else {
+					$idle = process_fax(basename($remote));
+					if (!$idle) {
+						print "updating timestamp...\n";
+						update_timestamp();
+					}
+					print "all done.\n";
+				}
+			});
+		}
+	}
+}
+
+sub check_new_alarm_old {
 	if (opendir my($dh), "$Config{fax_path}") {
 		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
 		closedir $dh;
@@ -136,7 +159,7 @@ sub check_pop3 {
 					print "Fetching message #$i\n";
 					my $msg = $pop->HeadAndBody($i);
 					my $entity = $parser->parse_data($msg);
-	
+
 					# Alle Anhänge durchgehen
 					if (opendir my($dh), "$Config{pop3_path}") {
 						# .tif und .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
@@ -147,14 +170,14 @@ sub check_pop3 {
 								copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
 							}
 						}
-	
+
 						# danach aufräumen
 						my @clean = glob ("$Config{pop3_path}/*");
 						if (@clean) {
 							 unlink @clean;
 						}
 					}
-		
+
 					# E-Mail auf Server löschen
 					$pop->Delete($i);
 				}
