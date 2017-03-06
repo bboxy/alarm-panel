@@ -165,7 +165,7 @@ sub check_pop3 {
 						# .txt, .tif und .pdf Datein herauspicken und in den remote_path kopieren, zur weiteren Verarbeitung
 						my @extract_files = grep { !/^\.\.?$/ } readdir $dh;
 						for my $efile (@extract_files) {
-							if ($efile =~ m/\.(pdf|tif|txt)$/i) {
+							if ($efile =~ m/\.(pdf|tif)$/i) {
 								print "Extracted file $efile\n";
 								copy "$Config{pop3_path}/$efile", "$Config{remote_path}/";
 							}
