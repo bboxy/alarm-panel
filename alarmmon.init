@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Quick start-stop-daemon example, derived from Debian /etc/init.d/ssh
 set -e
 
 # Must be a valid filename
@@ -11,11 +10,11 @@ DAEMON_OPTS=""
 OPTIONS=""
 DIR="$(dirname "$DAEMON")"
 
-LANG="de_DE.UTF-8"
-LANGUAGE="de_DE.UTF-8"
-LC_ALL="de_DE.UTF-8"
-LC_CTYPE="de_DE.UTF-8"
-LC_NUMERIC="de_DE.UTF-8"
+export LANG=de_DE.UTF-8
+export LANGUAGE=de_DE
+#LC_ALL="de_DE.UTF-8"
+#LC_CTYPE="de_DE.UTF-8"
+#LC_NUMERIC="de_DE.UTF-8"
 
 export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 
