@@ -210,12 +210,20 @@ sub process_fax {
 		 unlink @clean;
 	}
 
+	# TODO try a generic print approach?
+	# sff-Datei - in .tif umwandeln
+	if ($dest =~/\.sff$/i) {
+		`sfftobmp -tifs $dest -o $Config{extract_path}/`;
+	}
+
 	# pdf-Datei - Bilder extrahieren, drucken, dann Texterkennung
 	if ($dest =~ /\.pdf$/i) {
 		# Bilder aus .pdf angeln
 		print "extracting images from .pdf ...\n";
 		`pdfimages -p $dest $Config{extract_path}/`;
+	}
 
+	if ($dest =~ /\.(pdf|sff)$/i) {
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
 			print "printing...\n";
@@ -336,6 +344,14 @@ sub parse_txt {
 	$Parsed{schlagwort} =~ s/\n//g;
 	$Parsed{schlagwort} =~ s/^\s+|\s+$//g;
 
+	$Parsed{nummer} = `sed -e '/^Einsatznummer\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{nummer} =~ s/\n//g;
+	$Parsed{nummer} =~ s/^\s+|\s+$//g;
+
+	$Parsed{epn} = `sed -e '/^.*\\s*EPN\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{epn} =~ s/\n//g;
+	$Parsed{epn} =~ s/^\s+|\s+$//g;
+
 	$Parsed{x_coord} = `grep '^X-Koordinate.*' $ocr_file | sed -e 's/*(.)//; s/\\s*Y-Koordinate.*//; s/^X-Koordinate\\s*.\\s*//;'`;
 	$Parsed{x_coord} =~ s/\n//g;
 	$Parsed{x_coord} =~ s/^\s+|\s+$//g;
@@ -368,7 +384,9 @@ sub parse_txt {
 	print "y-coord: '" . $Parsed{y_coord} . "'\n";
 	print "lat: '" . $Parsed{gps_lat} . "'\n";
 	print "long: '" . $Parsed{gps_long} . "'\n";
-
+	print "EPN: '" . $Parsed{epn} . "'\n";
+	print "Einsatznummer: '" . $Parsed{nummer} . "'\n";
+	print "Mittel:\n$mittel";
 
 	return %Parsed;
 }

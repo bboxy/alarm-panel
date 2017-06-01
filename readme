@@ -6,7 +6,7 @@ sudo git clone https://github.com/bboxy/alarm-panel.git
 
 cd alarm-panel
 
-sudo apt-get install apache2 libxml-simple-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libfile-dircompare-perl libmime-perl make gcc libtiff-dev arecord proj-bin
+sudo apt-get install apache2 libxml-simple-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libfile-dircompare-perl libmime-perl make gcc libtiff-dev arecord proj-bin sfftobmp
 
 Ggf. tesseract installieren und einrichten:
 sudo apt-get install tesseract-ocr tesseract-ocr-deu
