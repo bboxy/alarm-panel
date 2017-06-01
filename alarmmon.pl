@@ -210,9 +210,9 @@ sub process_fax {
 		 unlink @clean;
 	}
 
-	# TODO try a generic print approach?
 	# sff-Datei - in .tif umwandeln
 	if ($dest =~/\.sff$/i) {
+		print "extracting images from .sff ...\n";
 		`sfftobmp -tifs $dest -o $Config{extract_path}/`;
 	}
 
@@ -223,7 +223,16 @@ sub process_fax {
 		`pdfimages -p $dest $Config{extract_path}/`;
 	}
 
-	if ($dest =~ /\.(pdf|sff)$/i) {
+	if ($dest =~ /\.tif$/i) {
+		print "extracting images from .tif ...\n";
+		`convert -crop 1724x2438 $dest $Config{extract_path}/split_%d.tif`;
+	}
+
+
+	# .txt datei direkt parsen
+	if ($dest =~ /\.txt$/i) {
+		copy $dest, $ocr_out;
+	} else {
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
 			print "printing...\n";
@@ -233,24 +242,7 @@ sub process_fax {
 		# Zusammenkleben
 		print "concatenating ...\n";
 		`convert -extent 1724x2438 $Config{extract_path}/*.* -append $fax_file`;
-	}
 
-	# tif-Datei - nur drucken und dann Texterkennung
-	if ($dest =~ /\.tif$/i) {
-		copy $dest, $fax_file;
-
-		# TODO split up file to pages
-		# Ausdrucken
-		if ($Config{print_fax} == 1) {
-			print "printing...\n";
-			`lp -o orientation-requested=3 -o position=top $fax_file`;
-		}
-	}
-
-	# .txt datei direkt parsen
-	if ($dest =~ /\.txt$/i) {
-		copy $dest, $ocr_out;
-	} else {
 		# OCR auf neuem Fax
 		print "doing ocr...\n";
 		if ($Config{fast_ocr} == 1) {
@@ -287,6 +279,8 @@ sub process_fax {
 
 	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
+
+	# TODO add to database here -> glue together all %Parsed to a insert || update if exists
 
 	# not idle
 	return 0;
