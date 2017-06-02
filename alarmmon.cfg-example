@@ -37,3 +37,14 @@ pop3_server	pop.mail.server
 pop3_use_ssl	true
 #Ablageort für extrahierte Dokumente aus E-Mails
 pop3_path	/tmp/pop3
+
+enable_sql	1
+
+sql_login	user
+
+sql_password	secret
+
+sql_dsn
+
+sql_uri		127.0.0.1
+

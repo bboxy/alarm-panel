@@ -96,6 +96,10 @@ sub check_new_alarm {
 				}
 			});
 		}
+	} else {
+		# Im Fehlerfall versuchen zu mounten
+		# `mount -a`;
+		# autofs probieren
 	}
 }
 
@@ -356,6 +360,7 @@ sub parse_txt {
 
 	#$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
 	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
+	$Parsed{bemerkung} =~ s/\n//g;
 	$Parsed{bemerkung} =~ s/^\s+|\s+$//g;
 
 	if ($Parsed{x_coord} ne '' && $Parsed{y_coord} ne '') {
