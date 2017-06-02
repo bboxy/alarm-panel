@@ -217,7 +217,9 @@ sub process_fax {
 	# sff-Datei - in .tif umwandeln
 	if ($dest =~/\.sff$/i) {
 		print "extracting images from .sff ...\n";
-		`sfftobmp -tifs $dest -o $Config{extract_path}/`;
+		`sfftobmp -tif $dest -o $Config{extract_path}/fax.tif`;
+		`convert -crop 1724x2438 $Config{extract_path}/fax.tif $Config{extract_path}/fax_%d.tif`;
+		unlink "$Config{extract_path}/fax.tif";
 	}
 
 	# pdf-Datei - Bilder extrahieren, drucken, dann Texterkennung
@@ -229,7 +231,7 @@ sub process_fax {
 
 	if ($dest =~ /\.tif$/i) {
 		print "extracting images from .tif ...\n";
-		`convert -crop 1724x2438 $dest $Config{extract_path}/split_%d.tif`;
+		`convert -crop 1724x2438 $dest $Config{extract_path}/fax_%d.tif`;
 	}
 
 
@@ -310,11 +312,21 @@ sub parse_txt {
 	$geraet = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
 	$Parsed{geraet} = [split /^/, $geraet];
 
+	$Parsed{name} = `grep '^Name.*Rufnummer' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Rufnummer.*//; s/^Name\\s*.\\s*//;'`;
+	$Parsed{name} =~ s/\n//g;
+	$Parsed{name} =~ s/^\s+|\s+$//g;
+
+	$Parsed{rufnummer} = `grep '^Name.*Rufnummer' $ocr_file | sed -e '/^.*Rufnummer\\s*.\\s*/!d; s///;q'`;
+	$Parsed{rufnummer} =~ s/\n//g;
+	$Parsed{rufnummer} =~ s/^\s+|\s+$//g;
+
 	$Parsed{strasse} = `grep '^Stra.s\\?e.*' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Haus.Nr.*//; s/^Stra.s\\?e\\s*.\\s*//;'`;
 	$Parsed{strasse} =~ s/\n//g;
 	$Parsed{strasse} =~ s/^\s+|\s+$//g;
 
-	$Parsed{hausnummer} = `sed -e '/^.*Haus.Nr.\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	# Falls Zeilenumbruch, nächste Zeile noch mitnehmen
+	$Parsed{hausnummer} = `sed -n '/^.*Haus.Nr.\\s*.\\s*/,/^Str.Abschn/{s/^.*Haus.Nr.\\s*.\\s*//;/^Str.Abschn/d;p;}' < $ocr_file`;
+	# $Parsed{hausnummer} = `sed -e '/^.*Haus.Nr.\\s*.\\s*/!d; s///;q' < $ocr_file`;
 	$Parsed{hausnummer} =~ s/\n//g;
 	$Parsed{hausnummer} =~ s/^\s+|\s+$//g;
 
@@ -371,6 +383,8 @@ sub parse_txt {
 		$Parsed{gps_lat} = '';
 	}
 
+	print "Name: '" . $Parsed{name} . "'\n";
+	print "Rufnummer: '" . $Parsed{rufnummer} . "'\n";
 	print "Strasse: '" . $Parsed{strasse} . "'\n";
 	print "Hausnummer: '" . $Parsed{hausnummer} . "'\n";
 	print "Abschnitt: '" . $Parsed{abschnitt} . "'\n";
