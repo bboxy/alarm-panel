@@ -341,6 +341,13 @@ sub parse_txt {
 	# Alles nach ' - ' abschneiden
 	$Parsed{ort} =~ s/\s-\s.*$//;
 
+	# in PLZ + Stadt zerlegen
+	$Parsed{stadt} = $Parsed{ort};
+	$Parsed{plz} = $Parsed{ort};
+
+	$Parsed{stadt} =~ s/.*\s+//;
+	$Parsed{plz} =~ s/\s+.*//;
+
 	#kann über mehrere Zeilen gehen
 	$Parsed{objekt} = `cat $ocr_file | sed -n '/^Objekt\\s*.\\s*/,/^Station\\s*.\\s*/p' | sed -e 's/^Objekt\\s*.\\s*//' -e 's/^Station\\s*.\\s*.*//'`;
 	$Parsed{objekt} =~ s/\n//g;
@@ -389,6 +396,8 @@ sub parse_txt {
 	print "Hausnummer: '" . $Parsed{hausnummer} . "'\n";
 	print "Abschnitt: '" . $Parsed{abschnitt} . "'\n";
 	print "Ort: '" . $Parsed{ort} . "'\n";
+	print "PLZ: '" . $Parsed{plz} . "'\n";
+	print "Stadt: '" . $Parsed{stadt} . "'\n";
 	print "Objekt: '" . $Parsed{objekt} . "'\n";
 	print "Station: '" . $Parsed{station} . "'\n";
 	print "Schlagwort: '" . $Parsed{schlagwort} . "'\n";
@@ -400,6 +409,7 @@ sub parse_txt {
 	print "EPN: '" . $Parsed{epn} . "'\n";
 	print "Einsatznummer: '" . $Parsed{nummer} . "'\n";
 	print "Mittel:\n$mittel";
+	print "Geforderte Geräte:\n$geraet";
 
 	return %Parsed;
 }
