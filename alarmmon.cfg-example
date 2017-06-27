@@ -38,7 +38,7 @@ pop3_use_ssl	true
 #Ablageort für extrahierte Dokumente aus E-Mails
 pop3_path	/tmp/pop3
 
-enable_sql	1
+enable_sql	0
 
 sql_login	user
 

@@ -283,10 +283,11 @@ sub process_fax {
 	# ocr.txt parsen
 	%Parsed = parse_txt($dest, $ocr_txt);
 
+	#if ($Config{enable_sql} == 1) {
+	#	add_to_database(\%Parsed);
+	#}
 	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
-
-	# TODO add to database here -> glue together all %Parsed to a insert || update if exists
 
 	# not idle
 	return 0;
@@ -298,8 +299,6 @@ sub parse_txt {
 	my $mittel;
 	my $geraet;
 	my @coord;
-
-	#cat /tmp/extract/out.txt | sed -n '/^Str.Abschn\s*.\s*/,/^Ort\s*.\s*/p' | grep -v '^Ort\s*.\s*'
 
 	$Parsed{alarmzeit} = ctime( stat($path)->ctime);
 	$Parsed{alarmzeit} =~ s/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/$1/;
@@ -428,6 +427,20 @@ sub render_idle {
 		$html_file = "html/" . basename($template,  ".tpl") . ".html";
 		render_template(\%Parsed, "template/idle.tpl", $html_file);
 	}
+}
+
+sub add_to_database {
+	my %Parsed = %{shift()};
+
+        my $smittel = "";
+        my $omittel = "";
+	my $mittel = "";
+	my $maxm = 0;
+
+	my @geraet = @{$Parsed{geraet}};
+	my @mittel = @{$Parsed{mittel}};
+
+	# max 18 Mittel hinzufügen, ggf noch auf own_ffw checken
 }
 
 sub render_alarm_templates {
