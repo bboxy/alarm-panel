@@ -25,7 +25,6 @@
 <div id="map"></div>
       <script type="text/javascript">
 
-//gemeinden.json (c) DWD -> https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warngebiete_Kreise&maxFeatures=50&outputFormat=application%2Fjson
 var landkreise = new L.GeoJSON.AJAX('landkreise.json', {
 	style: landkreisstyle,
 	attribution: 'Unwetterwarnungen © <a href="http://www.dwd.de">DWD</a>',
