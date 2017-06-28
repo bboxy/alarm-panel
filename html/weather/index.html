@@ -25,7 +25,8 @@
 <div id="map"></div>
       <script type="text/javascript">
 
-var landkreise = new L.GeoJSON.AJAX('gemeinden.json', {
+//gemeinden.json (c) DWD -> https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warngebiete_Kreise&maxFeatures=50&outputFormat=application%2Fjson
+var landkreise = new L.GeoJSON.AJAX('landkreise.json', {
 	style: landkreisstyle,
 	attribution: 'Unwetterwarnungen © <a href="http://www.dwd.de">DWD</a>',
 	onEachFeature: function(feature, layer) {
@@ -385,7 +386,7 @@ function warnstyle(feature) {
 }
 
 function landkreisstyle(feature) {
-	if(feature.properties.NAME == "Kreis Neu-Ulm") {
+	if(feature.properties.NAME_3 == "Neu-Ulm") {
 		return {
 			weight: 1.5,
 			opacity: 1,
@@ -429,8 +430,8 @@ function clock() {
 
 function updateWarnings () {
 	m.removeLayer(warnings);
-	warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&bbox=7.6,46,12.6,50&outputFormat=application%2Fjson', {
-	//warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&outputFormat=application%2Fjson', {
+	//warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&bbox=7.6,46,12.6,50&outputFormat=application%2Fjson', {
+	warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&outputFormat=application%2Fjson', {
 		attribution: 'Letzte Aktualisierung:' + clock(),
 		style: warnstyle,
 		onEachFeature: function(feature, layer) {
