@@ -76,10 +76,10 @@ legend.onAdd = function (m) {
 		//"dauerregen1",
 		//"dauerregen2",
 		//"dauerregen3",
-		"",
-		"starkregen1",
-		"starkregen2",
-		"starkregen3",
+		//"",
+		//"starkregen1",
+		//"starkregen2",
+		//"starkregen3",
 		"",
 		"schnee1",
 		"schnee2",
@@ -104,10 +104,10 @@ legend.onAdd = function (m) {
 		//"Dauerkregen",
 		//"Heftiger Dauerregen",
 		//"Extremer Dauerregen",
-		"",
-		"Starkregen",
-		"Heftiger Starkregen",
-		"Extremer Starkregen",
+		//"",
+		//"Starkregen",
+		//"Heftiger Starkregen",
+		//"Extremer Starkregen",
 		"",
 		"Leichter Schneefall",
 		"Schneefall",
@@ -273,7 +273,7 @@ function warnstyle(feature) {
 			fillOpacity: 0.5,
 			fillColor: getColor("wind6")
 		};
-		case "61":		//Regen 1
+		case "61a":		//Regen 1
 		return {
 			weight: 1,
 			opacity: 0.5,
@@ -282,7 +282,7 @@ function warnstyle(feature) {
 			fillOpacity: 0.5,
 			fillColor: getColor("starkregen1")
 		};
-		case "62":		//Regen 2
+		case "62a":		//Regen 2
 		return {
 			weight: 1,
 			opacity: 0.5,
@@ -291,7 +291,7 @@ function warnstyle(feature) {
 			fillOpacity: 0.5,
 			fillColor: getColor("starkregen2")
 		};
-		case "66":		//Regen 3
+		case "66a":		//Regen 3
 		return {
 			weight: 1,
 			opacity: 0.5,
