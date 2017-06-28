@@ -429,8 +429,8 @@ function clock() {
 
 function updateWarnings () {
 	m.removeLayer(warnings);
-	//warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&bbox=7.6,46,12.6,49.5&outputFormat=application%2Fjson', {
-	warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&outputFormat=application%2Fjson', {
+	warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&bbox=7.6,46,12.6,50&outputFormat=application%2Fjson', {
+	//warnings = new L.GeoJSON.AJAX('https://maps.dwd.de/geoserver/dwd/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dwd:Warnungen_Gemeinden_vereinigt&outputFormat=application%2Fjson', {
 		attribution: 'Letzte Aktualisierung:' + clock(),
 		style: warnstyle,
 		onEachFeature: function(feature, layer) {
