@@ -72,10 +72,10 @@ legend.onAdd = function (m) {
 		"wind4",
 		"wind5",
 		"wind6",
-		"",
-		"dauerregen1",
-		"dauerregen2",
-		"dauerregen3",
+		//"",
+		//"dauerregen1",
+		//"dauerregen2",
+		//"dauerregen3",
 		"",
 		"starkregen1",
 		"starkregen2",
@@ -100,10 +100,10 @@ legend.onAdd = function (m) {
 		"Orkanartige Böen",
 		"Orkanböen",
 		"Extreme Orkanböen",
-		"",
-		"Dauerkregen",
-		"Heftiger Dauerregen",
-		"Extremer Dauerregen",
+		//"",
+		//"Dauerkregen",
+		//"Heftiger Dauerregen",
+		//"Extremer Dauerregen",
 		"",
 		"Starkregen",
 		"Heftiger Starkregen",
@@ -119,8 +119,11 @@ legend.onAdd = function (m) {
 
 	// loop through our density intervals and generate a label with a colored square for each interval
 	for (var i = 0; i < grades.length; i++) {
-		div.innerHTML +=
-		'<i style="background:' + getColor(grades[i]) + '"></i>' + labels[i] + '<br>';
+		if(labels[i] != "") {
+			div.innerHTML += '<i style="background:' + getColor(grades[i]) + '"></i>' + labels[i] + '<br>';
+		} else {
+			div.innerHTML += '<i></i>&nbsp;<br>';
+		}
 	}
 	return div;
 };
@@ -297,7 +300,7 @@ function warnstyle(feature) {
 			fillOpacity: 0.5,
 			fillColor: getColor("starkregen3")
 		};
-		case "63":		//Regen 1
+		case "63a":		//Regen 1
 		return {
 			weight: 1,
 			opacity: 0.5,
@@ -306,7 +309,7 @@ function warnstyle(feature) {
 			fillOpacity: 0.5,
 			fillColor: getColor("dauerregen1")
 		};
-		case "64":		//Regen 2
+		case "64a":		//Regen 2
 		return {
 			weight: 1,
 			opacity: 0.5,
@@ -315,7 +318,7 @@ function warnstyle(feature) {
 			fillOpacity: 0.5,
 			fillColor: getColor("dauerregen2")
 		};
-		case "65":		//Regen 3
+		case "65a":		//Regen 3
 		return {
 			weight: 1,
 			opacity: 0.5,
