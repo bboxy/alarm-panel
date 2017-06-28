@@ -25,6 +25,8 @@
 <div id="map"></div>
       <script type="text/javascript">
 
+var home_town = "Neu-Ulm";
+
 var landkreise = new L.GeoJSON.AJAX('landkreise.json', {
 	style: landkreisstyle,
 	attribution: 'Unwetterwarnungen © <a href="http://www.dwd.de">DWD</a>',
@@ -385,7 +387,7 @@ function warnstyle(feature) {
 }
 
 function landkreisstyle(feature) {
-	if(feature.properties.NAME_3 == "Neu-Ulm") {
+	if(feature.properties.NAME_3 == home_town) {
 		return {
 			weight: 1.5,
 			opacity: 1,
