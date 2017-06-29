@@ -5,6 +5,7 @@
 <meta http-equiv="cache-control" content="no-cache">
 <title>Alarm</title>
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
+<script src="scripts.js"></script>
 </head>
 <body onload="reloadWatch(); reloadFMS(); startDate();">
 
@@ -54,6 +55,5 @@
 <div class="idle_logo">
 	<img class="logo" src="logo.png">
 </div>
-<script src="scripts.js"></script>
 </body>
 </html>
