@@ -10,7 +10,7 @@
 	#map{ height: 100% }
 	.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
 	.info h4 { margin: 0 0 5px; color: #777; }
-	.legend { text-align: left; line-height: 18px; color: #555; }
+	.legend { text-align: left; line-height: 22px; color: #555; }
 	.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
     </style>
     <link rel="stylesheet" href="leaflet.css" />
@@ -50,11 +50,6 @@ var m = L.map('map', {
 });
 
 var warnings = new L.GeoJSON();
-
-//var gewaesser = new L.GeoJSON.AJAX('gewaesser.json', {
-//	style: gewaesserstyle
-//});
-//gewaesser.addTo(m);
 
 var legend = L.control({position: 'topright'});
 
@@ -120,7 +115,7 @@ legend.onAdd = function (m) {
 	// loop through our density intervals and generate a label with a colored square for each interval
 	for (var i = 0; i < grades.length; i++) {
 		if(labels[i] != "") {
-			div.innerHTML += '<i style="background:' + getColor(grades[i]) + '"></i>' + labels[i] + '<br>';
+			div.innerHTML += '<i style="border: solid 1px #c0c0c0; background:' + getColor(grades[i]) + '"></i>' + labels[i] + '<br>';
 		} else {
 			div.innerHTML += '<i></i>&nbsp;<br>';
 		}
@@ -135,8 +130,8 @@ updateWarnings();
 function getColor(x) {
 	return x == "gewitter1" ? '#ffbb00':
 	       x == "gewitter2" ? '#ff7700':
-	       x == "gewitter3" ? '#ff3300':
-	       x == "gewitter4" ? '#ff0000':
+	       x == "gewitter3" ? '#ff1100':
+	       x == "gewitter4" ? '#bb0033':
 	       x == "wind1" ? '#ffccff':
 	       x == "wind2" ? '#f8aaff':
 	       x == "wind3" ? '#f088ff':
@@ -153,7 +148,7 @@ function getColor(x) {
 	       x == "schnee2" ? '#bbbbbb':
 	       x == "schnee3" ? '#dddddd':
 	       x == "schnee4" ? '#ffffff':
-	       x == "glaette" ? '#cccc00':
+	       x == "glaette" ? '#ccccff':
                     '#ffffff';
 }
 
@@ -409,17 +404,6 @@ function landkreisstyle(feature) {
 			fillColor: '#e0e0c0'
 		};
 	}
-}
-
-function gewaesserstyle(feature) {
-	return {
-		weight: 1,
-                opacity: 1,
-                color: '#4040ff',
-                dashArray: '0',
-                fillOpacity: 1.0,
-                fillColor: '#4040ff'
-	};
 }
 
 function clock() {
