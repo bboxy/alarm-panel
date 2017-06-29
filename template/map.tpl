@@ -5,6 +5,7 @@
 <meta http-equiv="cache-control" content="no-cache">
 <title>Alarm</title>
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
+<script src="scripts.js"></script>
 %map_script%
 </head>
 <body onload="reloadWatch(); reloadFMS(); startTime(); initMap(&quot;%query%&quot;,%zoom_map%,%home_lat%,%home_long%); initMapSat(&quot;%query%&quot;,%zoom_sat%,%home_lat%,%home_long%);">
@@ -80,5 +81,4 @@
 	</tr>
 </table>
 </body>
-<script src="scripts.js"></script>
 </html>

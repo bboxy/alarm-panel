@@ -5,10 +5,10 @@
 <meta http-equiv="cache-control" content="no-cache">
 <title>Alarm</title>
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
+<script src="scripts.js"></script>
 </head>
 <body onload="reloadWatch(); reloadFMS(); startDate();">
 <iframe>
 </iframe>
-<script src="scripts.js"></script>
 </body>
 </html>
