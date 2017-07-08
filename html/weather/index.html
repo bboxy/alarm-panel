@@ -26,6 +26,8 @@
       <script type="text/javascript">
 
 var home_town = "Neu-Ulm";
+var home_lat = 48.41523
+var home_long = 10.14069
 
 var landkreise = new L.GeoJSON.AJAX('landkreise.json', {
 	style: landkreisstyle,
@@ -48,6 +50,8 @@ var m = L.map('map', {
 	zoom: 9,
 	layers: [osm, landkreise]
 });
+
+var home = L.marker([home_lat, home_long]).addTo(m);
 
 var warnings = new L.GeoJSON();
 
