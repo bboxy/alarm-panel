@@ -46,7 +46,7 @@ var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> 
 var osm = new L.TileLayer(osmUrl, {minZoom: 7, maxZoom: 12, attribution: osmAttrib});
 
 var m = L.map('map', {
-	center: [48.3, 10.2],
+	center: [home_lat, home_long],
 	zoom: 9,
 	layers: [osm, landkreise]
 });

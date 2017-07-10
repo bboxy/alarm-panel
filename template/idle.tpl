@@ -44,8 +44,8 @@
 <div class="idle_status">
 %status%
 </div>
-<div class="idle_logo">
+<!--div class="idle_logo">
 	<img class="logo" src="logo.png">
-</div>
+</div-->
 </body>
 </html>
