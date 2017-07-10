@@ -6,6 +6,8 @@ remote_path	/vol/fax
 extract_path	/tmp/extract
 #Name der FFW die hervorgehoben werden soll
 own_ffw_name	Straß
+#Hervorgehobener Landkreis
+landkreis	Neu-Ulm
 #GPS-Koordinaten der eigenen Wache
 home_lat	48.41523
 home_long	10.14069
@@ -44,7 +46,7 @@ sql_login	user
 
 sql_password	secret
 
-sql_dsn
+sql_dsn		dsn
 
 sql_uri		127.0.0.1
 
