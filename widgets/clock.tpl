@@ -14,7 +14,7 @@
 			<!--[if lt IE 9]>
 			  <script type="text/javascript" src="excanvas.js"></script>
 			<![endif]-->
-			<script type="text/javascript" src="station-clock.js"></script>
+			<script type="text/javascript" src="clock/station-clock.js"></script>
 			<script type="text/javascript">
 
 			  var clock = new StationClock("clock");

@@ -37,15 +37,7 @@
 			<div id="idle_datum" class="idle_datum"></div>
 		</td>
 		<td class="idle_right">
-			<!--object class="dwd" data="dwd/WarnModulDWD.swf?HOME=dwd/" type="application/x-shockwave-flash">
-				<param name="movie" value="dwd/WarnModulDWD.swf?HOME=dwd/">
-				<param name="quality" value="high">
-				<param name="menu" value="false">
-				<param name="wmode" value="opaque"-->
-					<!--h4>Für den Inhalt dieser Seite ist der Adobe Flash Player erforderlich.</h4>
-					<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Adobe Flash Player herunterladen" width="112" height="33" /></a></p-->
-			<!--/object-->
-			<iframe class="weather" scrolling="no" src="weather/index.html">
+			<iframe class="weather" scrolling="no" src="weather.html">
 		</td>
 	</tr>
 </table>

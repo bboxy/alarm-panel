@@ -58,6 +58,19 @@ if ($Config{enable_pop3}) {
 	);
 }
 
+my %Parsed;
+my @templates;
+my $html_file;
+
+if (opendir my($dh), "widgets") {
+	@templates = grep { !/^\.\.?$/ } readdir $dh;
+	closedir $dh;
+}
+for my $template (@templates) {
+	$html_file = "html/" . basename($template,  ".tpl") . ".html";
+	render_template(\%Parsed, "widgets/" . $template, $html_file);
+}
+
 # Auf neues Fax warten:
 while ($continue) {
 	# Können wir einen Idle-Screen zeigen?
@@ -606,6 +619,7 @@ sub render_template {
 	$template =~ s/%status%/$Parsed{status}/g;
 	$template =~ s/%home_lat%/$Config{home_lat}/g;
 	$template =~ s/%home_long%/$Config{home_long}/g;
+	$template =~ s/%landkreis%/$Config{landkreis}/g;
 	$template =~ s/%zoom_map%/$Config{zoom_map}/g;
 	$template =~ s/%zoom_sat%/$Config{zoom_sat}/g;
 

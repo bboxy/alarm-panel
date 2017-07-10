@@ -13,23 +13,23 @@
 	.legend { text-align: left; line-height: 22px; color: #555; }
 	.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
     </style>
-    <link rel="stylesheet" href="leaflet.css" />
+    <link rel="stylesheet" href="weather/leaflet.css" />
 
-<script src="leaflet-src.js"></script>
-<script type="text/javascript" src="leaflet.ajax.js"></script>
-<!--script src="spin.js"></script-->
-<!--script src="leaflet.spin.js"></script-->
+<script src="weather/leaflet-src.js"></script>
+<script type="text/javascript" src="weather/leaflet.ajax.js"></script>
+<!--script src="weather/spin.js"></script-->
+<!--script src="weather/leaflet.spin.js"></script-->
     </head>
     <body>
 
 <div id="map"></div>
       <script type="text/javascript">
 
-var home_town = "Neu-Ulm";
-var home_lat = 48.41523
-var home_long = 10.14069
+var home_town = "%landkreis%";
+var home_lat = %home_lat%
+var home_long = %home_long%
 
-var landkreise = new L.GeoJSON.AJAX('landkreise.json', {
+var landkreise = new L.GeoJSON.AJAX('weather/landkreise.json', {
 	style: landkreisstyle,
 	attribution: 'Unwetterwarnungen © <a href="http://www.dwd.de">DWD</a>',
 	onEachFeature: function(feature, layer) {

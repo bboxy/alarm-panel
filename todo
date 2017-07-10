@@ -2,3 +2,9 @@ add sds support
 add watchdog and visualize if alarmmon is still running (->needs to update a separate timestamp that is checked by the browser? -> check timestamp functions in .js)
 either use lat/long or adress for geocoder, test, prefer gps over adress, adress only fallback
 base lat/long coords: extract from config and set in script.js
+
+
+widget/weather.tpl -> html/weather.html
+widget/clock.tpl -> html/clock.html
+
+aus templates rendern zu programmstart um lat/long/configwerte einzutragen?
