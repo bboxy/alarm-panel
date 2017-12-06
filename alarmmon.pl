@@ -252,6 +252,11 @@ sub process_fax {
 	if ($dest =~ /\.txt$/i) {
 		copy $dest, $ocr_out;
 	} else {
+		#Gong abspielen
+		if ($Config{alarm_sound}) {
+			`aplay $Config{alarm_sound}`;
+		}
+
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
 			print "printing...\n";

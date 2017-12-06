@@ -50,3 +50,5 @@ sql_dsn		dsn
 
 sql_uri		127.0.0.1
 
+#gong
+alarm_sound     /opt/alarm-panel/sound/gong.mp3
