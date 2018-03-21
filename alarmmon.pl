@@ -12,6 +12,8 @@ use File::Basename;
 use File::DirCompare;
 use Mail::POP3Client;
 use MIME::Parser;
+use LWP::Simple;
+use URI::Escape;;
 
 my $cfg = new Config::Simple('/etc/alarmmon.cfg') or die ("ERROR: Can't open /etc/alarmmon.cfg\n");
 my %Config = $cfg->vars();
@@ -307,8 +309,20 @@ sub process_fax {
 	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
 
+	if ($Config{divera_alarm} == 1) {
+		divera_alarm(\%Parsed);
+	}
 	# not idle
 	return 0;
+}
+
+sub divera_alarm {
+	my %Parsed = %{shift()};
+	my $uri = $Config{divera_uri} . "?accesskey=" . $Config{divera_key} . "&type=" . uri_escape($Parsed{schlagwort});
+	print $uri . "\n";
+	my $result = get($uri);
+	print $result;
+	return;
 }
 
 sub parse_txt {
