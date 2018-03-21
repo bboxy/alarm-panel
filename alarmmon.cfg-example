@@ -51,9 +51,10 @@ sql_dsn		dsn
 sql_uri		127.0.0.1
 
 #gong
-alarm_sound     /opt/alarm-panel/sound/gong.mp3
+enable_sound	1
+play_file	/opt/alarm-panel/sound/gong.wav
 
 #Alarmierung über divera API
-divera_alarm	1
+enable_divera	1
 divera_key	ACCESS_KEY
 divera_uri	https://www.divera247.com/api/alarm

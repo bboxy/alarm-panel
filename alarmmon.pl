@@ -254,11 +254,6 @@ sub process_fax {
 	if ($dest =~ /\.txt$/i) {
 		copy $dest, $ocr_out;
 	} else {
-		#Gong abspielen
-		if ($Config{alarm_sound}) {
-			`aplay $Config{alarm_sound}`;
-		}
-
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
 			print "printing...\n";
@@ -309,9 +304,15 @@ sub process_fax {
 	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
 
-	if ($Config{divera_alarm} == 1) {
+	if ($Config{eneble_divera} == 1) {
 		divera_alarm(\%Parsed);
 	}
+
+	#Gong abspielen
+	if ($Config{enable_sound} == 1) {
+		`aplay $Config{play_file}`;
+	}
+
 	# not idle
 	return 0;
 }
