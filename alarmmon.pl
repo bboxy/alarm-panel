@@ -304,7 +304,7 @@ sub process_fax {
 	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
 
-	if ($Config{eneble_divera} == 1) {
+	if ($Config{enable_divera} == 1) {
 		divera_alarm(\%Parsed);
 	}
 
