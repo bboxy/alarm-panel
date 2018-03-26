@@ -53,6 +53,7 @@ sql_uri		127.0.0.1
 #gong
 enable_sound	1
 play_file	/opt/alarm-panel/sound/gong.wav
+play_user	ffw
 
 #Alarmierung über divera API
 enable_divera	1

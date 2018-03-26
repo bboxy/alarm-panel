@@ -310,7 +310,7 @@ sub process_fax {
 
 	#Gong abspielen
 	if ($Config{enable_sound} == 1) {
-		`aplay $Config{play_file}`;
+		`sudo -u $Config{play_user} aplay $Config{play_file}`;
 	}
 
 	# not idle
