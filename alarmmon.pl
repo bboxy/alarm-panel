@@ -106,8 +106,8 @@ sub check_new_alarm {
 					if (!$idle) {
 						print "updating timestamp...\n";
 						update_timestamp();
+						print "all done.\n";
 					}
-					print "all done.\n";
 				}
 			});
 		}
@@ -219,17 +219,21 @@ sub process_fax {
 	my $ocr_txt;
 	my @clean;
 
-	# Aufräumen
-	print "cleaning up...\n";
-	@clean = glob ("$Config{extract_path}/*");
-	if (@clean) {
-		 unlink @clean;
+	if ($dest =~/(\.sff|\.pdf|\.tif|\.txt)/i) {
+		# Aufräumen
+		print "cleaning up...\n";
+		@clean = glob ("$Config{extract_path}/*");
+		if (@clean) {
+			 unlink @clean;
+		}
+		print "copying new file $rfile\n";
+		copy $source, $dest;
+	} else {
+		return 1;
 	}
 
 	# sff-Datei - in .tif umwandeln
 	if ($dest =~/\.sff$/i) {
-		print "copying new file $rfile\n";
-		copy $source, $dest;
 		print "extracting images from .sff ...\n";
 		`sfftobmp -tif $dest -o $Config{extract_path}/fax.tif`;
 		`convert -crop 1724x2438 $Config{extract_path}/fax.tif $Config{extract_path}/fax_%d.tif`;
@@ -237,32 +241,18 @@ sub process_fax {
 	}
 
 	# pdf-Datei - Bilder extrahieren, drucken, dann Texterkennung
-	elsif ($dest =~ /\.pdf$/i) {
-		print "copying new file $rfile\n";
-		copy $source, $dest;
+	if ($dest =~ /\.pdf$/i) {
 		# Bilder aus .pdf angeln
 		print "extracting images from .pdf ...\n";
 		`pdfimages -p $dest $Config{extract_path}/`;
 	}
-
-	elsif ($dest =~ /\.tif$/i) {
-		print "copying new file $rfile\n";
-		copy $source, $dest;
+	if ($dest =~ /\.tif$/i) {
 		print "extracting images from .tif ...\n";
 		`convert -crop 1724x2438 $dest $Config{extract_path}/fax_%d.tif`;
 	}
-
-
 	# .txt datei direkt parsen
-	elsif ($dest =~ /\.txt$/i) {
-		print "copying new file $rfile\n";
-		copy $source, $dest;
-		copy $dest, $ocr_out;
-	} else {
-		return 1;
-	}
-
 	if ($dest =~ /\.txt$/i) {
+		copy $dest, $ocr_out;
 	} else {
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
