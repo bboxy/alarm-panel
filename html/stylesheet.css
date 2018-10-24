@@ -310,6 +310,15 @@ div.penalty_txt {
 	font-size: 0.8vw;
 }
 
+body.clock {
+	height: 100%;
+	width: 100%;
+	background: #403030;
+	text-align: center;
+	border-right: solid 0.2vw #901010;
+	vertical-align: center;
+}
+
 td.idle_left {
 	height: 100%;
 	width: 50%;

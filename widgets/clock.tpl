@@ -6,7 +6,7 @@
 <title>Clock</title>
 <link rel="STYLESHEET" type="text/css" href="/stylesheet.css">
 </head>
-<body>
+<body class="clock">
 
 			<canvas id="clock" class="cv_clock" width="800px" height="800px">
 			  Dieser Browser wird leider nicht unterstützt.

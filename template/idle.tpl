@@ -37,7 +37,7 @@
 			<div id="idle_datum" class="idle_datum"></div>
 		</td>
 		<td class="idle_right">
-			<iframe class="weather" scrolling="no" src="weather.html">
+			<iframe class="weather" scrolling="no" src="weather.html"></iframe>
 		</td>
 	</tr>
 </table>

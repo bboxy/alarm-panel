@@ -1,71 +1,4 @@
-    var timestamp = null;
-    var map;
-    var map_sat;
-    var geocoder;
-    var geocoder_sat;
-
-    function initMap(addr, zoomlevel, lat, lng) {
-        geocoder      = new google.maps.Geocoder();
-        var latlng    = new google.maps.LatLng(lat,lng);
-        var mapDiv    = document.getElementById('map');
-        var width     = mapDiv.offsetWidth;
-        map = new google.maps.Map(mapDiv, {
-            center: latlng,
-            //zoom: zoomlevel,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        // ACHTUNG: Adresse muss UTF-8-codiert von PHP übergeben werden!!!! Sonst Umlaute kaputt.
-        geocoder.geocode( { 'address': addr}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-            } else {
-            // alert("Geocode was not successful for the following reason: " + status);
-            }
-        });
-        map.setZoom(zoomlevel);
-    }
-
-    function initMapSat(addr, zoomlevel, lat,lng) {
-        geocoder_sat  = new google.maps.Geocoder();
-        var latlngSat = new google.maps.LatLng(lat,lng);
-        var mapDivSat = document.getElementById('map_sat');
-        map_sat = new google.maps.Map(mapDivSat, {
-            center: latlngSat,
-            zoom: zoomlevel,
-            mapTypeId: google.maps.MapTypeId.HYBRID
-        });
-        // ACHTUNG: Adresse muss UTF-8-codiert von PHP übergeben werden!!!! Sonst Umlaute kaputt.
-        geocoder_sat.geocode( { 'address': addr}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map_sat.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: map_sat,
-                    position: results[0].geometry.location
-                });
-            } else {
-            // alert("Geocode was not successful for the following reason: " + status);
-            }
-        });
-        map_sat.setZoom(zoomlevel);
-    }
-
-    function zoom() {
-        // Feststellen, ob wir noch in unserem Ortsgebiet sind
-//	var ortaufkarte = document.getElementById("ortaufkarte").value;
-//	var ergebnis = ortaufkarte.search(25i);
-//	if (ergebnis != -1)
-//	{
-//		// Wir sind im Ortsgebiet
-//		zoomlevel = 5;
-//	} else {
-//		// Wir sind auf dem Land
-//		zoomlevel = 2;
-//	}
-    }
+var timestamp = null;
 
 function startTime() {
     var today = new Date();
@@ -73,41 +6,44 @@ function startTime() {
     var m = today.getMinutes();
     var s = today.getSeconds();
 
-    var alarm = document.getElementById('alarmzeit').innerHTML;
+    var elem = document.getElementById('alarmzeit');
+    if (elem !== null) {
+        var alarm = elem.innerHTML;
 
-    var ph = alarm.substring(0, 2);
-    var pm = alarm.substring(3, 5);
-    var ps = alarm.substring(6, 8);
+        var ph = alarm.substring(0, 2);
+        var pm = alarm.substring(3, 5);
+        var ps = alarm.substring(6, 8);
 
-    var time_akt = h * 3600 + m * 60 + s;
-    var time_alarm = ph * 3600 + pm * 60 + ps * 1;
+        var time_akt = h * 3600 + m * 60 + s;
+        var time_alarm = ph * 3600 + pm * 60 + ps * 1;
 
-    var diff = time_akt - time_alarm;
+        var diff = time_akt - time_alarm;
 
-    var dh = Math.floor(diff / 3600);
-    var dm = Math.floor((diff - (dh * 3600)) / 60);
-    var ds = diff - (dm * 60) - (dh * 3600);
+        var dh = Math.floor(diff / 3600);
+        var dm = Math.floor((diff - (dh * 3600)) / 60);
+        var ds = diff - (dm * 60) - (dh * 3600);
 
-    if (dh < 0) dh += 24;
+        if (dh < 0) dh += 24;
 
-    h = checkTime(h);
-    m = checkTime(m);
-    s = checkTime(s);
+        h = checkTime(h);
+        m = checkTime(m);
+        s = checkTime(s);
 
-    dh = checkTime(dh);
-    dm = checkTime(dm);
-    ds = checkTime(ds);
+        dh = checkTime(dh);
+        dm = checkTime(dm);
+        ds = checkTime(ds);
 
-    var time = h + ":" + m + ":" + s;
-    var penalty = dh + ":" + dm + ":" + ds;
+        var time = h + ":" + m + ":" + s;
+        var penalty = dh + ":" + dm + ":" + ds;
 
-    document.getElementById('clock').innerHTML = time;
-    document.getElementById('penalty').innerHTML = penalty;
+        document.getElementById('clock').innerHTML = time;
+        document.getElementById('penalty').innerHTML = penalty;
 
-    if (dh == 0 && dm < 5) {
-        document.getElementById('penalty').style.color = "#000000";
-    } else {
-        document.getElementById('penalty').style.color = "#c02020";
+        if (dh == 0 && dm < 5) {
+            document.getElementById('penalty').style.color = "#000000";
+        } else {
+            document.getElementById('penalty').style.color = "#c02020";
+        }
     }
     var t = setTimeout(startTime, 500);
 }
