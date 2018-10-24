@@ -637,6 +637,8 @@ sub render_template {
 	$template =~ s/%bemerkung%/$Parsed{bemerkung}/g;
 	$template =~ s/%alarmzeit%/$Parsed{alarmzeit}/g;
 	$template =~ s/%status%/$Parsed{status}/g;
+	$template =~ s/%gps_lat%/$Parsed{gps_lat}/g;
+	$template =~ s/%gps_long%/$Parsed{gps_long}/g;
 	$template =~ s/%home_lat%/$Config{home_lat}/g;
 	$template =~ s/%home_long%/$Config{home_long}/g;
 	$template =~ s/%landkreis%/$Config{landkreis}/g;

@@ -26,8 +26,8 @@
       <script type="text/javascript">
 
 var home_town = "Neu-Ulm";
-var gps_lat = %home_lat%
-var gps_long = %home_long%
+var gps_lat = %gps_lat%
+var gps_long = %gps_long%
 
 var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
