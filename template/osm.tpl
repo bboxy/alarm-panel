@@ -35,7 +35,7 @@ var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
 
 var m = L.map('map', {
 	center: [gps_lat, gps_long],
-	zoom: 16,
+	zoom: 17,
 	layers: [osm]
 });
 
