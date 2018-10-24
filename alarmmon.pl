@@ -342,6 +342,7 @@ sub parse_txt {
 	my $mittel;
 	my $geraet;
 	my @coord;
+	my @sw;
 
 	$Parsed{alarmzeit} = ctime( stat($path)->ctime);
 	$Parsed{alarmzeit} =~ s/.*([0-9][0-9]:[0-9][0-9]:[0-9][0-9]).*/$1/;
@@ -402,6 +403,8 @@ sub parse_txt {
 	$Parsed{schlagwort} = `sed -e '/^Schlag..\\s*.\\s*/!d; s///;q' < $ocr_file`;
 	$Parsed{schlagwort} =~ s/\n//g;
 	$Parsed{schlagwort} =~ s/^\s+|\s+$//g;
+	@sw = split(/#/, $Parsed{schlagwort});
+	$Parsed{schlagwort} = join(" ", $sw[2], $sw[3]);
 
 	$Parsed{nummer} = `sed -e '/^Einsatznummer\\s*.\\s*/!d; s///;q' < $ocr_file`;
 	$Parsed{nummer} =~ s/\n//g;
