@@ -219,9 +219,6 @@ sub process_fax {
 	my $ocr_txt;
 	my @clean;
 
-	print "copying new file $rfile\n";
-	copy $source, $dest;
-
 	# Aufräumen
 	print "cleaning up...\n";
 	@clean = glob ("$Config{extract_path}/*");
@@ -231,6 +228,8 @@ sub process_fax {
 
 	# sff-Datei - in .tif umwandeln
 	if ($dest =~/\.sff$/i) {
+		print "copying new file $rfile\n";
+		copy $source, $dest;
 		print "extracting images from .sff ...\n";
 		`sfftobmp -tif $dest -o $Config{extract_path}/fax.tif`;
 		`convert -crop 1724x2438 $Config{extract_path}/fax.tif $Config{extract_path}/fax_%d.tif`;
@@ -238,21 +237,32 @@ sub process_fax {
 	}
 
 	# pdf-Datei - Bilder extrahieren, drucken, dann Texterkennung
-	if ($dest =~ /\.pdf$/i) {
+	elsif ($dest =~ /\.pdf$/i) {
+		print "copying new file $rfile\n";
+		copy $source, $dest;
 		# Bilder aus .pdf angeln
 		print "extracting images from .pdf ...\n";
 		`pdfimages -p $dest $Config{extract_path}/`;
 	}
 
-	if ($dest =~ /\.tif$/i) {
+	elsif ($dest =~ /\.tif$/i) {
+		print "copying new file $rfile\n";
+		copy $source, $dest;
 		print "extracting images from .tif ...\n";
 		`convert -crop 1724x2438 $dest $Config{extract_path}/fax_%d.tif`;
 	}
 
 
 	# .txt datei direkt parsen
-	if ($dest =~ /\.txt$/i) {
+	elsif ($dest =~ /\.txt$/i) {
+		print "copying new file $rfile\n";
+		copy $source, $dest;
 		copy $dest, $ocr_out;
+	} else {
+		return 1;
+	}
+
+	if ($dest =~ /\.txt$/i) {
 	} else {
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
