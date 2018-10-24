@@ -13,12 +13,12 @@
 	.legend { text-align: left; line-height: 22px; color: #555; }
 	.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
     </style>
-    <link rel="stylesheet" href="weather/leaflet.css" />
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
 
-<script src="weather/leaflet-src.js"></script>
-<script type="text/javascript" src="weather/leaflet.ajax.js"></script>
-<!--script src="weather/spin.js"></script-->
-<!--script src="weather/leaflet.spin.js"></script-->
+<script src="leaflet/leaflet-src.js"></script>
+<script type="text/javascript" src="leaflet/leaflet.ajax.js"></script>
+<!--script src="leaflet/spin.js"></script-->
+<!--script src="leaflet/leaflet.spin.js"></script-->
     </head>
     <body>
 
