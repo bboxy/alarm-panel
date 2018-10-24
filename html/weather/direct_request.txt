@@ -1,1 +1,0 @@
-https://maps.dwd.de/geoserver/dwd/wms?service=WMS&version=1.1.1&request=GetMap&layers=dwd:bluemarble,dwd:Warngebiete_Kreise,dwd:Warngebiete_Kreise,dwd:Warnungen_Gemeinden_vereinigt&bbox=7.6,47,12.6,50.5&width=960&height=1080&srs=EPSG:4326&format=image%2Fjpeg&CQL_FILTER=INCLUDE;INCLUDE;INCLUDE;INCLUDE
