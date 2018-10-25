@@ -227,7 +227,7 @@ sub process_fax {
 			 unlink @clean;
 		}
 		print "copying new file $rfile\n";
-		copy $source, $dest;
+		copy $source, $dest || return 1;
 	} else {
 		return 1;
 	}
@@ -252,7 +252,7 @@ sub process_fax {
 	}
 	# .txt datei direkt parsen
 	if ($dest =~ /\.txt$/i) {
-		copy $dest, $ocr_out;
+		copy $dest, $ocr_out || return 1;
 	} else {
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
