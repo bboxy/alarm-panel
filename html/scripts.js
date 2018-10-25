@@ -6,44 +6,41 @@ function startTime() {
     var m = today.getMinutes();
     var s = today.getSeconds();
 
-    var elem = document.getElementById('alarmzeit');
-    if (elem !== null) {
-        var alarm = elem.innerHTML;
+    var alarm = document.getElementById('alarmzeit').innerHTML;
 
-        var ph = alarm.substring(0, 2);
-        var pm = alarm.substring(3, 5);
-        var ps = alarm.substring(6, 8);
+    var ph = alarm.substring(0, 2);
+    var pm = alarm.substring(3, 5);
+    var ps = alarm.substring(6, 8);
 
-        var time_akt = h * 3600 + m * 60 + s;
-        var time_alarm = ph * 3600 + pm * 60 + ps * 1;
+    var time_akt = h * 3600 + m * 60 + s;
+    var time_alarm = ph * 3600 + pm * 60 + ps * 1;
 
-        var diff = time_akt - time_alarm;
+    var diff = time_akt - time_alarm;
 
-        var dh = Math.floor(diff / 3600);
-        var dm = Math.floor((diff - (dh * 3600)) / 60);
-        var ds = diff - (dm * 60) - (dh * 3600);
+    var dh = Math.floor(diff / 3600);
+    var dm = Math.floor((diff - (dh * 3600)) / 60);
+    var ds = diff - (dm * 60) - (dh * 3600);
 
-        if (dh < 0) dh += 24;
+    if (dh < 0) dh += 24;
 
-        h = checkTime(h);
-        m = checkTime(m);
-        s = checkTime(s);
+    h = checkTime(h);
+    m = checkTime(m);
+    s = checkTime(s);
 
-        dh = checkTime(dh);
-        dm = checkTime(dm);
-        ds = checkTime(ds);
+    dh = checkTime(dh);
+    dm = checkTime(dm);
+    ds = checkTime(ds);
 
-        var time = h + ":" + m + ":" + s;
-        var penalty = dh + ":" + dm + ":" + ds;
+    var time = h + ":" + m + ":" + s;
+    var penalty = dh + ":" + dm + ":" + ds;
 
-        document.getElementById('clock').innerHTML = time;
-        document.getElementById('penalty').innerHTML = penalty;
+    document.getElementById('clock').innerHTML = time;
+    document.getElementById('penalty').innerHTML = penalty;
 
-        if (dh == 0 && dm < 5) {
-            document.getElementById('penalty').style.color = "#000000";
-        } else {
-            document.getElementById('penalty').style.color = "#c02020";
-        }
+    if (dh == 0 && dm < 5) {
+        document.getElementById('penalty').style.color = "#000000";
+    } else {
+        document.getElementById('penalty').style.color = "#c02020";
     }
     var t = setTimeout(startTime, 500);
 }

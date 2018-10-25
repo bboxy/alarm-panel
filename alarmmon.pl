@@ -563,19 +563,19 @@ sub render_alarm_templates {
 
 	$Parsed{adresse} .= "$Parsed{ort}";
 
-	if ($Parsed{gps_lat} ne '' and $Parsed{gps_long} ne '') {
-		$Parsed{query} = $Parsed{gps_lat} . " " . $Parsed{gps_long};
-	} else {
-		$Parsed{query} = $Parsed{strasse} . " " . $Parsed{hausnummer} . ", " . $Parsed{ort};
-	}
-	$Parsed{query} =~ s/\n//g;
+	# if ($Parsed{gps_lat} ne '' and $Parsed{gps_long} ne '') {
+	#	$Parsed{query} = $Parsed{gps_lat} . " " . $Parsed{gps_long};
+	# } else {
+	#	$Parsed{query} = $Parsed{strasse} . " " . $Parsed{hausnummer} . ", " . $Parsed{ort};
+	# }
+	# $Parsed{query} =~ s/\n//g;
 
-	print "query: $Parsed{query}\n";
+	# print "query: $Parsed{query}\n";
 
-	$Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
+	# $Parsed{map_script} = '<script src="https://maps.googleapis.com/maps/api/js?region=DE" async defer></script>';
 
-	$Parsed{map_tag} = '<div class="map" id="map"></div>';
-	$Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
+	# $Parsed{map_tag} = '<div class="map" id="map"></div>';
+	# $Parsed{map_tag_sat} = '<div class="map" id="map_sat"></div>';
 
 	# query für Maps vorbereiten
 
@@ -624,10 +624,10 @@ sub render_template {
 	$template= <FILE>;
 	close FILE;
 
-	$template =~ s/%map_script%/$Parsed{map_script}/g;
-	$template =~ s/%map_tag%/$Parsed{map_tag}/g;
-	$template =~ s/%map_tag_sat%/$Parsed{map_tag_sat}/g;
-	$template =~ s/%query%/$Parsed{query}/g;
+	#$template =~ s/%map_script%/$Parsed{map_script}/g;
+	#$template =~ s/%map_tag%/$Parsed{map_tag}/g;
+	#$template =~ s/%map_tag_sat%/$Parsed{map_tag_sat}/g;
+	#$template =~ s/%query%/$Parsed{query}/g;
 	$template =~ s/%mittel%/$Parsed{mittel}/g;
 	$template =~ s/%strasse%/$Parsed{strasse}/g;
 	$template =~ s/%nummer%/$Parsed{hausnummer}/g;

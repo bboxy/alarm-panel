@@ -49,7 +49,7 @@
 						%mittel%
 					</td>
 					<td class="main_right">
-						<iframe class="weather" scrolling="no" src="osm.html"></iframe>
+						<iframe class="widget" scrolling="no" src="osm.html"></iframe>
 					</td>
 				</tr>
 			</table>

@@ -4,11 +4,14 @@
 <META http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache">
 <title>Clock</title>
-<link rel="STYLESHEET" type="text/css" href="/stylesheet.css">
+<link rel="STYLESHEET" type="text/css" href="/clock.css">
 </head>
-<body class="clock">
+<body>
+	<table>
+		<tr>
+			<td>
 
-			<canvas id="clock" class="cv_clock" width="800px" height="800px">
+			<canvas id="clock" class="cv_clock" width="1000" height="1000">
 			  Dieser Browser wird leider nicht unterstützt.
 			</canvas>
 			<!--[if lt IE 9]>
@@ -30,7 +33,11 @@
 			  window.setInterval(function() { clock.draw() }, 5);
 
 			</script>
-			<div id="idle_datum" class="idle_datum"></div>
+			<div id="datum" class="datum"></div>
+
+			</td>
+		</tr>
+	</table>
 <script>
 startDate();
 
@@ -38,7 +45,7 @@ function startDate() {
     var months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
     var today = new Date();
     var date = today.getDate() + ". " + months[today.getMonth()] + " " + today.getFullYear();
-    document.getElementById('idle_datum').innerHTML = date;
+    document.getElementById('datum').innerHTML = date;
     var d = setTimeout(startDate, 5000);
 }
 

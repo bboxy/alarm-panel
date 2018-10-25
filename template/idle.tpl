@@ -12,32 +12,10 @@
 <table>
 	<tr>
 		<td class="idle_left">
-			<canvas id="clock" class="cv_clock" width="800px" height="800px">
-			  Dieser Browser wird leider nicht unterstützt.
-			</canvas>
-			<!--[if lt IE 9]>
-			  <script type="text/javascript" src="excanvas.js"></script>
-			<![endif]-->
-			<script type="text/javascript" src="clock/station-clock.js"></script>
-			<script type="text/javascript">
-
-			  var clock = new StationClock("clock");
-			  clock.body = StationClock.RoundBody;
-			  clock.dial = StationClock.GermanStrokeDial;
-			  clock.hourHand = StationClock.PointedHourHand;
-			  clock.minuteHand = StationClock.PointedMinuteHand;
-			  clock.secondHand = StationClock.HoleShapedSecondHand;
-			  clock.boss = StationClock.NoBoss;
-			  clock.minuteHandBehavoir = StationClock.BouncingMinuteHand;
-			  clock.secondHandBehavoir = StationClock.BouncingSecondHand;
-
-			  window.setInterval(function() { clock.draw() }, 5);
-
-			</script>
-			<div id="idle_datum" class="idle_datum"></div>
+			<iframe class="widget" scrolling="no" src="clock.html"></iframe>
 		</td>
 		<td class="idle_right">
-			<iframe class="weather" scrolling="no" src="weather.html"></iframe>
+			<iframe class="widget" scrolling="no" src="weather.html"></iframe>
 		</td>
 	</tr>
 </table>
