@@ -9,9 +9,9 @@
 <body>
 	<table>
 		<tr>
-			<td>
+			<td class="clock">
 
-			<canvas id="clock" class="cv_clock" width="1000" height="1000">
+			<canvas id="clock" class="cv_clock" width="800" height="800">
 			  Dieser Browser wird leider nicht unterstützt.
 			</canvas>
 			<!--[if lt IE 9]>
@@ -33,8 +33,11 @@
 			  window.setInterval(function() { clock.draw() }, 5);
 
 			</script>
-			<div id="datum" class="datum"></div>
 
+			</td>
+		</tr>
+		<tr>
+			<td id="datum" class="datum">
 			</td>
 		</tr>
 	</table>
