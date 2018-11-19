@@ -17,6 +17,7 @@
 
 <script src="leaflet/leaflet-src.js"></script>
 <script type="text/javascript" src="leaflet/leaflet.ajax.js"></script>
+<script type="text/javascript" src="leaflet/plugins/leaflet-omnivore.min.js"></script>
 <!--script src="leaflet/spin.js"></script-->
 <!--script src="leaflet/leaflet.spin.js"></script-->
     </head>
@@ -40,6 +41,21 @@ var m = L.map('map', {
 });
 
 var home = L.marker([gps_lat, gps_long]).addTo(m);
+
+var hydIcon = L.icon({
+	iconUrl: 'hydrant.png',
+	iconSize:     [24, 37], // size of the icon
+	iconAnchor:   [12, 37], // point of the icon which will correspond to  marker's location
+	popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var omnivoreStyleHelper = L.geoJSON(null, {
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, {icon: hydIcon});
+    }
+});
+
+omnivore.kml('hydranten.kml', null, omnivoreStyleHelper).addTo(m);
 
 </script>
     </body>

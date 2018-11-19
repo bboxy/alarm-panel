@@ -7,7 +7,7 @@
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
 <script src="scripts.js"></script>
 </head>
-<body onload="reloadWatch(); reloadFMS(); startDate();">
+<body onload="reloadWatch(); reloadFMS();">
 
 <table>
 	<tr>

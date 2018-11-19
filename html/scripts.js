@@ -50,14 +50,6 @@ function checkTime(i) {
     return i;
 }
 
-function startDate() {
-    var months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-    var today = new Date();
-    var date = today.getDate() + ". " + months[today.getMonth()] + " " + today.getFullYear();
-    document.getElementById('idle_datum').innerHTML = date;
-    var d = setTimeout(startDate, 5000);
-}
-
 function reloadWatch() {
     var ajax = null;
     if(window.XMLHttpRequest) { //Google Chrome, Mozilla Firefox, Opera, Safari, IE 7
