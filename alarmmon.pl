@@ -77,8 +77,8 @@ for my $template (@templates) {
 while ($continue) {
 	# Können wir einen Idle-Screen zeigen?
         if (!$idle) {
-		# Ja, aber nur wenn timestamp noch nicht gesetzt ist (startup) oder der Alarm min 30 Minuten zurückliegt.
-   		if (!$timestamp || $timestamp + 60 * 60 < time()) {
+		# Ja, aber nur wenn timestamp noch nicht gesetzt ist (startup) oder der Alarm min 60 Minuten zurückliegt.
+   		if (!$timestamp || (($timestamp + 3600) < time())) {
 			print "going back to idle screen\n";
 			render_idle();
 			update_timestamp();
@@ -102,8 +102,8 @@ sub check_new_alarm {
 					print "purging $fax\n";
 					unlink "$fax";
 				} else {
-					$idle = process_fax(basename($remote));
-					if (!$idle) {
+					if (!process_fax(basename($remote))) {;
+						$idle = 0;
 						print "updating timestamp...\n";
 						update_timestamp();
 						print "all done.\n";
@@ -134,8 +134,8 @@ sub check_new_alarm_old {
 				if ( my @list = grep /^$rfile$/, @fax_files) {
 					# File existiert bereits in fax_path
 			        } else {
-					$idle = process_fax($rfile);
-					if (!$idle) {
+					if (!process_fax($rfile)) {
+						$idle = 0;
 						print "updating timestamp...\n";
 						update_timestamp();
 					}

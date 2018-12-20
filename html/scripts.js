@@ -63,15 +63,20 @@ function reloadWatch() {
         ajax.onreadystatechange = function(){
             if(this.readyState == 4){
                 if(this.status == 200){
-                    if (timestamp == null) timestamp = this.responseText;
-    		else if (timestamp != this.responseText) {
+                    if (timestamp == null) {
                         timestamp = this.responseText;
-                        //window.location.reload(false);
-                        window.location.replace(window.location.href);
+                    } else {
+                        if (timestamp != this.responseText) {
+                            timestamp = null;
+                            //this.responseText;
+                            window.location.replace(window.location.href);
+                            //window.location.reload(false);
+                            //console.log("reloading");
+                        }
+                        //console.log("status " + this.status);
+                        //console.log("readyState " + this.readyState);
+                        //console.log(timestamp);
                     }
-                    //console.log("status " + this.status);
-                    //console.log("readyState " + this.readyState);
-                    //console.log(timestamp);
                 } else {
                     //console.log("status " + this.status);
 		}
