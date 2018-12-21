@@ -26,6 +26,8 @@ default_ort	Straß
 fast_ocr	1
 #Zeit in Sekunden bis zum nächsten Check auf neue Daten
 check_interval	5
+#Zeit in Sekunden die ein Alarm angezeigt wird (Danach idle-Screen)
+alarm_time	3600
 
 #Auch im pop3 Postfach nach neuen Faxen suchen?
 enable_pop3	1
