@@ -31,6 +31,8 @@ fast_ocr	1
 check_interval	5
 #Zeit in Sekunden die ein Alarm angezeigt wird (Danach idle-Screen)
 alarm_time	3600
+#MAP Server URL
+map_server_url	http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
 
 #Auch im pop3 Postfach nach neuen Faxen suchen?
 enable_pop3	1
