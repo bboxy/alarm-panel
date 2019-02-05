@@ -4,6 +4,8 @@ fax_path	/var/lib/alarmmon/fax
 remote_path	/vol/fax
 #temporärer Pfad für Textextraktion
 extract_path	/tmp/extract
+#Home
+home_path	/opt/alarm-panel
 #Name der FFW die hervorgehoben werden soll
 own_ffw_name	Straß
 #Hervorgehobener Landkreis

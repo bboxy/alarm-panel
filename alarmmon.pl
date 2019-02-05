@@ -313,6 +313,13 @@ sub process_fax {
 		`sudo -u $Config{play_user} aplay $Config{play_file}`;
 	}
 
+	# Karte Ausdrucken
+	if ($Config{print_map} == 1) {
+		print "printing map...\n";
+                `./tiles2staticmap.pl --lat=$Parsed{gps_lat} --lon=$Parsed{gps_long} --width=1443 --height=1024 --zoom=17 --tileBase=http://a.tile.openstreetmap.org/{z}/{x}/{y}.png --output=$Config{extract_path}/map.png`;
+		`convert $Config{extract_path}/map.png $Config{home_path}/html/flame.png -geometry +698+448 -composite $Config{extract_path}/map.tif`;
+		`lp -o orientation-requested=4 -o position=top -o media=A4 $Config{extract_path}/map.tif`;
+	}
 	# not idle
 	return 0;
 }
