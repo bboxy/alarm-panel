@@ -16,6 +16,7 @@ zoom_sat	19
 zoom_map	16
 #Empfangene Faxe drucken?
 print_fax	1
+print_map	0
 #FMS Status empfangen/anzeigen
 enable_fms	0
 #Maximale Anzahl angezeigter Mittel
@@ -58,6 +59,6 @@ play_file	/opt/alarm-panel/sound/gong.wav
 play_user	ffw
 
 #Alarmierung über divera API
-enable_divera	1
+enable_divera	0
 divera_key	ACCESS_KEY
 divera_uri	https://www.divera247.com/api/alarm
