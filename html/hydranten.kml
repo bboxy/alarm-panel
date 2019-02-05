@@ -1011,7 +1011,7 @@
     </Placemark>
     <Placemark>
         <name> Martin-Hilti-Weg 1 (# 75)</name>
-        <description><![CDATA[Martin-Hilti-Weg 1 (# 75)<br />Überflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413139">Details</a>]]></description>
+        <description><![CDATA[Martin-Hilti-Weg 1 (# 75)<br />Fallmantelhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413139">Details</a>]]></description>
         <Point>
             <coordinates>10.1518958, 48.4159395, 0</coordinates>
         </Point>
@@ -1095,7 +1095,7 @@
     </Placemark>
     <Placemark>
         <name> Georg-Köhl-Strasse 20 (# 80)</name>
-        <description><![CDATA[Georg-Köhl-Strasse 20 (# 80)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413299">Details</a>]]></description>
+        <description><![CDATA[Georg-Köhl-Strasse 20 (# 80)<br />Unterflurhydrant<br />Standrohr<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413299">Details</a>]]></description>
         <Point>
             <coordinates>10.1526672, 48.4118767, 0</coordinates>
         </Point>
@@ -1257,6 +1257,90 @@
             <IconStyle>
                 <Icon>
                     <href>https://portal.wasserkarte.info/m/413314_1.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Placemark>
+    <Placemark>
+        <name> Meilerstrasse  21 (# 91)</name>
+        <description><![CDATA[Meilerstrasse  21 (# 91)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/429974">Details</a>]]></description>
+        <Point>
+            <coordinates>10.1407076, 48.4129195, 0</coordinates>
+        </Point>
+        <Style>
+            <IconStyle>
+                <Icon>
+                    <href>https://portal.wasserkarte.info/m/429974_1.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Placemark>
+    <Placemark>
+        <name> Kühlerer 1a (# 92)</name>
+        <description><![CDATA[Kühlerer 1a (# 92)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430442">Details</a>]]></description>
+        <Point>
+            <coordinates>10.1464988, 48.4137778, 0</coordinates>
+        </Point>
+        <Style>
+            <IconStyle>
+                <Icon>
+                    <href>https://portal.wasserkarte.info/m/430442_1.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Placemark>
+    <Placemark>
+        <name> Bühlerweg 9 (# 93)</name>
+        <description><![CDATA[Bühlerweg 9 (# 93)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430443">Details</a>]]></description>
+        <Point>
+            <coordinates>10.1479061, 48.4138258, 0</coordinates>
+        </Point>
+        <Style>
+            <IconStyle>
+                <Icon>
+                    <href>https://portal.wasserkarte.info/m/430443_1.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Placemark>
+    <Placemark>
+        <name> Bühlerweg 20 (# 94)</name>
+        <description><![CDATA[Bühlerweg 20 (# 94)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430444">Details</a>]]></description>
+        <Point>
+            <coordinates>10.1509515, 48.4140310, 0</coordinates>
+        </Point>
+        <Style>
+            <IconStyle>
+                <Icon>
+                    <href>https://portal.wasserkarte.info/m/430444_1.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Placemark>
+    <Placemark>
+        <name> Bühlerweg 16 (# 95)</name>
+        <description><![CDATA[Bühlerweg 16 (# 95)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430445">Details</a>]]></description>
+        <Point>
+            <coordinates>10.1501750, 48.4139928, 0</coordinates>
+        </Point>
+        <Style>
+            <IconStyle>
+                <Icon>
+                    <href>https://portal.wasserkarte.info/m/430445_1.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Placemark>
+    <Placemark>
+        <name> Wachholderweg (# 96)</name>
+        <description><![CDATA[Wachholderweg (# 96)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430446">Details</a>]]></description>
+        <Point>
+            <coordinates>10.1499510, 48.4143205, 0</coordinates>
+        </Point>
+        <Style>
+            <IconStyle>
+                <Icon>
+                    <href>https://portal.wasserkarte.info/m/430446_1.png</href>
                 </Icon>
             </IconStyle>
         </Style>
