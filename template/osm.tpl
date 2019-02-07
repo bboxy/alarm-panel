@@ -40,12 +40,17 @@ var m = L.map('map', {
 	layers: [osm]
 });
 
-var home = L.marker([gps_lat, gps_long]).addTo(m);
+var tgtIcon = L.icon({
+	iconUrl: 'flame.png',
+	iconSize:     [50, 63], // size of the icon
+	iconAnchor:   [25, 63], // point of the icon which will correspond to  marker's location
+	popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 
 var hydIcon = L.icon({
-	iconUrl: 'hydrant.png',
-	iconSize:     [24, 37], // size of the icon
-	iconAnchor:   [12, 37], // point of the icon which will correspond to  marker's location
+	iconUrl: 'marker_h.png',
+	iconSize:     [32, 38], // size of the icon
+	iconAnchor:   [16, 38], // point of the icon which will correspond to  marker's location
 	popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
@@ -56,6 +61,8 @@ var omnivoreStyleHelper = L.geoJSON(null, {
 });
 
 omnivore.kml('hydranten.kml', null, omnivoreStyleHelper).addTo(m);
+
+var home = L.marker([gps_lat, gps_long], {icon: tgtIcon}).addTo(m);
 
 </script>
     </body>
