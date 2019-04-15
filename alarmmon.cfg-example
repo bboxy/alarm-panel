@@ -15,7 +15,7 @@ home_long	10.14069
 zoom_sat	19
 zoom_map	16
 #Empfangene Faxe drucken?
-print_fax	1
+print_fax	0
 print_map	0
 #FMS Status empfangen/anzeigen
 enable_fms	0
@@ -33,7 +33,7 @@ alarm_time	3600
 map_server_url	http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
 
 #Auch im pop3 Postfach nach neuen Faxen suchen?
-enable_pop3	1
+enable_pop3	0
 #Username für pop3
 pop3_user	user
 #Passwort für pop3
@@ -56,7 +56,7 @@ sql_dsn		dsn
 sql_uri		127.0.0.1
 
 #gong
-enable_sound	1
+enable_sound	0
 play_file	/opt/alarm-panel/sound/gong.wav
 play_user	ffw
 
