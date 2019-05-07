@@ -4,14 +4,16 @@
 <META http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache">
 <title>Clock</title>
-<link rel="STYLESHEET" type="text/css" href="/clock.css">
+<link rel="STYLESHEET" type="text/css" href="/stylesheet.css">
 </head>
 <body>
-		<div class="clock">
+	<div class="bg_clock">
+		<div class="st_clock">
 			<iframe class="widget" scrolling="no" src="stationclock.html"></iframe>
 		</div>
-		<div id="datum" class="datum">
+		<div id="datum" class="st_datum">
 		</div>
+	</div>
 <script>
 startDate();
 

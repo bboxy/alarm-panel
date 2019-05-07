@@ -1,4 +1,4 @@
-html, body {
+html, body.st_clock {
 	background: #403030;
 	font-family: Arial, Helvetica, sans-serif;
 	width: 100%;
@@ -8,7 +8,7 @@ html, body {
 	border: 0;
 }
 
-div.clock {
+div.st_clock {
 	height: 85%;
 	border: 0 0 0 0 none;
 	padding: 0 0 0 0;
@@ -18,27 +18,11 @@ div.clock {
 	text-align: center;
 }
 
-p {
-	padding: 0 0 0 0;
-	margin: 0 0 0 0;
-}
-
-div.datum {
+div.st_datum {
 	text-align: center;
 	font-weight: bold;
 	font-size: 8.0vh;
 	color: #c0c0c0;
 	vertical-align: top;
 	text-align: center;
-}
-
-iframe.widget {
-        width: 100%;
-        height: 100%;
-        border: none;
-}
-
-#canvas {
-	width: 100%;
-	height: 100%;
 }
