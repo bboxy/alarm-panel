@@ -6,14 +6,12 @@
 <title>Clock</title>
 <link rel="STYLESHEET" type="text/css" href="/stylesheet.css">
 </head>
-<body>
-	<div class="bg_clock">
+<body class="clock">
 		<div class="st_clock">
 			<iframe class="widget" scrolling="no" src="stationclock.html"></iframe>
 		</div>
 		<div id="datum" class="st_datum">
 		</div>
-	</div>
 <script>
 startDate();
 

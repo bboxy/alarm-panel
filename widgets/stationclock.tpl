@@ -4,9 +4,9 @@
 <META http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache">
 <title>Clock</title>
-<link rel="STYLESHEET" type="text/css" href="/clock.css">
+<link rel="STYLESHEET" type="text/css" href="/stylesheet.css">
 </head>
-<body>
+<body class="clock">
 			<canvas id="clock">
 			  Dieser Browser wird leider nicht unterstützt.
 			</canvas>
