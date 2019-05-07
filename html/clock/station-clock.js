@@ -133,6 +133,8 @@ StationClock.prototype.draw = function() {
   var clock = document.getElementById(this.clockId);
   if (clock) {
     var context = clock.getContext('2d');
+    clock.width  = window.innerWidth;
+    clock.height = window.innerHeight;
     if (context) {
       this.radius = 0.75 * (Math.min(clock.width, clock.height) / 2);
       
