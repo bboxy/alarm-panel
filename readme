@@ -18,7 +18,7 @@ sudo make
 mount/dir einrichten für .tif/.pdf von fax/fritzbox/hylafax
 
 Default config für apache kopieren:
-sudo cp apacheconfig/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo cp apache-config/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 Apache config anpassen (vor allem document root, falls nicht /opt/alarm-apnel/html):
 sudo vim /etc/apache2/sites-available/000-default.conf
@@ -29,7 +29,7 @@ sudo a2enmod expires
 Apache neu starten:
 sudo apachectl restart
 
-sudo cp alarmon.cfg-example /etc/alarmmon.cfg
+sudo cp alarmmon.cfg-example /etc/alarmmon.cfg
 
 Konfiguration in alarmmon.cfg anpassen:
 sudo vim /etc/alarmmon.cfg
@@ -41,7 +41,7 @@ Initscript anpassen (vor allem pfad):
 sudo vim /etc/init.d/alarmmon.init
 
 Initscript in allen nötigen runlevels aktivieren:
-sudo update-rc.d /etc/init.d/alarmmon.init defaults
+sudo update-rc.d alarmmon.init defaults
 
 Dienst starten mit:
 sudo /etc/init.d/alarmmon.init start
