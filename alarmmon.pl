@@ -99,8 +99,10 @@ sub check_new_alarm {
 			File::DirCompare->compare($Config{remote_path},$Config{fax_path}, sub {
 				my ($remote, $fax) = @_;
 				if (! $remote) {
-					print "purging $fax\n";
-					unlink "$fax";
+					if ($Config{purge}) {
+						print "purging $fax\n";
+						unlink "$fax";
+					}
 				} else {
 					if (!process_fax(basename($remote))) {;
 						$idle = 0;

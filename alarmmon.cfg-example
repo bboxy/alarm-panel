@@ -31,6 +31,8 @@ check_interval	5
 alarm_time	3600
 #MAP Server URL
 map_server_url	http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
+#Auf dem Volume gelösche Faxe auch lokal löschen
+purge		0
 
 #Auch im pop3 Postfach nach neuen Faxen suchen?
 enable_pop3	0
