@@ -348,7 +348,7 @@ sub parse_txt {
 
 	# Alle möglichen Infos aus dem generierten Text herausparsen
 	# $mittel = `grep -v 'Rufnummer' $ocr_file | grep 'Name.*' | sed -e 's/Name.*\\(\\[:alphanum:\\]*\\)/\\1/' | sed -e '7\\.3\\..\\s\\(.*\\)/\\1/' | sed -e 's/Name\\s*.s*\\(.*\\)/\\1/'`;
-	$mittel = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep '^Name' | sed -e 's/^Name\\s*.\\s7\\.3\\..\\s*//' | sed -e 's/^Name\\s*.\\s//'`;
+	$mittel = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep '^Name' | sed -e 's/^Name\\s*..\\s7\\.3\\..\\s*//' | sed -e 's/^Name\\s*..\\s//'`;
 	$Parsed{mittel} = [split /^/, $mittel];
 
 	$geraet = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
