@@ -28,6 +28,7 @@ my $idle = 0;
 my $ffile;
 
 my $ocr_out = $Config{extract_path} . "/ocr.txt";
+my $ocr_base = $Config{extract_path} . "/ocr";
 my $ocr_file = $Config{extract_path} . "/out.txt";
 my $fax_file = $Config{extract_path} . "/fax.tif";
 
@@ -271,7 +272,7 @@ sub process_fax {
 		if ($Config{fast_ocr} == 1) {
 		        `./cheap_ocr -f font/font.tif -o $ocr_out $fax_file`;
 		} else {
-			`tesseract $fax_file basename($ocr_out, ".txt") -psm 3 -l ils`;
+			`tesseract $fax_file $ocr_base --psm 6 --oem 1 -l deu`;
 		}
 
 		print "checking if from ILS Donau Iller...";
@@ -421,7 +422,8 @@ sub parse_txt {
 	$Parsed{y_coord} =~ s/^\s+|\s+$//g;
 
 	#$Parsed{bemerkung} = `sed -n '/BEMERKUNG.*/{n;p}' < $ocr_file`;
-	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
+	#$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG.*/d' < $ocr_file`;
+	$Parsed{bemerkung} = `sed -e '1,/BEMERKUNG/d' -e '/ZUSATZINFO/,\$d' < $ocr_file`;
 	$Parsed{bemerkung} =~ s/\n//g;
 	$Parsed{bemerkung} =~ s/^\s+|\s+$//g;
 
