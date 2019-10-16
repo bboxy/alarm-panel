@@ -30,7 +30,7 @@ my $ffile;
 my $ocr_out = $Config{extract_path} . "/ocr.txt";
 my $ocr_base = $Config{extract_path} . "/ocr";
 my $ocr_file = $Config{extract_path} . "/out.txt";
-my $fax_file = $Config{extract_path} . "/fax.tif";
+my $fax_file = $Config{extract_path} . "/fax";
 
 my $continue = 1;
 
@@ -263,16 +263,20 @@ sub process_fax {
 			`lp -o orientation-requested=3 -o position=top $Config{extract_path}/*`;
 		}
 
-		# Zusammenkleben
-		print "concatenating ...\n";
-		`convert -extent 1724x2438 $Config{extract_path}/*.* -append $fax_file`;
 
 		# OCR auf neuem Fax
 		print "doing ocr...\n";
-		if ($Config{fast_ocr} == 1) {
+		if ($Config{ocr} eq "fast") {
+			`convert -extent 1724x2438 $Config{extract_path}/*.* -append $fax_file.tif`;
 		        `./cheap_ocr -f font/font.tif -o $ocr_out $fax_file`;
-		} else {
+		}
+		if ($Config{ocr} eq "tesseract") {
+			`convert -extent 1724x2438 $Config{extract_path}/*.* -append $fax_file.tif`;
 			`tesseract $fax_file $ocr_base --psm 6 --oem 1 -l deu`;
+		}
+		if ($Config{ocr} eq "gocr") {
+			`convert -extent 1724x2438 -crop 45x0+1724+2393 $Config{extract_path}/*.* -append $fax_file.pbm`;
+			`gocr -m 2 -s 17 -a 100 -o $ocr_out $fax_file.pbm`;
 		}
 
 		print "checking if from ILS Donau Iller...";

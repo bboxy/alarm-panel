@@ -23,8 +23,8 @@ enable_fms	0
 max_mittel	10
 #Default Ort
 default_ort	Straß
-#Schnelle und bessere Texterkennung aber nur bei vorgegebenem Font
-fast_ocr	1
+#Art der Texterkennung: gocr, tesseract oder fast
+ocr		gocr
 #Zeit in Sekunden bis zum nächsten Check auf neue Daten
 check_interval	5
 #Zeit in Sekunden die ein Alarm angezeigt wird (Danach idle-Screen)
