@@ -17,8 +17,6 @@ zoom_map	16
 #Empfangene Faxe drucken?
 print_fax	0
 print_map	0
-#FMS Status empfangen/anzeigen
-enable_fms	0
 #Maximale Anzahl angezeigter Mittel
 max_mittel	10
 #Default Ort

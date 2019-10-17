@@ -40,12 +40,6 @@ make_path($Config{fax_path},{mode=>0777});
 
 $SIG{TERM} = sub { $continue = 0 };
 
-if ($Config{enable_fms}) {
-	#FMS decoder starten
-	print "starting FMS decoder";
-	system("arecord -f S16_LE -t raw -c 1 -r 20000 | ./fms_decoder | ./fms.pl &");
-}
-
 my $parser;
 my $pop;
 
@@ -623,11 +617,7 @@ sub render_template {
 
 	my $template;
 
-	if($Config{enable_fms} == 1) {
-		$Parsed{status} = '<div id="status"></div>';
-	} else {
-		$Parsed{status} = '';
-	}
+	$Parsed{status} = '';
 
 	# Ins HTML-Template einfügen
 	local $/=undef;
