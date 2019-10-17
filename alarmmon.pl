@@ -269,7 +269,7 @@ sub process_fax {
 			`tesseract $fax_file $ocr_base --psm 6 --oem 1 -l deu`;
 		}
 		if ($Config{ocr} eq "gocr") {
-			`convert -extent 1724x2438 -crop 45x0+1724+2393 $Config{extract_path}/*.* -append $fax_file.pbm`;
+			`convert -extent 1724x2438 -crop 1724x2393+0+45 $Config{extract_path}/*.* -append $fax_file.pbm`;
 			`gocr -m 2 -s 17 -a 100 -o $ocr_out $fax_file.pbm`;
 		}
 
