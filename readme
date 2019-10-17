@@ -6,18 +6,20 @@ sudo git clone https://github.com/bboxy/alarm-panel.git
 
 cd alarm-panel
 
-sudo apt-get install alsa-utils apache2 libxml-simple-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libfile-dircompare-perl libmime-tools-perl make gcc libtiff-dev proj-bin sfftobmp imagemagick libgd-perl libgeo-proj4-perl poppler-utils
+sudo apt install alsa-utils apache2 libxml-simple-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libfile-dircompare-perl libmime-tools-perl make gcc libtiff-dev proj-bin sfftobmp imagemagick libgd-perl libgeo-proj4-perl poppler-utils
 
-Ggf. tesseract installieren und einrichten:
-sudo apt-get install tesseract-ocr tesseract-ocr-deu
-sudo cp ils.traineddata /usr/share/tesseract-ocr/tessdata/
+Ggf. tesseract installieren:
+sudo apt install tesseract-ocr tesseract-ocr-deu
 
-Binaries erstellen:
+Ggf. gocr installieren (für aktuelle Alarmfaxe empfohlen (David)):
+sudo apt install gocr
+
+Binaries erstellen (für Alarmfaxe mit alter Schriftart empfohlen (Faxware)):
 sudo make
 
 mount/dir einrichten für .tif/.pdf von fax/fritzbox/hylafax
 
-Etwa per autofs (sudo apt-get install autofs cifs-utils):
+Etwa per autofs (sudo apt install autofs cifs-utils):
 Dazu in /etc/auto.master hinzufügen:
 /vol	/etc/auto.fax
 
