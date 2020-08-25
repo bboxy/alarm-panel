@@ -265,8 +265,8 @@ sub process_fax {
 		        `./cheap_ocr -f font/font.tif -o $ocr_out $fax_file`;
 		}
 		if ($Config{ocr} eq "tesseract") {
-			`convert -extent 1724x2438 $Config{extract_path}/*.* -append $fax_file.tif`;
-			`tesseract $fax_file $ocr_base --psm 6 --oem 1 -l deu`;
+			`convert -extent 1724x2438 -crop 1724x2393+0+45 $Config{extract_path}/*.* -append $fax_file.tif`;
+			`tesseract $fax_file.tif $ocr_base --psm 6 --oem 1 -l deu`;
 		}
 		if ($Config{ocr} eq "gocr") {
 			`convert -extent 1724x2438 -crop 1724x2393+0+45 $Config{extract_path}/*.* -append $fax_file.pbm`;
