@@ -411,11 +411,11 @@ sub parse_txt {
 	$Parsed{epn} =~ s/\n//g;
 	$Parsed{epn} =~ s/^\s+|\s+$//g;
 
-	$Parsed{x_coord} = `grep '.*X-Koordinate.*' $ocr_file | sed -e 's/*(.)//; s/\\s*Y-Koordinate.*//; s/.*X-Koordinate\\s*.\\s*//;'`;
+	$Parsed{x_coord} = `grep '.*X.Koordinate.*' $ocr_file | sed -e 's/*(.)//; s/\\s*Y.Koordinate.*//; s/.*X.Koordinate\\s*.\\s*//;'`;
 	$Parsed{x_coord} =~ s/\n//g;
 	$Parsed{x_coord} =~ s/^\s+|\s+$//g;
 
-	$Parsed{y_coord} = `sed -e '/^.*Y-Koordinate\\s*.\\s*/!d; s///;q' < $ocr_file`;
+	$Parsed{y_coord} = `sed -e '/^.*Y.Koordinate\\s*.\\s*/!d; s///;q' < $ocr_file`;
 	$Parsed{y_coord} =~ s/\n//g;
 	$Parsed{y_coord} =~ s/^\s+|\s+$//g;
 
