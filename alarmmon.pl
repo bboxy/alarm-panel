@@ -270,7 +270,7 @@ sub process_fax {
 		}
 		if ($Config{ocr} eq "gocr") {
 			`convert -extent 1724x2438 -crop 1724x2393+0+45 $Config{extract_path}/*.* -append $fax_file.pbm`;
-			`gocr -m 2 -s 17 -a 100 -o $ocr_out $fax_file.pbm`;
+			`gocr -m 2 -s 18 -a 100 -o $ocr_out $fax_file.pbm`;
 		}
 
 		print "checking if from ILS Donau Iller...";
@@ -346,10 +346,10 @@ sub parse_txt {
 
 	# Alle möglichen Infos aus dem generierten Text herausparsen
 	# $mittel = `grep -v 'Rufnummer' $ocr_file | grep 'Name.*' | sed -e 's/Name.*\\(\\[:alphanum:\\]*\\)/\\1/' | sed -e '7\\.3\\..\\s\\(.*\\)/\\1/' | sed -e 's/Name\\s*.s*\\(.*\\)/\\1/'`;
-	$mittel = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep '^Name' | sed -e 's/^Name\\s*..\\s7\\.3\\..\\s*//' | sed -e 's/^Name\\s*..\\s//'`;
+	$mittel = `cat $ocr_file | sed -e '1,/Stichwort/d' | grep '^Name' | sed -e 's/^Name\\s*..\\s7\\.3\\..\\s*//' | sed -e 's/^Name\\s*..\\s//'`;
 	$Parsed{mittel} = [split /^/, $mittel];
 
-	$geraet = `cat $ocr_file | sed -e '1,/MITTEL/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
+	$geraet = `cat $ocr_file | sed -e '1,/Stichwort/d' | grep 'Gef.Ger.t' | sed -e 's/Gef.Ger.t//' | sed -e 's/\\s*.\\s*//'`;
 	$Parsed{geraet} = [split /^/, $geraet];
 
 	$Parsed{name} = `grep '^Name.*Rufnummer' $ocr_file | sed -e 's/ *(.*)//; s/\\s*Rufnummer.*//; s/^Name\\s*.\\s*//;'`;
