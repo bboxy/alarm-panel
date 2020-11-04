@@ -4,16 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=1024, user-scalable=no">
-    <style>
-	html { height: 100% }
-	body { height: 100%; margin: 0; padding: 0;}
-	#map{ height: 100% }
-	.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
-	.info h4 { margin: 0 0 5px; color: #777; }
-	.legend { text-align: left; line-height: 22px; color: #555; }
-	.legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
-    </style>
-    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <link rel="stylesheet" href="map.css"/>
 
 <script src="leaflet/leaflet-src.js"></script>
 <script type="text/javascript" src="leaflet/leaflet.ajax.js"></script>
