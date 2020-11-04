@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="DB_kilometrierung" id="DB_kilometrierung">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="mifcode" type="string"></SimpleField>
+	<SimpleField name="streckennu" type="int"></SimpleField>
+	<SimpleField name="richtung" type="string"></SimpleField>
+	<SimpleField name="km_i" type="float"></SimpleField>
+	<SimpleField name="km_l" type="string"></SimpleField>
+</Schema>
+<Folder><name>DB_kilometrierung</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">60</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100300000</SimpleData>
+		<SimpleData name="km_l">3,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.870078,48.389812,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">61</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100400000</SimpleData>
+		<SimpleData name="km_l">4,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.863835,48.397206,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">62</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100500000</SimpleData>
+		<SimpleData name="km_l">5,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.850634,48.396917,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">63</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100600000</SimpleData>
+		<SimpleData name="km_l">6,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.837441,48.394997,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">64</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100700000</SimpleData>
+		<SimpleData name="km_l">7,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.825492,48.391114,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5117</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100000000</SimpleData>
+		<SimpleData name="km_l">0,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.886017,48.36541,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5131</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100100000</SimpleData>
+		<SimpleData name="km_l">1,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.879079,48.373123,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5142</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100200000</SimpleData>
+		<SimpleData name="km_l">2,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.872615,48.381005,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5163</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100800000</SimpleData>
+		<SimpleData name="km_l">8,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.816962,48.385048,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5184</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100900000</SimpleData>
+		<SimpleData name="km_l">9,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.807847,48.378383,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5199</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101000000</SimpleData>
+		<SimpleData name="km_l">10,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.798678,48.371789,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5214</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101100000</SimpleData>
+		<SimpleData name="km_l">11,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.78951,48.365194,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5235</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101200000</SimpleData>
+		<SimpleData name="km_l">12,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.780341,48.358601,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5249</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101300000</SimpleData>
+		<SimpleData name="km_l">13,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.771183,48.352002,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5263</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101400000</SimpleData>
+		<SimpleData name="km_l">14,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.762002,48.345417,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5280</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101500000</SimpleData>
+		<SimpleData name="km_l">15,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.751821,48.339526,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5291</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101600000</SimpleData>
+		<SimpleData name="km_l">16,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.740137,48.335139,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5308</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101700000</SimpleData>
+		<SimpleData name="km_l">17,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.726955,48.333567,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5323</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101800000</SimpleData>
+		<SimpleData name="km_l">18,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.71448,48.334059,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5348</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">101900000</SimpleData>
+		<SimpleData name="km_l">19,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.701023,48.334609,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5355</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102000000</SimpleData>
+		<SimpleData name="km_l">20,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.687722,48.333821,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5374</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102100000</SimpleData>
+		<SimpleData name="km_l">21,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.675269,48.330386,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5388</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102200000</SimpleData>
+		<SimpleData name="km_l">22,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.661951,48.330419,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5409</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102300000</SimpleData>
+		<SimpleData name="km_l">23,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.648974,48.332173,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5421</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102400000</SimpleData>
+		<SimpleData name="km_l">24,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.635758,48.333957,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5428</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102500000</SimpleData>
+		<SimpleData name="km_l">25,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.622541,48.33574,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5450</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102600000</SimpleData>
+		<SimpleData name="km_l">26,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.609322,48.337522,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5465</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102700000</SimpleData>
+		<SimpleData name="km_l">27,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.596261,48.339709,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5478</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102800000</SimpleData>
+		<SimpleData name="km_l">28,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.584067,48.34354,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5495</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">102900000</SimpleData>
+		<SimpleData name="km_l">29,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.57199,48.347548,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5511</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103000000</SimpleData>
+		<SimpleData name="km_l">30,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.562533,48.353419,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5526</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103100000</SimpleData>
+		<SimpleData name="km_l">31,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.558749,48.362029,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5539</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103200000</SimpleData>
+		<SimpleData name="km_l">32,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.564624,48.3699,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5562</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103300000</SimpleData>
+		<SimpleData name="km_l">33,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.562344,48.378348,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5568</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103400000</SimpleData>
+		<SimpleData name="km_l">34,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.549301,48.379658,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5586</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103500000</SimpleData>
+		<SimpleData name="km_l">35,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.53612,48.379266,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5599</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103600000</SimpleData>
+		<SimpleData name="km_l">36,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.522849,48.380246,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5612</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103700000</SimpleData>
+		<SimpleData name="km_l">37,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.509615,48.380748,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5625</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103800000</SimpleData>
+		<SimpleData name="km_l">38,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.499261,48.386467,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5638</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">103900000</SimpleData>
+		<SimpleData name="km_l">39,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.489336,48.392565,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5657</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104000000</SimpleData>
+		<SimpleData name="km_l">40,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.476818,48.394563,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5677</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104100000</SimpleData>
+		<SimpleData name="km_l">41,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.463365,48.393772,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5685</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104200000</SimpleData>
+		<SimpleData name="km_l">42,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.451046,48.396914,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5693</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104300000</SimpleData>
+		<SimpleData name="km_l">43,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.440661,48.402451,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5718</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104400000</SimpleData>
+		<SimpleData name="km_l">44,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.435507,48.410761,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5724</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104500000</SimpleData>
+		<SimpleData name="km_l">45,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.430446,48.419097,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5745</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104600000</SimpleData>
+		<SimpleData name="km_l">46,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.425382,48.427433,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5754</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104700000</SimpleData>
+		<SimpleData name="km_l">47,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.420313,48.435767,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5773</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104800000</SimpleData>
+		<SimpleData name="km_l">48,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.415245,48.444102,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5786</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">104900000</SimpleData>
+		<SimpleData name="km_l">49,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.410175,48.452437,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5806</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105000000</SimpleData>
+		<SimpleData name="km_l">50,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.404116,48.460456,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5816</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105100000</SimpleData>
+		<SimpleData name="km_l">51,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.395618,48.467434,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5835</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105200000</SimpleData>
+		<SimpleData name="km_l">52,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.386544,48.4741,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5854</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105300000</SimpleData>
+		<SimpleData name="km_l">53,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.37747,48.480766,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5874</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105400000</SimpleData>
+		<SimpleData name="km_l">54,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.367521,48.486708,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5882</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105500000</SimpleData>
+		<SimpleData name="km_l">55,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.354715,48.48754,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5898</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105600000</SimpleData>
+		<SimpleData name="km_l">56,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.343767,48.482262,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5925</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105700000</SimpleData>
+		<SimpleData name="km_l">57,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.332859,48.476943,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5930</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105800000</SimpleData>
+		<SimpleData name="km_l">58,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.321237,48.472421,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5951</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">105900000</SimpleData>
+		<SimpleData name="km_l">59,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.308792,48.468895,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5967</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106000000</SimpleData>
+		<SimpleData name="km_l">60,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.296348,48.465367,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">5980</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106100000</SimpleData>
+		<SimpleData name="km_l">61,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.283897,48.461855,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6001</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106200000</SimpleData>
+		<SimpleData name="km_l">62,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.271464,48.458327,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6015</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106300000</SimpleData>
+		<SimpleData name="km_l">63,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.258818,48.460258,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6026</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106400000</SimpleData>
+		<SimpleData name="km_l">64,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.245485,48.459705,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6048</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106500000</SimpleData>
+		<SimpleData name="km_l">65,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.232939,48.456519,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6062</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106600000</SimpleData>
+		<SimpleData name="km_l">66,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.220795,48.452568,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6079</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106700000</SimpleData>
+		<SimpleData name="km_l">67,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.209658,48.44748,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6108</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106800000</SimpleData>
+		<SimpleData name="km_l">68,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.198629,48.442281,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6125</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">106900000</SimpleData>
+		<SimpleData name="km_l">69,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.18602,48.439176,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6152</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107000000</SimpleData>
+		<SimpleData name="km_l">70,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.173069,48.436604,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6158</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107100000</SimpleData>
+		<SimpleData name="km_l">71,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.160052,48.43421,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6170</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107200000</SimpleData>
+		<SimpleData name="km_l">72,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.146624,48.433228,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6188</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107300000</SimpleData>
+		<SimpleData name="km_l">73,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.133157,48.432483,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6202</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107400000</SimpleData>
+		<SimpleData name="km_l">74,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.119964,48.430918,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6221</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107500000</SimpleData>
+		<SimpleData name="km_l">75,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.108447,48.426215,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6228</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107600000</SimpleData>
+		<SimpleData name="km_l">76,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.096951,48.42149,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6254</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107700000</SimpleData>
+		<SimpleData name="km_l">77,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.085458,48.416763,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6259</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107800000</SimpleData>
+		<SimpleData name="km_l">78,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.073967,48.412035,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6268</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">107900000</SimpleData>
+		<SimpleData name="km_l">79,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.062475,48.40731,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6282</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">108000000</SimpleData>
+		<SimpleData name="km_l">80,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.050987,48.40258,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6295</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">108100000</SimpleData>
+		<SimpleData name="km_l">81,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.038693,48.399119,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6307</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">108200000</SimpleData>
+		<SimpleData name="km_l">82,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.025225,48.398478,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6322</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">108300000</SimpleData>
+		<SimpleData name="km_l">83,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.011897,48.397471,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6331</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">108400000</SimpleData>
+		<SimpleData name="km_l">84,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.001903,48.391467,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">6348</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">108500000</SimpleData>
+		<SimpleData name="km_l">85,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>9.98977,48.392527,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">22398</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100300000</SimpleData>
+		<SimpleData name="km_l">3,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.870143,48.389827,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">22404</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100400000</SimpleData>
+		<SimpleData name="km_l">4,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.864587,48.397446,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">22422</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100500000</SimpleData>
+		<SimpleData name="km_l">5,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.851399,48.397116,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">22432</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100600000</SimpleData>
+		<SimpleData name="km_l">6,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.838228,48.395199,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#DB_kilometrierung">
+		<SimpleData name="OBJECTID">22453</SimpleData>
+		<SimpleData name="mifcode">xka_mrk_836</SimpleData>
+		<SimpleData name="streckennu">5302</SimpleData>
+		<SimpleData name="richtung">0</SimpleData>
+		<SimpleData name="km_i">100700000</SimpleData>
+		<SimpleData name="km_l">7,0 + 0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>10.826112,48.391666,0</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
