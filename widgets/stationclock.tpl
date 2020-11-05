@@ -5,11 +5,6 @@
 <meta http-equiv="cache-control" content="no-cache">
 <title>Clock</title>
 <link rel="STYLESHEET" type="text/css" href="/stylesheet.css">
-</head>
-<body class="clock">
-			<canvas id="clock">
-			  Dieser Browser wird leider nicht unterstützt.
-			</canvas>
 			<!--[if lt IE 9]>
 			  <script type="text/javascript" src="excanvas.js"></script>
 			<![endif]-->
@@ -26,8 +21,20 @@
 			  clock.minuteHandBehavoir = StationClock.BouncingMinuteHand;
 			  clock.secondHandBehavoir = StationClock.BouncingSecondHand;
 
-			  window.setInterval(function() { clock.draw() }, 5);
+			  //window.setInterval(function() { clock.draw() }, 5);
+      animate();
+
+      function animate() {
+        clock.draw();
+        window.setTimeout("animate()", 50);
+      }
+
 
 			</script>
+</head>
+<body class="clock">
+			<canvas id="clock">
+			  Dieser Browser wird leider nicht unterstützt.
+			</canvas>
 </body>
 </html>
