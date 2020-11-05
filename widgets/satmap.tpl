@@ -16,10 +16,10 @@
     <script type="text/javascript">
 
     var home_town = "%landkreis%";
-    var gps_lat = %gps_lat%;
-    var gps_long = %gps_long%;
-    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, © KWF-Rettungspunkte v2.9, <a href="http://www.rettungspunkte-forst.de">www.rettungspunkte-forst.de</a>, CC-BY_ND 3.0';
+    var gps_lat = %home_lat%;
+    var gps_long = %home_long%;
+    var osmUrl='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+    var osmAttrib='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community, © KWF-Rettungspunkte v2.9, <a href="http://www.rettungspunkte-forst.de">www.rettungspunkte-forst.de</a>, CC-BY_ND 3.0';
 
     leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib);
 

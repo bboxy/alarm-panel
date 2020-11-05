@@ -30,8 +30,22 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         }
     });
 
+    //Bahnkilometer
+    //https://opendata-esri-de.opendata.arcgis.com/datasets/f57a86b0b2134ca2bdd110758b396e68_0/data?geometry=8.867%2C48.262%2C11.488%2C48.581&orderBy=streckennu&where=streckennu%20%3E%3D%205302%20AND%20streckennu%20%3C%3D%205302
+    var bahnkilometerOmnivoreStyleHelper = L.geoJSON(null, {
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {icon: L.divIcon({
+                className: 'db_icon',
+                iconSize:     [38, 38],
+                iconAnchor:   [19, 19],
+                html: '<div class="db_div1">' + feature.properties["km_l"].substr(0,feature.properties["km_l"].indexOf(',')) + '</div><div class="db_div2">0</div>'
+            })});
+        }
+    });
+
     omnivore.kml('hydranten/hydranten.kml', null, hydrantOmnivoreStyleHelper).addTo(m);
     omnivore.kml('rettungspunkte/rp_nu_ul_gz.kml', null, rettungspunktOmnivoreStyleHelper).addTo(m);
+    omnivore.kml('bahn/bahn.kml', null, bahnkilometerOmnivoreStyleHelper).addTo(m);
 
     //Ziel
     var home = L.marker([gps_lat, gps_long], {icon: L.icon({

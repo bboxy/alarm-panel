@@ -17,8 +17,8 @@
       <script type="text/javascript">
 
 var home_town = "%landkreis%";
-var home_lat = %home_lat%
-var home_long = %home_long%
+var home_lat = %home_lat%;
+var home_long = %home_long%;
 
 var landkreise = new L.GeoJSON.AJAX('weather/landkreise.json', {
 	style: landkreisstyle,

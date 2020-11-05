@@ -15,9 +15,9 @@
 <div id="map"></div>
     <script type="text/javascript">
 
-    var home_town = "Neu-Ulm";
-    var gps_lat = %gps_lat%
-    var gps_long = %gps_long%
+    var home_town = "%landkreis%";
+    var gps_lat = %gps_lat%;
+    var gps_long = %gps_long%;
     var osmUrl='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
     var osmAttrib='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community, © KWF-Rettungspunkte v2.9, <a href="http://www.rettungspunkte-forst.de">www.rettungspunkte-forst.de</a>, CC-BY_ND 3.0';
 
