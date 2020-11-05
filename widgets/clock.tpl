@@ -12,6 +12,7 @@
 		</div>
 		<div id="datum" class="st_datum">
 		</div>
+		<span class="clock_credits"><a class="clock_credits" href="http://www.3quarks.com/de/Bahnhofsuhr/index.html">Bahnhofsuhr</a> © Rüdiger Appel, Februar 2016</span>
 <script>
 startDate();
 

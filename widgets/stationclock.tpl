@@ -4,37 +4,36 @@
 <META http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache">
 <title>Clock</title>
-<link rel="STYLESHEET" type="text/css" href="/stylesheet.css">
-			<!--[if lt IE 9]>
-			  <script type="text/javascript" src="excanvas.js"></script>
-			<![endif]-->
-			<script type="text/javascript" src="clock/station-clock.js"></script>
-			<script type="text/javascript">
+<link rel="STYLESHEET" type="text/css" href="stylesheet.css">
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="excanvas.js"></script>
+<![endif]-->
+<script type="text/javascript" src="clock/station-clock.js"></script>
+<script type="text/javascript">
 
-			  var clock = new StationClock("clock");
-			  clock.body = StationClock.RoundBody;
-			  clock.dial = StationClock.GermanStrokeDial;
-			  clock.hourHand = StationClock.PointedHourHand;
-			  clock.minuteHand = StationClock.PointedMinuteHand;
-			  clock.secondHand = StationClock.HoleShapedSecondHand;
-			  clock.boss = StationClock.NoBoss;
-			  clock.minuteHandBehavoir = StationClock.BouncingMinuteHand;
-			  clock.secondHandBehavoir = StationClock.BouncingSecondHand;
+  var clock = new StationClock("clock");
+  clock.body = StationClock.RoundBody;
+  clock.dial = StationClock.GermanStrokeDial;
+  clock.hourHand = StationClock.PointedHourHand;
+  clock.minuteHand = StationClock.PointedMinuteHand;
+  clock.secondHand = StationClock.HoleShapedSecondHand;
+  clock.boss = StationClock.NoBoss;
+  clock.minuteHandBehavoir = StationClock.BouncingMinuteHand;
+  clock.secondHandBehavoir = StationClock.BouncingSecondHand;
 
-			  //window.setInterval(function() { clock.draw() }, 5);
-      animate();
+  //window.setInterval(function() { clock.draw() }, 5);
+  animate();
 
-      function animate() {
-        clock.draw();
-        window.setTimeout("animate()", 50);
-      }
+  function animate() {
+    clock.draw();
+    window.setTimeout("animate()", 50);
+  }
 
-
-			</script>
+</script>
 </head>
 <body class="clock">
-			<canvas id="clock">
-			  Dieser Browser wird leider nicht unterstützt.
-			</canvas>
+<canvas id="clock">
+  Dieser Browser wird leider nicht unterstützt.
+</canvas>
 </body>
 </html>
