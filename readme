@@ -6,17 +6,13 @@ sudo git clone https://github.com/bboxy/alarm-panel.git
 
 cd alarm-panel
 
-sudo apt install alsa-utils apache2 libxml-simple-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libfile-dircompare-perl libmime-tools-perl proj-bin sfftobmp imagemagick libgd-perl libgeo-proj4-perl poppler-utils
+sudo apt install alsa-utils apache2 libxml-simple-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libfile-dircompare-perl libmime-tools-perl proj-bin sfftobmp imagemagick libgd-perl poppler-utils
 
 Ggf. tesseract installieren:
 sudo apt install tesseract-ocr tesseract-ocr-deu
 
-Ggf. gocr installieren (für aktuelle Alarmfaxe empfohlen (David)):
+Ggf. gocr installieren:
 sudo apt install gocr
-
-Binaries erstellen (für Alarmfaxe mit alter Schriftart empfohlen (Faxware)):
-sudo apt install make gcc libtiff-dev
-sudo make
 
 mount/dir einrichten für .tif/.pdf von fax/fritzbox/hylafax
 
@@ -38,7 +34,8 @@ Apache config anpassen (vor allem document root, falls nicht /opt/alarm-apnel/ht
 sudo vim /etc/apache2/sites-available/000-default.conf
 
 Um Caching abzuschalten mod_expires aktivieren:
-sudo a2enmod rewrite expires
+sudo a2enmod expires
+sudo a2enmod rewrite
 
 Apache neu starten:
 sudo apachectl restart

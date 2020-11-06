@@ -10,7 +10,14 @@ use XML::Simple;
 use GD;
 use LWP;
 
-use Geo::Proj4;
+our $DEG_TO_RAD = (pi/180.0);
+our $RAD_TO_DEG = (180.0/pi);
+our $R_MAJOR = 6378137.000;
+our $R_MINOR = 6378137.000;
+#our $R_MINOR = 6356752.3142;
+our $PI_OVER_2 = (pi/2);
+our $ECCENT = sqrt(1.0 - ($R_MINOR / $R_MAJOR) * ($R_MINOR / $R_MAJOR));
+our $ECCENTH = (0.5 * $ECCENT);
 
 my $lat;
 my $lon;
@@ -22,8 +29,15 @@ my $mapHeight;
 my $tileBase;
 my $outputFile;
 
-my $markersKML = XMLin('html/hydranten.kml');
-my $markerFile = 'html/marker_h.png';
+my $hydranten_kml = XMLin('html/hydranten/hydranten.kml');
+my $hydranten_icon = 'html/hydranten/marker_h.png';
+
+my $bahnkilometer_kml = XMLin('html/bahn/bahn.kml');
+my $bahnkilometer_icon = 'html/hydranten/marker_h.png';
+
+my $rettungspunkte_kml = XMLin('html/rettungspunkte/rp_nu_ul_gz.kml');
+my $rettungspunkte_icon = 'html/rettungspunkte/marker_r.png';
+
 my $flameFile = 'html/flame.png';
 
 my $opts = GetOptions(
@@ -54,10 +68,10 @@ my $markerCenterAbsoluteX;
 my $markerCenterAbsoluteY;
 
 # project to the Popular Visualisation Mercator projection
-my $toPopularVisMercator = Geo::Proj4->new ('+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over');
-my ($centerInMercX, $centerInMercY) = $toPopularVisMercator->forward($lat, $lon);
+#my $toPopularVisMercator = Geo::Proj4->new ('+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over');
+my ($centerInMercX, $centerInMercY) = mercate($lat, $lon);
 
-my ($projExtentX, $projExtentY) = $toPopularVisMercator->forward(-85, 180);
+my ($projExtentX, $projExtentY) = mercate(-85, 180);
 
 $projExtentY = -$projExtentX; # FIXME why is this really needed?
 
@@ -118,15 +132,14 @@ for (my $tx = $tileRefAX; $tx <= $tileRefBX; $tx++) {
   }
 }
 
-my $marker = GD::Image->new($markerFile);
-#$img = GD::Image->new('map.png');
+my $marker = GD::Image->new($hydranten_icon);
 
-while (my ($key, $folder) = each %{$markersKML->{Document}{Placemark}})  {
+while (my ($key, $folder) = each %{$hydranten_kml->{Document}{Placemark}})  {
     my ($markerLon, $markerLat) = split(',',$folder->{Point}->{coordinates});
-    ($markerCenterInMercX, $markerCenterInMercY) = $toPopularVisMercator->forward($markerLat, $markerLon);
+    ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
 
     # TODO we can reuse those values?!
-    ($markerProjExtentX, $markerProjExtentY) = $toPopularVisMercator->forward(-85, 180);
+    ($markerProjExtentX, $markerProjExtentY) = mercate(-85, 180);
 
     $markerProjExtentY = -$markerProjExtentX; # FIXME why is this really needed?
 
@@ -140,6 +153,7 @@ while (my ($key, $folder) = each %{$markersKML->{Document}{Placemark}})  {
     $img->copy($marker, $markerCenterAbsoluteX, $markerCenterAbsoluteY, 0, 0, $marker->width, $marker->height);
 }
 
+
 my $flame = GD::Image->new($flameFile);
 $img->copy($flame, $mapWidth / 2 - ($flame->width / 2), $mapHeight / 2 - $flame->height, 0, 0, $flame->width, $flame->height);
 
@@ -148,4 +162,23 @@ binmode STDOUT;
 open my $output_fh, ">$outputFile";
 print $output_fh $img->png();
 close $output_fh;
+
+sub mercate {
+    return ($R_MAJOR * $DEG_TO_RAD * $_[1], _mercate_lat($_[0]));
+}
+
+sub _mercate_lat {
+#
+#	limit the polar damage
+#
+    my $phi = $DEG_TO_RAD * (
+    	  ($_[0] > 89.5) ? 89.5
+		: ($_[0] < -89.5) ?-89.5
+		: $_[0]);
+    my $sinphi = sin($phi);
+    my $con = $ECCENT * $sinphi;
+    $con = ((1.0 - $con)/(1.0 + $con)) ** $ECCENTH;
+    my $ts = tan(0.5 * ($PI_OVER_2 - $phi))/$con;
+    return 0 - $R_MAJOR * log($ts);
+}
 
