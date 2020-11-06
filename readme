@@ -38,7 +38,7 @@ Apache config anpassen (vor allem document root, falls nicht /opt/alarm-apnel/ht
 sudo vim /etc/apache2/sites-available/000-default.conf
 
 Um Caching abzuschalten mod_expires aktivieren:
-sudo a2enmod expires
+sudo a2enmod rewrite expires
 
 Apache neu starten:
 sudo apachectl restart

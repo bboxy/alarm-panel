@@ -7,77 +7,46 @@
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
 <script src="scripts.js"></script>
 </head>
-<body onload="reloadWatch(); reloadFMS(); startTime();">
-<table>
-	<tr>
-		<td class="header">
-			<table>
-				<tr>
-					<td class="header_left">
-						<div class="schlagwort">
-							%schlagwort%
-						<div>
-						<div class="info">
-							%bemerkung%
-						</div>
-					</td>
-					<td class="header_right">
-						<table>
-							<tr>
-								<td>
-									<div class="addr">
-										%adresse%
-									</div>
-								</td>
-								<td>
-									<div class="logo">
-										<img src="logo.png" class="logo">
-									</div>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td class="main">
-			<table>
-				<tr>
-					<td class="map_left">
-						<iframe class="widget" scrolling="no" src="osm.html"></iframe>
-					</td>
-					<td class="map_right">
-						<iframe class="widget" scrolling="no" src="sat.html"></iframe>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td class="bottom">
-			<table>
-				<tr>
-					<td class="bottom_tile">
-						<div class="alarm_txt">Alarmierungszeit:</div>
-						<div id="alarmzeit" class="alarm">%alarmzeit%</div>
-					</td>
-					<td class="bottom_tile">
-						<div class="penalty_txt">Zeit seit Alarmierung:</div>
-						<div id="penalty" class="penalty"></div>
-					</td>
-					<td class="bottom_tile">
-						<div class="alarm_txt">aktuelle Zeit:</div>
-						<div id="clock" class="clock"></div>
-					</td>
-					<td class="bottom_status">
-						%status%
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
+<body onload="reloadWatch(); startTime();">
+<div class="header_1">
+	<div class="schlagwort">
+		%schlagwort%
+	</div>
+	<div class="info">
+		%bemerkung%
+	</div>
+</div>
+<div class="header_2">
+	<div class="addr">
+		%adresse%
+	</div>
+</div>
+<div class="header_3">
+	<div class="logo">
+		<img src="logo.png" class="logo">
+	</div>
+</div>
+
+<div class="maptpl_main_1">
+<iframe class="widget" scrolling="no" src="sat.html"></iframe>
+</div>
+<div class="maptpl_main_2">
+<iframe class="widget" scrolling="no" src="osm.html"></iframe>
+</div>
+
+<div class="bottom_1">
+<div class="alarm_txt">Alarmierungszeit:</div>
+<div id="alarmzeit" class="alarm">%alarmzeit%</div>
+</div>
+<div class="bottom_2">
+<div class="penalty_txt">Zeit seit Alarmierung:</div>
+<div id="penalty" class="penalty"></div>
+</div>
+<div class="bottom_3">
+<div class="alarm_txt">aktuelle Zeit:</div>
+<div id="clock" class="clock"></div>
+</div>
+<div class="bottom_4">
+</div>
 </body>
 </html>

@@ -63,6 +63,7 @@ function reloadWatch() {
         ajax.onreadystatechange = function(){
             if(this.readyState == 4){
                 if(this.status == 200){
+    console.log("watch" + timestamp);
                     if (timestamp == null) {
                         timestamp = this.responseText;
                     } else {
@@ -71,7 +72,7 @@ function reloadWatch() {
                             //this.responseText;
                             window.location.replace(window.location.href);
                             //window.location.reload(false);
-                            //console.log("reloading");
+                            console.log("reloading");
                         }
                         //console.log("status " + this.status);
                         //console.log("readyState " + this.readyState);

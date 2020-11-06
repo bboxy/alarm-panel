@@ -7,20 +7,12 @@
 <link rel="STYLESHEET" type="text/css" href="stylesheet.css">
 <script src="scripts.js"></script>
 </head>
-<body onload="reloadWatch(); reloadFMS();">
-
-<table>
-	<tr>
-		<td class="idle_left">
-			<iframe class="widget" scrolling="no" src="clock.html"></iframe>
-		</td>
-		<td class="idle_right">
-			<iframe class="widget" scrolling="no" src="weather.html"></iframe>
-		</td>
-	</tr>
-</table>
-<div class="idle_status">
-%status%
+<body onload="reloadWatch();">
+<div class="idle_left">
+	<iframe class="widget" scrolling="no" src="clock.html"></iframe>
+</div>
+<div class="idle_right">
+	<iframe class="widget" scrolling="no" src="weather.html"></iframe>
 </div>
 <!--div class="idle_logo">
 	<img class="logo" src="logo.png">
