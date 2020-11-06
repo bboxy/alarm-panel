@@ -5,7 +5,7 @@ use strict;
 use Getopt::Long;
 use POSIX; # for floor function
 use Math::Trig qw(pi deg2rad asinh);
-use XML::Simple;
+use XML::Twig;
 
 use GD;
 use LWP;
@@ -29,13 +29,15 @@ my $mapHeight;
 my $tileBase;
 my $outputFile;
 
-my $hydranten_kml = XMLin('html/hydranten/hydranten.kml');
+my $hydranten_kml = XML::Twig->new();
+$hydranten_kml->parsefile('html/hydranten/hydranten.kml');
 my $hydranten_icon = 'html/hydranten/marker_h.png';
 
-my $bahnkilometer_kml = XMLin('html/bahn/bahn.kml');
-my $bahnkilometer_icon = 'html/hydranten/marker_h.png';
+my $bahnkilometer_kml = XML::Twig->new();
+$bahnkilometer_kml->parsefile('html/bahn/bahn.kml');
 
-my $rettungspunkte_kml = XMLin('html/rettungspunkte/rp_nu_ul_gz.kml');
+my $rettungspunkte_kml = XML::Twig->new();
+$rettungspunkte_kml->parsefile('html/rettungspunkte/rp_nu_ul_gz.kml');
 my $rettungspunkte_icon = 'html/rettungspunkte/marker_r.png';
 
 my $flameFile = 'html/flame.png';
@@ -134,8 +136,8 @@ for (my $tx = $tileRefAX; $tx <= $tileRefBX; $tx++) {
 
 my $marker = GD::Image->new($hydranten_icon);
 
-while (my ($key, $folder) = each %{$hydranten_kml->{Document}{Placemark}})  {
-    my ($markerLon, $markerLat) = split(',',$folder->{Point}->{coordinates});
+foreach my $placemark($hydranten_kml->get_xpath('//Document/Placemark/Point/coordinates')) {
+    my ($markerLon, $markerLat) = split(',',$placemark->text);
     ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
 
     # TODO we can reuse those values?!
@@ -150,6 +152,30 @@ while (my ($key, $folder) = each %{$hydranten_kml->{Document}{Placemark}})  {
     # get absolute pixel of centre point
     $markerCenterAbsoluteX = $markerCenterRatioX * $worldSizeInPixels - $topLeftPixelX - ($marker->width / 2);
     $markerCenterAbsoluteY = $markerCenterRatioY * $worldSizeInPixels - $topLeftPixelY - ($marker->height);
+    $img->copy($marker, $markerCenterAbsoluteX, $markerCenterAbsoluteY, 0, 0, $marker->width, $marker->height);
+}
+
+my $marker = GD::Image->new($rettungspunkte_icon);
+
+foreach my $placemark($rettungspunkte_kml->get_xpath('//Document/Placemark')) {
+    my $point = $placemark->first_child('Point');
+    my $coords = $point->first_child_text('coordinates');
+    #print($coords . "\n");
+    my ($markerLon, $markerLat) = split(',',$coords);
+    ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
+
+    # TODO we can reuse those values?!
+    ($markerProjExtentX, $markerProjExtentY) = mercate(-85, 180);
+
+    $markerProjExtentY = -$markerProjExtentX; # FIXME why is this really needed?
+
+    # transform range of x and y to 0-1 and shift origin to top left corner
+    $markerCenterRatioX = (1 + ($markerCenterInMercX / $markerProjExtentX)) / 2;
+    $markerCenterRatioY = (1 - ($markerCenterInMercY / -$markerProjExtentY)) / 2;
+
+    # get absolute pixel of centre point
+    $markerCenterAbsoluteX = $markerCenterRatioX * $worldSizeInPixels - $topLeftPixelX - ($marker->width / 2);
+    $markerCenterAbsoluteY = $markerCenterRatioY * $worldSizeInPixels - $topLeftPixelY - ($marker->height / 2);
     $img->copy($marker, $markerCenterAbsoluteX, $markerCenterAbsoluteY, 0, 0, $marker->width, $marker->height);
 }
 

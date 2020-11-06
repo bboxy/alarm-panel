@@ -18,8 +18,7 @@
 		<SimpleData name="RP_Nr">NU-1011</SimpleData>
 		<SimpleData name="WGS_Laenge">10.075889488000030</SimpleData>
 		<SimpleData name="WGS_Breite">48.276385676000075</SimpleData>
-		<SimpleData name="Ortsbeschr">Vöhringen West
-Rathaus</SimpleData>
+		<SimpleData name="Ortsbeschr">Vöhringen West Rathaus</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -79,8 +78,7 @@ Rathaus</SimpleData>
 		<SimpleData name="RP_Nr">NU-1022</SimpleData>
 		<SimpleData name="WGS_Laenge">10.086424791000068</SimpleData>
 		<SimpleData name="WGS_Breite">48.452105736000100</SimpleData>
-		<SimpleData name="Ortsbeschr">Klosterbräustuben
-Oberelchingen Parkplatz</SimpleData>
+		<SimpleData name="Ortsbeschr">Klosterbräustuben Oberelchingen Parkplatz</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -92,9 +90,7 @@ Oberelchingen Parkplatz</SimpleData>
 		<SimpleData name="RP_Nr">NU-1012</SimpleData>
 		<SimpleData name="WGS_Laenge">10.090097777000040</SimpleData>
 		<SimpleData name="WGS_Breite">48.213453435000083</SimpleData>
-		<SimpleData name="Ortsbeschr">Illertissen West
-Kreisverkehr, Dietenheimer Straße
-(Dornweiler)</SimpleData>
+		<SimpleData name="Ortsbeschr">Illertissen West Kreisverkehr, Dietenheimer Straße (Dornweiler)</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -106,8 +102,7 @@ Kreisverkehr, Dietenheimer Straße
 		<SimpleData name="RP_Nr">NU-1013</SimpleData>
 		<SimpleData name="WGS_Laenge">10.119947605000050</SimpleData>
 		<SimpleData name="WGS_Breite">48.229348256000037</SimpleData>
-		<SimpleData name="Ortsbeschr">Illertissen Ost
-Einzelgehöft vor der Abzweigung zum Flugplatz</SimpleData>
+		<SimpleData name="Ortsbeschr">Illertissen Ost Einzelgehöft vor der Abzweigung zum Flugplatz</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -119,8 +114,7 @@ Einzelgehöft vor der Abzweigung zum Flugplatz</SimpleData>
 		<SimpleData name="RP_Nr">NU-1015</SimpleData>
 		<SimpleData name="WGS_Laenge">10.119718197000054</SimpleData>
 		<SimpleData name="WGS_Breite">48.147404434000059</SimpleData>
-		<SimpleData name="Ortsbeschr">Autobahnanschlußstelle
-AS 125, Pendlerparkplatz im Süden der Autobahnausfahrt (P+R)</SimpleData>
+		<SimpleData name="Ortsbeschr">Autobahnanschlußstelle AS 125, Pendlerparkplatz im Süden der Autobahnausfahrt (P+R)</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -132,8 +126,7 @@ AS 125, Pendlerparkplatz im Süden der Autobahnausfahrt (P+R)</SimpleData>
 		<SimpleData name="RP_Nr">NU-1016</SimpleData>
 		<SimpleData name="WGS_Laenge">10.170001902000024</SimpleData>
 		<SimpleData name="WGS_Breite">48.146839621000019</SimpleData>
-		<SimpleData name="Ortsbeschr">Ortsmitte
-Feuerwehrhaus und Bushaltestelle</SimpleData>
+		<SimpleData name="Ortsbeschr">Ortsmitte Feuerwehrhaus und Bushaltestelle</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -157,9 +150,7 @@ Feuerwehrhaus und Bushaltestelle</SimpleData>
 		<SimpleData name="RP_Nr">NU-1017</SimpleData>
 		<SimpleData name="WGS_Laenge">10.191276665000032</SimpleData>
 		<SimpleData name="WGS_Breite">48.173571011000043</SimpleData>
-		<SimpleData name="Ortsbeschr">Oberroth
-Ortsmitte
-Gasthof Reitinger</SimpleData>
+		<SimpleData name="Ortsbeschr">Oberroth Ortsmitte Gasthof Reitinger</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -183,9 +174,7 @@ Gasthof Reitinger</SimpleData>
 		<SimpleData name="RP_Nr">NU-1002</SimpleData>
 		<SimpleData name="WGS_Laenge">10.241727127000045</SimpleData>
 		<SimpleData name="WGS_Breite">48.294562546000066</SimpleData>
-		<SimpleData name="Ortsbeschr">Kirche
-Bräuhaus Weitman
-(Metzgerei)</SimpleData>
+		<SimpleData name="Ortsbeschr">Kirche Bräuhaus Weitman (Metzgerei)</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -197,8 +186,7 @@ Bräuhaus Weitman
 		<SimpleData name="RP_Nr">NU-1007</SimpleData>
 		<SimpleData name="WGS_Laenge">10.061951602000022</SimpleData>
 		<SimpleData name="WGS_Breite">48.345551176000072</SimpleData>
-		<SimpleData name="Ortsbeschr">Wanderparkplatz
-westlich von Hausen</SimpleData>
+		<SimpleData name="Ortsbeschr">Wanderparkplatz westlich von Hausen</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -282,9 +270,7 @@ westlich von Hausen</SimpleData>
 		<SimpleData name="RP_Nr">NU-1018</SimpleData>
 		<SimpleData name="WGS_Laenge">10.175386554000056</SimpleData>
 		<SimpleData name="WGS_Breite">48.198020682000035</SimpleData>
-		<SimpleData name="Ortsbeschr">Unterroth
-Tankstelle
-(Richtung Buch)</SimpleData>
+		<SimpleData name="Ortsbeschr">Unterroth Tankstelle (Richtung Buch)</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
@@ -3430,8 +3416,7 @@ Tankstelle
 		<SimpleData name="RP_Nr">GZ-1022</SimpleData>
 		<SimpleData name="WGS_Laenge">10.329173515000036</SimpleData>
 		<SimpleData name="WGS_Breite">48.392545421000072</SimpleData>
-		<SimpleData name="Ortsbeschr">Aussiedlerhof, Kreuzung Richtung Ebersbach
-</SimpleData>
+		<SimpleData name="Ortsbeschr">Aussiedlerhof, Kreuzung Richtung Ebersbach</SimpleData>
 		<SimpleData name="Schild">unbekannt</SimpleData>
 		<SimpleData name="Urheber">Bayerische Staatsforsten</SimpleData>
 		<SimpleData name="Bundesland">Bayern</SimpleData>
