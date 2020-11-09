@@ -62,8 +62,6 @@ my $worldSizeInPixels = $tileSizeInPixels * $numTilesAlongSingleAxis;
 
 my $markerCenterInMercX;
 my $markerCenterInMercY;
-my $markerProjExtentX;
-my $markerProjExtentY;
 my $markerCenterRatioX;
 my $markerCenterRatioY;
 my $markerCenterAbsoluteX;
@@ -72,14 +70,11 @@ my $markerCenterAbsoluteY;
 # project to the Popular Visualisation Mercator projection
 #my $toPopularVisMercator = Geo::Proj4->new ('+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over');
 my ($centerInMercX, $centerInMercY) = mercate($lat, $lon);
-
 my ($projExtentX, $projExtentY) = mercate(-85, 180);
-
-$projExtentY = -$projExtentX; # FIXME why is this really needed?
 
 # transform range of x and y to 0-1 and shift origin to top left corner
 my $centerRatioX = (1 + ($centerInMercX / $projExtentX)) / 2;
-my $centerRatioY = (1 - ($centerInMercY / -$projExtentY)) / 2;
+my $centerRatioY = (1 - ($centerInMercY / $projExtentX)) / 2;
 
 # get absolute pixel of centre point
 my $centerAbsoluteX = $centerRatioX * $worldSizeInPixels;
@@ -140,14 +135,9 @@ foreach my $placemark($hydranten_kml->get_xpath('//Document/Placemark/Point/coor
     my ($markerLon, $markerLat) = split(',',$placemark->text);
     ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
 
-    # TODO we can reuse those values?!
-    ($markerProjExtentX, $markerProjExtentY) = mercate(-85, 180);
-
-    $markerProjExtentY = -$markerProjExtentX; # FIXME why is this really needed?
-
     # transform range of x and y to 0-1 and shift origin to top left corner
-    $markerCenterRatioX = (1 + ($markerCenterInMercX / $markerProjExtentX)) / 2;
-    $markerCenterRatioY = (1 - ($markerCenterInMercY / -$markerProjExtentY)) / 2;
+    $markerCenterRatioX = (1 + ($markerCenterInMercX / $projExtentX)) / 2;
+    $markerCenterRatioY = (1 - ($markerCenterInMercY / $projExtentX)) / 2;
 
     # get absolute pixel of centre point
     $markerCenterAbsoluteX = $markerCenterRatioX * $worldSizeInPixels - $topLeftPixelX - ($marker->width / 2);
@@ -155,27 +145,29 @@ foreach my $placemark($hydranten_kml->get_xpath('//Document/Placemark/Point/coor
     $img->copy($marker, $markerCenterAbsoluteX, $markerCenterAbsoluteY, 0, 0, $marker->width, $marker->height);
 }
 
-my $marker = GD::Image->new($rettungspunkte_icon);
+$marker = GD::Image->new(38,50);
+$marker->copy(GD::Image->new($rettungspunkte_icon),0,0,0,0,38,38);
+my $black = $marker->colorAllocate(0,0,0);
+my $white = $marker->colorAllocate(255,255,255);
 
 foreach my $placemark($rettungspunkte_kml->get_xpath('//Document/Placemark')) {
-    my $point = $placemark->first_child('Point');
-    my $coords = $point->first_child_text('coordinates');
-    #print($coords . "\n");
+    my $coords = $placemark->get_xpath('./Point/coordinates', 0)->text;
+    my $name = $placemark->get_xpath('./ExtendedData/SchemaData/SimpleData[@name="RP_Nr"]', 0)->text;
+    #print($coords . " " . $name . "\n");
     my ($markerLon, $markerLat) = split(',',$coords);
     ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
 
-    # TODO we can reuse those values?!
-    ($markerProjExtentX, $markerProjExtentY) = mercate(-85, 180);
-
-    $markerProjExtentY = -$markerProjExtentX; # FIXME why is this really needed?
-
     # transform range of x and y to 0-1 and shift origin to top left corner
-    $markerCenterRatioX = (1 + ($markerCenterInMercX / $markerProjExtentX)) / 2;
-    $markerCenterRatioY = (1 - ($markerCenterInMercY / -$markerProjExtentY)) / 2;
+    $markerCenterRatioX = (1 + ($markerCenterInMercX / $projExtentX)) / 2;
+    $markerCenterRatioY = (1 - ($markerCenterInMercY / $projExtentX)) / 2;
 
     # get absolute pixel of centre point
     $markerCenterAbsoluteX = $markerCenterRatioX * $worldSizeInPixels - $topLeftPixelX - ($marker->width / 2);
     $markerCenterAbsoluteY = $markerCenterRatioY * $worldSizeInPixels - $topLeftPixelY - ($marker->height / 2);
+
+    $marker->filledRectangle(0,38,38,50,$white);
+    $marker->string(gdTinyFont,2,40,$name,$black);
+
     $img->copy($marker, $markerCenterAbsoluteX, $markerCenterAbsoluteY, 0, 0, $marker->width, $marker->height);
 }
 
