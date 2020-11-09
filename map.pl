@@ -165,8 +165,35 @@ foreach my $placemark($rettungspunkte_kml->get_xpath('//Document/Placemark')) {
     $markerCenterAbsoluteX = $markerCenterRatioX * $worldSizeInPixels - $topLeftPixelX - ($marker->width / 2);
     $markerCenterAbsoluteY = $markerCenterRatioY * $worldSizeInPixels - $topLeftPixelY - ($marker->height / 2);
 
-    $marker->filledRectangle(0,38,38,50,$white);
+    $marker->filledRectangle(0,38,37,49,$white);
     $marker->string(gdTinyFont,2,40,$name,$black);
+
+    $img->copy($marker, $markerCenterAbsoluteX, $markerCenterAbsoluteY, 0, 0, $marker->width, $marker->height);
+}
+
+$marker = GD::Image->new(38,38);
+
+foreach my $placemark($bahnkilometer_kml->get_xpath('//Document/Placemark')) {
+    my $coords = $placemark->get_xpath('./Point/coordinates', 0)->text;
+    my $name = $placemark->get_xpath('./ExtendedData/SchemaData/SimpleData[@name="km_l"]', 0)->text;
+    $name =~ s/,.*//;
+    #$name = (split /,/, $name, 2)[0];
+    print($coords . " " . $name . "\n");
+    my ($markerLon, $markerLat) = split(',',$coords);
+    ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
+
+    # transform range of x and y to 0-1 and shift origin to top left corner
+    $markerCenterRatioX = (1 + ($markerCenterInMercX / $projExtentX)) / 2;
+    $markerCenterRatioY = (1 - ($markerCenterInMercY / $projExtentX)) / 2;
+
+    # get absolute pixel of centre point
+    $markerCenterAbsoluteX = $markerCenterRatioX * $worldSizeInPixels - $topLeftPixelX - ($marker->width / 2);
+    $markerCenterAbsoluteY = $markerCenterRatioY * $worldSizeInPixels - $topLeftPixelY - ($marker->height / 2);
+
+    $marker->filledRectangle(0,0,37,37,$white);
+    $marker->rectangle(0,0,37,37,$black);
+    $marker->string(gdMediumBoldFont,12,2,$name,$black);
+    $marker->string(gdMediumBoldFont,15,20,"0",$black);
 
     $img->copy($marker, $markerCenterAbsoluteX, $markerCenterAbsoluteY, 0, 0, $marker->width, $marker->height);
 }
