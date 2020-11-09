@@ -10,15 +10,6 @@ use XML::Twig;
 use GD;
 use LWP;
 
-our $DEG_TO_RAD = (pi/180.0);
-our $RAD_TO_DEG = (180.0/pi);
-our $R_MAJOR = 6378137.000;
-our $R_MINOR = 6378137.000;
-#our $R_MINOR = 6356752.3142;
-our $PI_OVER_2 = (pi/2);
-our $ECCENT = sqrt(1.0 - ($R_MINOR / $R_MAJOR) * ($R_MINOR / $R_MAJOR));
-our $ECCENTH = (0.5 * $ECCENT);
-
 my $lat;
 my $lon;
 my $zoomLevel;
@@ -69,8 +60,8 @@ my $markerCenterAbsoluteY;
 
 # project to the Popular Visualisation Mercator projection
 #my $toPopularVisMercator = Geo::Proj4->new ('+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over');
-my ($centerInMercX, $centerInMercY) = mercate($lat, $lon);
-my ($projExtentX, $projExtentY) = mercate(-85, 180);
+my ($centerInMercX, $centerInMercY) = to_mercator($lat, $lon);
+my ($projExtentX, $projExtentY) = to_mercator(-85, 180);
 
 # transform range of x and y to 0-1 and shift origin to top left corner
 my $centerRatioX = (1 + ($centerInMercX / $projExtentX)) / 2;
@@ -133,7 +124,7 @@ my $marker = GD::Image->new($hydranten_icon);
 
 foreach my $placemark($hydranten_kml->get_xpath('//Document/Placemark/Point/coordinates')) {
     my ($markerLon, $markerLat) = split(',',$placemark->text);
-    ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
+    ($markerCenterInMercX, $markerCenterInMercY) = to_mercator($markerLat, $markerLon);
 
     # transform range of x and y to 0-1 and shift origin to top left corner
     $markerCenterRatioX = (1 + ($markerCenterInMercX / $projExtentX)) / 2;
@@ -155,7 +146,7 @@ foreach my $placemark($rettungspunkte_kml->get_xpath('//Document/Placemark')) {
     my $name = $placemark->get_xpath('./ExtendedData/SchemaData/SimpleData[@name="RP_Nr"]', 0)->text;
     #print($coords . " " . $name . "\n");
     my ($markerLon, $markerLat) = split(',',$coords);
-    ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
+    ($markerCenterInMercX, $markerCenterInMercY) = to_mercator($markerLat, $markerLon);
 
     # transform range of x and y to 0-1 and shift origin to top left corner
     $markerCenterRatioX = (1 + ($markerCenterInMercX / $projExtentX)) / 2;
@@ -163,7 +154,7 @@ foreach my $placemark($rettungspunkte_kml->get_xpath('//Document/Placemark')) {
 
     # get absolute pixel of centre point
     $markerCenterAbsoluteX = $markerCenterRatioX * $worldSizeInPixels - $topLeftPixelX - ($marker->width / 2);
-    $markerCenterAbsoluteY = $markerCenterRatioY * $worldSizeInPixels - $topLeftPixelY - ($marker->height / 2);
+    $markerCenterAbsoluteY = $markerCenterRatioY * $worldSizeInPixels - $topLeftPixelY - ($marker->width / 2); #center on the dot on icon, that is why we use width here;
 
     $marker->filledRectangle(0,38,37,49,$white);
     $marker->string(gdTinyFont,2,40,$name,$black);
@@ -178,9 +169,9 @@ foreach my $placemark($bahnkilometer_kml->get_xpath('//Document/Placemark')) {
     my $name = $placemark->get_xpath('./ExtendedData/SchemaData/SimpleData[@name="km_l"]', 0)->text;
     $name =~ s/,.*//;
     #$name = (split /,/, $name, 2)[0];
-    print($coords . " " . $name . "\n");
+#    print($coords . " " . $name . "\n");
     my ($markerLon, $markerLat) = split(',',$coords);
-    ($markerCenterInMercX, $markerCenterInMercY) = mercate($markerLat, $markerLon);
+    ($markerCenterInMercX, $markerCenterInMercY) = to_mercator($markerLat, $markerLon);
 
     # transform range of x and y to 0-1 and shift origin to top left corner
     $markerCenterRatioX = (1 + ($markerCenterInMercX / $projExtentX)) / 2;
@@ -208,22 +199,15 @@ open my $output_fh, ">$outputFile";
 print $output_fh $img->png();
 close $output_fh;
 
-sub mercate {
-    return ($R_MAJOR * $DEG_TO_RAD * $_[1], _mercate_lat($_[0]));
-}
+sub to_mercator {
+    my $r = 6378137.000;
+    my $x = $_[0];
+    my $y = $_[1];
 
-sub _mercate_lat {
-#
-#	limit the polar damage
-#
-    my $phi = $DEG_TO_RAD * (
-    	  ($_[0] > 89.5) ? 89.5
-		: ($_[0] < -89.5) ?-89.5
-		: $_[0]);
-    my $sinphi = sin($phi);
-    my $con = $ECCENT * $sinphi;
-    $con = ((1.0 - $con)/(1.0 + $con)) ** $ECCENTH;
-    my $ts = tan(0.5 * ($PI_OVER_2 - $phi))/$con;
-    return 0 - $R_MAJOR * log($ts);
-}
+    if ($x > 89.5) { $x = 89.5; }
+    if ($x < -89.5) { $x = -89.5; }
 
+    my $phi = (pi/180.0) * $x;
+    my $ts = tan(((pi / 2) - $phi) / 2.0);
+    return ($r * (pi / 180.0) * $y, -$r * log($ts));
+}

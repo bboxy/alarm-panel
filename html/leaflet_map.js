@@ -9,11 +9,11 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
     //Hydranten
     var hydrantOmnivoreStyleHelper = L.geoJSON(null, {
         pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, {icon: L.icon({
-                iconUrl: 'hydranten/marker_h.png',
+            return L.marker(latlng, {icon: L.divIcon({
+                className: 'hy_icon',
                 iconSize:     [32, 38],
                 iconAnchor:   [16, 38],
-                popupAnchor:  [-3, -76]
+                html: '<img class="hy_image" src="hydranten/marker_h.png"/>'
             })});
         }
     });
