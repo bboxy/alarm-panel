@@ -6,9 +6,9 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         layers: [osm]
     });
 
-    m.on('zommend', function(e) {
-	console.log(m.getZoom());
-	console.log(e);
+    L.control.scale().addTo(m);
+
+    m.on('zoomend', function(e) {
     //    if (m.getZoom() < 14) {
     //        hydrantenLayer.remove();
     //    } else {
@@ -66,7 +66,7 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         iconUrl: 'flame.png',
         iconSize:     [50, 63],
         iconAnchor:   [25, 63],
-        popupAnchor:  [-3, -76]
+       // popupAnchor:  [-3, -76]
     })}).addTo(m);
 
 }
