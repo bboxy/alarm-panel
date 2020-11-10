@@ -8,6 +8,9 @@
 <script src="scripts.js"></script>
 </head>
 <body onload="reloadWatch(); startTime();">
+<audio autoplay>
+    <source src="%play_file%">
+</audio>
 <div class="header_1">
 	<div class="schlagwort">
 		%schlagwort%

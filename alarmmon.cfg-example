@@ -16,6 +16,7 @@ zoom_sat	19
 zoom_map	16
 #Empfangene Faxe drucken?
 print_fax	0
+#Karte vom Einsatzrt drucken?
 print_map	0
 #Maximale Anzahl angezeigter Mittel
 max_mittel	10
@@ -45,20 +46,8 @@ pop3_use_ssl	true
 #Ablageort für extrahierte Dokumente aus E-Mails
 pop3_path	/tmp/pop3
 
-enable_sql	0
-
-sql_login	user
-
-sql_password	secret
-
-sql_dsn		dsn
-
-sql_uri		127.0.0.1
-
-#gong
-enable_sound	0
-play_file	/opt/alarm-panel/sound/gong.wav
-play_user	ffw
+#Bei Alarm im Browser Sound abspielen? Option leer lassen falls nicht erwünscht.
+play_file	sound/gong.mp3
 
 #Alarmierung über divera API
 enable_divera	0

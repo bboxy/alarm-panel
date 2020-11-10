@@ -1,5 +1,11 @@
 var timestamp = null;
 
+//window.addEventListener("DOMContentLoaded", event => {
+//  const audio = document.querySelector("audio");
+//  audio.volume = 1.0;
+//  audio.play();
+//});
+
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -63,7 +69,7 @@ function reloadWatch() {
         ajax.onreadystatechange = function(){
             if(this.readyState == 4){
                 if(this.status == 200){
-    console.log("watch" + timestamp);
+                    //console.log("watch" + timestamp);
                     if (timestamp == null) {
                         timestamp = this.responseText;
                     } else {
@@ -89,64 +95,4 @@ function reloadWatch() {
     }
 
     var t = setTimeout(reloadWatch, 5000);
-}
-
-function reloadFMS() {
-    // fuhrpark.xml parsen und Status der Fahrzeuge anzeigen
-    var x = null;
-    if(window.XMLHttpRequest) { //Google Chrome, Mozilla Firefox, Opera, Safari, IE 7
-        x = new XMLHttpRequest();
-    }
-
-    if (x != null) {
-        //x.open("GET","fuhrpark.xml?" + new Date().getTime() ,true);
-        x.open("GET","fuhrpark.xml",true);
-        x.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200) {
-                var html = "";
-                var fuhrpark = x.responseXML.getElementsByTagName("fuhrpark")[0].getElementsByTagName("fahrzeug");
-                for (i = 0; i < fuhrpark.length; i++) {
-                    var id;
-                    var name;
-                    var kennung;
-                    var stat = 0;
-                    var timestamp = 0;
-
-                    var nodes;
-
-                    nodes = fuhrpark[i].getElementsByTagName("id");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) id = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("timestamp");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) timestamp = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("status");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) stat = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("name");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) name = nodes[0].nodeValue;
-                    }
-                    nodes = fuhrpark[i].getElementsByTagName("kennung");
-                    if (nodes.length) {
-                        nodes = nodes[0].childNodes;
-                        if (nodes.length) kennung = nodes[0].nodeValue;
-                    }
-                    html += "<span class=\"status" + stat + "\"><p class=\"fp_kennung\">" + kennung + "</p><p class=\"fp_status\">" + stat + "</p><p class=\"fp_name\">" + name + "</p></span>";
-                }
-                if(document.getElementById('status')) {
-                    document.getElementById('status').innerHTML = html;
-                }
-            }
-        }
-        x.send();
-    }
-    var t = setTimeout(reloadFMS, 5000);
 }

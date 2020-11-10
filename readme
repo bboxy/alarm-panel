@@ -57,4 +57,4 @@ sudo update-rc.d alarmmon.init defaults
 Dienst starten mit:
 sudo /etc/init.d/alarmmon.init start
 
-Mit Browser Webseite von entsprechender IP des alarmon-hosts laden und prüfen.
+Mit Browser Webseite von entsprechender IP des alarmon-hosts laden und prüfen. Die Webseite als Standardwebseite einrichten, den Browser zum Autostart hinzufügen und im Vollbildmodus starten (ggf. Kioskmode per Extension). Um eine Gongwiedergabe zu ermöglichen muss im Browser ggf. die automatische Wiedergabe von Mediendateien in den Einstellugen zugelassen werden.

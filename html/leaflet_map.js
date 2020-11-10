@@ -43,7 +43,8 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         }
     });
 
-    omnivore.kml('hydranten/hydranten.kml', null, hydrantOmnivoreStyleHelper).addTo(m);
+    var hydrantenLayer = omnivore.kml('hydranten/hydranten.kml', null, hydrantOmnivoreStyleHelper);
+    hydrantenLayer.addTo(m);
     omnivore.kml('rettungspunkte/rp_nu_ul_gz.kml', null, rettungspunktOmnivoreStyleHelper).addTo(m);
     omnivore.kml('bahn/bahn.kml', null, bahnkilometerOmnivoreStyleHelper).addTo(m);
 
@@ -54,4 +55,13 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         iconAnchor:   [25, 63],
         popupAnchor:  [-3, -76]
     })}).addTo(m);
+
+
+    //m.on('zommend', function(e) {
+    //    if (m.getZoom() < 14) {
+    //        hydrantenLayer.remove();
+    //    } else {
+    //        hydrantenLayer.addTo(m);
+    //    }
+    //});
 }

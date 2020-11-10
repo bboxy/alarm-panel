@@ -299,20 +299,17 @@ sub process_fax {
 	# ocr.txt parsen
 	%Parsed = parse_txt($dest, $ocr_txt);
 
-	#if ($Config{enable_sql} == 1) {
-	#	add_to_database(\%Parsed);
-	#}
-	# Werte in templates einfügen und html Datein erzeugen
 	render_alarm_templates(\%Parsed);
 
 	if ($Config{enable_divera} == 1) {
 		divera_alarm(\%Parsed);
 	}
 
+	#moved to html section
 	#Gong abspielen
-	if ($Config{enable_sound} == 1) {
-		`sudo -u $Config{play_user} aplay $Config{play_file}`;
-	}
+	#if ($Config{enable_sound} == 1) {
+	#	`sudo -u $Config{play_user} aplay $Config{play_file}`;
+	#}
 
 	# Karte Ausdrucken
 	if ($Config{print_map} == 1) {
@@ -471,20 +468,6 @@ sub render_idle {
 		$html_file = "html/" . basename($template,  ".tpl") . ".html";
 		render_template(\%Parsed, "template/idle.tpl", $html_file);
 	}
-}
-
-sub add_to_database {
-	my %Parsed = %{shift()};
-
-        my $smittel = "";
-        my $omittel = "";
-	my $mittel = "";
-	my $maxm = 0;
-
-	my @geraet = @{$Parsed{geraet}};
-	my @mittel = @{$Parsed{mittel}};
-
-	# max 18 Mittel hinzufügen, ggf noch auf own_ffw checken
 }
 
 sub render_alarm_templates {
@@ -651,6 +634,7 @@ sub render_template {
 	$template =~ s/%landkreis%/$Config{landkreis}/g;
 	$template =~ s/%zoom_map%/$Config{zoom_map}/g;
 	$template =~ s/%zoom_sat%/$Config{zoom_sat}/g;
+	$template =~ s/%play_file%/$Config{play_file}/g;
 
         # Neue index.html ausgeben
         if (!open(FILE, '>', $html_path)) {
