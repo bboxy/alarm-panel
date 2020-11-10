@@ -38,7 +38,7 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
                 className: 'db_icon',
                 iconSize:     [38, 38],
                 iconAnchor:   [19, 19],
-                html: '<div class="db_div1">' + feature.properties["km_l"].substr(0,feature.properties["km_l"].indexOf(',')) + '</div><div class="db_div2">0</div>'
+                html: '<div class="db_div1">' + feature.properties["km_l"] + '</div><div class="db_div2">0</div>'
             })});
         }
     });

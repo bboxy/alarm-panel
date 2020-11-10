@@ -3,1347 +3,579 @@
 <Document>
     <Placemark>
         <name> Meilerstrasse 17 (# 1)</name>
-        <description><![CDATA[Meilerstrasse 17 (# 1)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/348763">Details</a>]]></description>
         <Point>
             <coordinates>10.1417840, 48.4129649, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/348763_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Kohlstattgasse (# 10)</name>
-        <description><![CDATA[Kohlstattgasse (# 10)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/351104">Details</a>]]></description>
         <Point>
             <coordinates>10.1414998, 48.4136962, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/351104_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Ortsstrasse (# 11)</name>
-        <description><![CDATA[Ortsstrasse (# 11)<br />Überflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/351110">Details</a>]]></description>
         <Point>
             <coordinates>10.1361379, 48.4150249, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/351110_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Ortsstrasse 2 (# 12)</name>
-        <description><![CDATA[Ortsstrasse 2 (# 12)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/351111">Details</a>]]></description>
         <Point>
             <coordinates>10.1362658, 48.4149840, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/351111_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Ilgstrasse  Höhe Hiller (# 13)</name>
-        <description><![CDATA[Ilgstrasse  Höhe Hiller (# 13)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/351112">Details</a>]]></description>
         <Point>
             <coordinates>10.1356299, 48.4143204, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/351112_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Dachsweg 23 (# 14)</name>
-        <description><![CDATA[Dachsweg 23 (# 14)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/351113">Details</a>]]></description>
         <Point>
             <coordinates>10.1345856, 48.4143107, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/351113_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Dachsweg 24 (# 15)</name>
-        <description><![CDATA[Dachsweg 24 (# 15)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/351114">Details</a>]]></description>
         <Point>
             <coordinates>10.1342420, 48.4144148, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/351114_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Dachsweg 30 (# 16)</name>
-        <description><![CDATA[Dachsweg 30 (# 16)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/351115">Details</a>]]></description>
         <Point>
             <coordinates>10.1334959, 48.4141427, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/351115_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Meilerstrasse (# 17)</name>
-        <description><![CDATA[Meilerstrasse (# 17)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372083">Details</a>]]></description>
         <Point>
             <coordinates>10.1425114, 48.4132544, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372083_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Kreuzung Silheimerstrasse Meilerstrasse (# 18)</name>
-        <description><![CDATA[Kreuzung Silheimerstrasse Meilerstrasse (# 18)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372084">Details</a>]]></description>
         <Point>
             <coordinates>10.1425199, 48.4137030, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372084_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Kreuzung Silheimerstrasse Feldstrasse (# 19)</name>
-        <description><![CDATA[Kreuzung Silheimerstrasse Feldstrasse (# 19)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372085">Details</a>]]></description>
         <Point>
             <coordinates>10.1431108, 48.4136059, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372085_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Meilerstrasse Kohlstattgasse (# 2)</name>
-        <description><![CDATA[Meilerstrasse Kohlstattgasse (# 2)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/348771">Details</a>]]></description>
         <Point>
             <coordinates>10.1416706, 48.4131995, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/348771_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Feldstrasse 3 (# 20)</name>
-        <description><![CDATA[Feldstrasse 3 (# 20)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372086">Details</a>]]></description>
         <Point>
             <coordinates>10.1431520, 48.4131847, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372086_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Feldstrasse 9 (# 21)</name>
-        <description><![CDATA[Feldstrasse 9 (# 21)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372087">Details</a>]]></description>
         <Point>
             <coordinates>10.1432120, 48.4126864, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372087_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Feldstrasse Stich Richtung Wald (# 22)</name>
-        <description><![CDATA[Feldstrasse Stich Richtung Wald (# 22)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372088">Details</a>]]></description>
         <Point>
             <coordinates>10.1432336, 48.4123598, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372088_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Feldstrasse 4 (# 23)</name>
-        <description><![CDATA[Feldstrasse 4 (# 23)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372089">Details</a>]]></description>
         <Point>
             <coordinates>10.1423065, 48.4126369, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372089_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Feldstrasse auf Wendeplatte (# 24)</name>
-        <description><![CDATA[Feldstrasse auf Wendeplatte (# 24)<br />Unterflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372090">Details</a>]]></description>
         <Point>
             <coordinates>10.1413835, 48.4125779, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372090_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Wald Wasserwerk (# 25)</name>
-        <description><![CDATA[Wald Wasserwerk (# 25)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372091">Details</a>]]></description>
         <Point>
             <coordinates>10.1471942, 48.4114263, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372091_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Schmiedgasse Einfahrt (# 26)</name>
-        <description><![CDATA[Schmiedgasse Einfahrt (# 26)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372883">Details</a>]]></description>
         <Point>
             <coordinates>10.1361836, 48.4155076, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372883_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Ortsstrasse 11 (# 27)</name>
-        <description><![CDATA[Ortsstrasse 11 (# 27)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372886">Details</a>]]></description>
         <Point>
             <coordinates>10.1358354, 48.4158416, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372886_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Klassenhartweg 4 (# 28)</name>
-        <description><![CDATA[Klassenhartweg 4 (# 28)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/372887">Details</a>]]></description>
         <Point>
             <coordinates>10.1410403, 48.4152403, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/372887_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse 4 (# 29)</name>
-        <description><![CDATA[Römerstrasse 4 (# 29)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/373949">Details</a>]]></description>
         <Point>
             <coordinates>10.1434019, 48.4140695, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/373949_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Meilerstrasse 4 (# 3)</name>
-        <description><![CDATA[Meilerstrasse 4 (# 3)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/348772">Details</a>]]></description>
         <Point>
             <coordinates>10.1407460, 48.4131201, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/348772_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse 4 Ecke (# 30)</name>
-        <description><![CDATA[Römerstrasse 4 Ecke (# 30)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/373950">Details</a>]]></description>
         <Point>
             <coordinates>10.1434141, 48.4141398, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/373950_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 8 (# 31)</name>
-        <description><![CDATA[Hauptstraße 8 (# 31)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/373951">Details</a>]]></description>
         <Point>
             <coordinates>10.1445716, 48.4133764, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/373951_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 10 (# 32)</name>
-        <description><![CDATA[Hauptstraße 10 (# 32)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/373952">Details</a>]]></description>
         <Point>
             <coordinates>10.1446821, 48.4133780, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/373952_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstrasse (# 33)</name>
-        <description><![CDATA[Hauptstrasse (# 33)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/373953">Details</a>]]></description>
         <Point>
             <coordinates>10.1457813, 48.4128370, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/373953_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Sportweg Höhe Kupferdach (# 34)</name>
-        <description><![CDATA[Sportweg Höhe Kupferdach (# 34)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/373954">Details</a>]]></description>
         <Point>
             <coordinates>10.1458966, 48.4133321, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/373954_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Fahlheimerweg (# 35)</name>
-        <description><![CDATA[Fahlheimerweg (# 35)<br />Überflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395246">Details</a>]]></description>
         <Point>
             <coordinates>10.1352109, 48.4178111, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395246_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Fahlheimerweg 12 (# 36)</name>
-        <description><![CDATA[Fahlheimerweg 12 (# 36)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395247">Details</a>]]></description>
         <Point>
             <coordinates>10.1351023, 48.4182787, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395247_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Fahlheimerweg Höhe Feldstadel (# 37)</name>
-        <description><![CDATA[Fahlheimerweg Höhe Feldstadel (# 37)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395248">Details</a>]]></description>
         <Point>
             <coordinates>10.1359895, 48.4210227, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395248_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Ortsstrasse 30 (# 38)</name>
-        <description><![CDATA[Ortsstrasse 30 (# 38)<br />Überflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395249">Details</a>]]></description>
         <Point>
             <coordinates>10.1336221, 48.4183390, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395249_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Lindenweg (# 39)</name>
-        <description><![CDATA[Lindenweg (# 39)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395250">Details</a>]]></description>
         <Point>
             <coordinates>10.1341251, 48.4169916, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395250_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Keltenstrasse Tennisplatz (# 4)</name>
-        <description><![CDATA[Keltenstrasse Tennisplatz (# 4)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/350640">Details</a>]]></description>
         <Point>
             <coordinates>10.1500130, 48.4160956, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/350640_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Dachsweg 2 (# 40)</name>
-        <description><![CDATA[Dachsweg 2 (# 40)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395251">Details</a>]]></description>
         <Point>
             <coordinates>10.1336940, 48.4165990, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395251_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Dachsweg 12 (# 41)</name>
-        <description><![CDATA[Dachsweg 12 (# 41)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395252">Details</a>]]></description>
         <Point>
             <coordinates>10.1342243, 48.4158750, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395252_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Dachsweg 18 (# 42)</name>
-        <description><![CDATA[Dachsweg 18 (# 42)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395253">Details</a>]]></description>
         <Point>
             <coordinates>10.1344174, 48.4150776, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395253_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Rothbrücken (# 43)</name>
-        <description><![CDATA[Rothbrücken (# 43)<br />Saugstelle<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395254">Details</a>]]></description>
         <Point>
             <coordinates>10.1378599, 48.4148905, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395254_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Meilerstrasse St 2021 (# 44)</name>
-        <description><![CDATA[Meilerstrasse St 2021 (# 44)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/395256">Details</a>]]></description>
         <Point>
             <coordinates>10.1400798, 48.4131911, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/395256_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Judengasse (# 45)</name>
-        <description><![CDATA[Judengasse (# 45)<br />Saugstelle<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/398020">Details</a>]]></description>
         <Point>
             <coordinates>10.1369900, 48.4111771, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/398020_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Judengasse Stegstrasse (# 46)</name>
-        <description><![CDATA[Judengasse Stegstrasse (# 46)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/398021">Details</a>]]></description>
         <Point>
             <coordinates>10.1367455, 48.4115454, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/398021_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Ilgstrasse 18 (# 47)</name>
-        <description><![CDATA[Ilgstrasse 18 (# 47)<br />Unterflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/398022">Details</a>]]></description>
         <Point>
             <coordinates>10.1363371, 48.4129015, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/398022_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Schiersiedlung 7 (# 48)</name>
-        <description><![CDATA[Schiersiedlung 7 (# 48)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/398072">Details</a>]]></description>
         <Point>
             <coordinates>10.1581976, 48.4203163, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/398072_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Goethestrasse (# 49)</name>
-        <description><![CDATA[Goethestrasse (# 49)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/398073">Details</a>]]></description>
         <Point>
             <coordinates>10.1565231, 48.4201649, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/398073_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Keltenstrasse Höhe Tennisclub (# 5)</name>
-        <description><![CDATA[Keltenstrasse Höhe Tennisclub (# 5)<br />Überflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/350641">Details</a>]]></description>
         <Point>
             <coordinates>10.1492904, 48.4155945, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/350641_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Goethestrasse 22 (# 50)</name>
-        <description><![CDATA[Goethestrasse 22 (# 50)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/398074">Details</a>]]></description>
         <Point>
             <coordinates>10.1557578, 48.4199948, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/398074_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse 24 (# 51)</name>
-        <description><![CDATA[Römerstrasse 24 (# 51)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/402530">Details</a>]]></description>
         <Point>
             <coordinates>10.1477275, 48.4145183, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/402530_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse 34a (# 52)</name>
-        <description><![CDATA[Römerstrasse 34a (# 52)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/402531">Details</a>]]></description>
         <Point>
             <coordinates>10.1474297, 48.4144484, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/402531_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse 38 (# 53)</name>
-        <description><![CDATA[Römerstrasse 38 (# 53)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/402532">Details</a>]]></description>
         <Point>
             <coordinates>10.1488482, 48.4149702, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/402532_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Industriestrasse (# 54)</name>
-        <description><![CDATA[Industriestrasse (# 54)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/402533">Details</a>]]></description>
         <Point>
             <coordinates>10.1529523, 48.4147346, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/402533_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Waldblickstrasse 5 (# 55)</name>
-        <description><![CDATA[Waldblickstrasse 5 (# 55)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/402534">Details</a>]]></description>
         <Point>
             <coordinates>10.1534100, 48.4123744, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/402534_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> An der Kirche (# 56)</name>
-        <description><![CDATA[An der Kirche (# 56)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/402699">Details</a>]]></description>
         <Point>
             <coordinates>10.1368206, 48.4141268, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/402699_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Uhlandstrasse 10 (# 57)</name>
-        <description><![CDATA[Uhlandstrasse 10 (# 57)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413072">Details</a>]]></description>
         <Point>
             <coordinates>10.1547149, 48.4197837, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413072_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Uhlandstrasse 5 (# 58)</name>
-        <description><![CDATA[Uhlandstrasse 5 (# 58)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413073">Details</a>]]></description>
         <Point>
             <coordinates>10.1535285, 48.4197639, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413073_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Goethestrasse 10 (# 59)</name>
-        <description><![CDATA[Goethestrasse 10 (# 59)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413074">Details</a>]]></description>
         <Point>
             <coordinates>10.1541460, 48.4195183, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413074_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Anton-Miller-Schule (# 6)</name>
-        <description><![CDATA[Anton-Miller-Schule (# 6)<br />Überflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/350642">Details</a>]]></description>
         <Point>
             <coordinates>10.1425280, 48.4139840, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/350642_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Schillerstrasse 12 (# 60)</name>
-        <description><![CDATA[Schillerstrasse 12 (# 60)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413075">Details</a>]]></description>
         <Point>
             <coordinates>10.1525489, 48.4195438, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413075_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Schillerstrasse-》Felder (# 61)</name>
-        <description><![CDATA[Schillerstrasse-》Felder (# 61)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413076">Details</a>]]></description>
         <Point>
             <coordinates>10.1520820, 48.4199281, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413076_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Schillerstrasse 13 (# 62)</name>
-        <description><![CDATA[Schillerstrasse 13 (# 62)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413077">Details</a>]]></description>
         <Point>
             <coordinates>10.1532950, 48.4189290, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413077_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Schillerstrasse 9 (# 63)</name>
-        <description><![CDATA[Schillerstrasse 9 (# 63)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413079">Details</a>]]></description>
         <Point>
             <coordinates>10.1537103, 48.4185636, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413079_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Schillerstrasse 2 (# 64)</name>
-        <description><![CDATA[Schillerstrasse 2 (# 64)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413087">Details</a>]]></description>
         <Point>
             <coordinates>10.1545215, 48.4179122, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413087_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Eichendorfstrasse 5 (# 65)</name>
-        <description><![CDATA[Eichendorfstrasse 5 (# 65)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413088">Details</a>]]></description>
         <Point>
             <coordinates>10.1545673, 48.4185576, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413088_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Eichendorfstrasse 4 (# 66)</name>
-        <description><![CDATA[Eichendorfstrasse 4 (# 66)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413089">Details</a>]]></description>
         <Point>
             <coordinates>10.1555725, 48.4188784, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413089_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Eichendorfstrasse 6 (# 67)</name>
-        <description><![CDATA[Eichendorfstrasse 6 (# 67)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413105">Details</a>]]></description>
         <Point>
             <coordinates>10.1564829, 48.4191059, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413105_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Adelbert-Stifter-Strasse 2 (# 68)</name>
-        <description><![CDATA[Adelbert-Stifter-Strasse 2 (# 68)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413106">Details</a>]]></description>
         <Point>
             <coordinates>10.1574762, 48.4194128, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413106_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Bgm. Seißler Strasse (# 69)</name>
-        <description><![CDATA[Bgm. Seißler Strasse (# 69)<br />Überflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413108">Details</a>]]></description>
         <Point>
             <coordinates>10.1568136, 48.4143336, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413108_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Feuerwehr Strass (# 7)</name>
-        <description><![CDATA[Feuerwehr Strass (# 7)<br />Überflurhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/350645">Details</a>]]></description>
         <Point>
             <coordinates>10.1404235, 48.4149807, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/350645_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Bgm. Seißler-Strasse 10 (# 70)</name>
-        <description><![CDATA[Bgm. Seißler-Strasse 10 (# 70)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413109">Details</a>]]></description>
         <Point>
             <coordinates>10.1556463, 48.4148753, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413109_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Bgm. Seißler-Strasse (# 71)</name>
-        <description><![CDATA[Bgm. Seißler-Strasse (# 71)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413114">Details</a>]]></description>
         <Point>
             <coordinates>10.1562912, 48.4165085, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413114_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Bgm. Seißler-Strasse (# 72)</name>
-        <description><![CDATA[Bgm. Seißler-Strasse (# 72)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413122">Details</a>]]></description>
         <Point>
             <coordinates>10.1554630, 48.4177101, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413122_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse 27 (# 73)</name>
-        <description><![CDATA[Römerstrasse 27 (# 73)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413132">Details</a>]]></description>
         <Point>
             <coordinates>10.1525585, 48.4166204, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413132_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse Höhe Hilti (# 74)</name>
-        <description><![CDATA[Römerstrasse Höhe Hilti (# 74)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413134">Details</a>]]></description>
         <Point>
             <coordinates>10.1527208, 48.4163699, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413134_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Martin-Hilti-Weg 1 (# 75)</name>
-        <description><![CDATA[Martin-Hilti-Weg 1 (# 75)<br />Fallmantelhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413139">Details</a>]]></description>
         <Point>
             <coordinates>10.1518958, 48.4159395, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413139_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Industriestrasse (# 76)</name>
-        <description><![CDATA[Industriestrasse (# 76)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413147">Details</a>]]></description>
         <Point>
             <coordinates>10.1506026, 48.4150415, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413147_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Römerstrasse 40 (# 77)</name>
-        <description><![CDATA[Römerstrasse 40 (# 77)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413180">Details</a>]]></description>
         <Point>
             <coordinates>10.1500874, 48.4154348, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413180_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 58 (# 78)</name>
-        <description><![CDATA[Hauptstraße 58 (# 78)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413251">Details</a>]]></description>
         <Point>
             <coordinates>10.1545141, 48.4129770, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413251_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße Höhe Klein (# 79)</name>
-        <description><![CDATA[Hauptstraße Höhe Klein (# 79)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413298">Details</a>]]></description>
         <Point>
             <coordinates>10.1540943, 48.4128848, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413298_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Klassenhartweg (# 8)</name>
-        <description><![CDATA[Klassenhartweg (# 8)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/350646">Details</a>]]></description>
         <Point>
             <coordinates>10.1409643, 48.4149518, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/350646_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Georg-Köhl-Strasse 20 (# 80)</name>
-        <description><![CDATA[Georg-Köhl-Strasse 20 (# 80)<br />Unterflurhydrant<br />Standrohr<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413299">Details</a>]]></description>
         <Point>
             <coordinates>10.1526672, 48.4118767, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413299_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Eckstrasse 2 (# 81)</name>
-        <description><![CDATA[Eckstrasse 2 (# 81)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413300">Details</a>]]></description>
         <Point>
             <coordinates>10.1523433, 48.4121206, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413300_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Georg-Köhl-Strasse 13 (# 82)</name>
-        <description><![CDATA[Georg-Köhl-Strasse 13 (# 82)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413302">Details</a>]]></description>
         <Point>
             <coordinates>10.1516762, 48.4119209, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413302_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Georg-Köhl-Strasse 3 (# 83)</name>
-        <description><![CDATA[Georg-Köhl-Strasse 3 (# 83)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413303">Details</a>]]></description>
         <Point>
             <coordinates>10.1503194, 48.4119910, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413303_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Georg-Köhl-Strasse 2 (# 84)</name>
-        <description><![CDATA[Georg-Köhl-Strasse 2 (# 84)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413304">Details</a>]]></description>
         <Point>
             <coordinates>10.1494667, 48.4120616, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413304_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 33 (# 85)</name>
-        <description><![CDATA[Hauptstraße 33 (# 85)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413305">Details</a>]]></description>
         <Point>
             <coordinates>10.1497998, 48.4125469, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413305_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 43 (# 86)</name>
-        <description><![CDATA[Hauptstraße 43 (# 86)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413306">Details</a>]]></description>
         <Point>
             <coordinates>10.1514920, 48.4124874, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413306_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 55 (# 87)</name>
-        <description><![CDATA[Hauptstraße 55 (# 87)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413307">Details</a>]]></description>
         <Point>
             <coordinates>10.1528895, 48.4126110, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413307_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 17 (# 88)</name>
-        <description><![CDATA[Hauptstraße 17 (# 88)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413312">Details</a>]]></description>
         <Point>
             <coordinates>10.1484037, 48.4125563, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413312_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 11 (# 89)</name>
-        <description><![CDATA[Hauptstraße 11 (# 89)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413313">Details</a>]]></description>
         <Point>
             <coordinates>10.1480156, 48.4128924, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413313_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hilti Carport (# 9)</name>
-        <description><![CDATA[Hilti Carport (# 9)<br />Fallmantelhydrant<br />B<br /><a href="https://portal.wasserkarte.info/watermap/waterSource/350670">Details</a>]]></description>
         <Point>
             <coordinates>10.1528517, 48.4152599, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/350670_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Hauptstraße 22 (# 90)</name>
-        <description><![CDATA[Hauptstraße 22 (# 90)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/413314">Details</a>]]></description>
         <Point>
             <coordinates>10.1472651, 48.4126084, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/413314_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Meilerstrasse  21 (# 91)</name>
-        <description><![CDATA[Meilerstrasse  21 (# 91)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/429974">Details</a>]]></description>
         <Point>
             <coordinates>10.1407076, 48.4129195, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/429974_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Kühlerer 1a (# 92)</name>
-        <description><![CDATA[Kühlerer 1a (# 92)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430442">Details</a>]]></description>
         <Point>
             <coordinates>10.1464988, 48.4137778, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/430442_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Bühlerweg 9 (# 93)</name>
-        <description><![CDATA[Bühlerweg 9 (# 93)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430443">Details</a>]]></description>
         <Point>
             <coordinates>10.1479061, 48.4138258, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/430443_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Bühlerweg 20 (# 94)</name>
-        <description><![CDATA[Bühlerweg 20 (# 94)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430444">Details</a>]]></description>
         <Point>
             <coordinates>10.1509515, 48.4140310, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/430444_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Bühlerweg 16 (# 95)</name>
-        <description><![CDATA[Bühlerweg 16 (# 95)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430445">Details</a>]]></description>
         <Point>
             <coordinates>10.1501750, 48.4139928, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/430445_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
     <Placemark>
         <name> Wachholderweg (# 96)</name>
-        <description><![CDATA[Wachholderweg (# 96)<br />Unterflurhydrant<br /><br /><a href="https://portal.wasserkarte.info/watermap/waterSource/430446">Details</a>]]></description>
         <Point>
             <coordinates>10.1499510, 48.4143205, 0</coordinates>
         </Point>
-        <Style>
-            <IconStyle>
-                <Icon>
-                    <href>https://portal.wasserkarte.info/m/430446_1.png</href>
-                </Icon>
-            </IconStyle>
-        </Style>
     </Placemark>
 </Document>
 </kml>

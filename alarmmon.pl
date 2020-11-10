@@ -305,12 +305,6 @@ sub process_fax {
 		divera_alarm(\%Parsed);
 	}
 
-	#moved to html section
-	#Gong abspielen
-	#if ($Config{enable_sound} == 1) {
-	#	`sudo -u $Config{play_user} aplay $Config{play_file}`;
-	#}
-
 	# Karte Ausdrucken
 	if ($Config{print_map} == 1) {
 		print "printing map...\n";

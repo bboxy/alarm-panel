@@ -167,8 +167,6 @@ $marker = GD::Image->new(38,38);
 foreach my $placemark($bahnkilometer_kml->get_xpath('//Document/Placemark')) {
     my $coords = $placemark->get_xpath('./Point/coordinates', 0)->text;
     my $name = $placemark->get_xpath('./ExtendedData/SchemaData/SimpleData[@name="km_l"]', 0)->text;
-    $name =~ s/,.*//;
-    #$name = (split /,/, $name, 2)[0];
 #    print($coords . " " . $name . "\n");
     my ($markerLon, $markerLat) = split(',',$coords);
     ($markerCenterInMercX, $markerCenterInMercY) = to_mercator($markerLat, $markerLon);
