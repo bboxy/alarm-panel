@@ -6,6 +6,16 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         layers: [osm]
     });
 
+    m.on('zommend', function(e) {
+	console.log(m.getZoom());
+	console.log(e);
+    //    if (m.getZoom() < 14) {
+    //        hydrantenLayer.remove();
+    //    } else {
+    //        hydrantenLayer.addTo(m);
+    //    }
+    });
+
     //Hydranten
     var hydrantOmnivoreStyleHelper = L.geoJSON(null, {
         pointToLayer: function (feature, latlng) {
@@ -43,10 +53,13 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         }
     });
 
-    var hydrantenLayer = omnivore.kml('hydranten/hydranten.kml', null, hydrantOmnivoreStyleHelper);
-    hydrantenLayer.addTo(m);
-    omnivore.kml('rettungspunkte/rp_nu_ul_gz.kml', null, rettungspunktOmnivoreStyleHelper).addTo(m);
-    omnivore.kml('bahn/bahn.kml', null, bahnkilometerOmnivoreStyleHelper).addTo(m);
+    var hyLayer = omnivore.kml('hydranten/hydranten.kml', null, hydrantOmnivoreStyleHelper);
+    var rpLayer = omnivore.kml('rettungspunkte/rp_nu_ul_gz.kml', null, rettungspunktOmnivoreStyleHelper);
+    var dbLayer = omnivore.kml('bahn/bahn.kml', null, bahnkilometerOmnivoreStyleHelper);
+
+    hyLayer.addTo(m);
+    rpLayer.addTo(m);
+    dbLayer.addTo(m);
 
     //Ziel
     var home = L.marker([gps_lat, gps_long], {icon: L.icon({
@@ -56,12 +69,4 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         popupAnchor:  [-3, -76]
     })}).addTo(m);
 
-
-    //m.on('zommend', function(e) {
-    //    if (m.getZoom() < 14) {
-    //        hydrantenLayer.remove();
-    //    } else {
-    //        hydrantenLayer.addTo(m);
-    //    }
-    //});
 }

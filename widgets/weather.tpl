@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="map.css"/>
 
 <script src="leaflet/leaflet-src.js"></script>
-<script type="text/javascript" src="leaflet/leaflet.ajax.js"></script>
-<!--script src="leaflet/spin.js"></script-->
-<!--script src="leaflet/leaflet.spin.js"></script-->
+<script type="text/javascript" src="leaflet/plugins/leaflet.ajax.js"></script>
     </head>
     <body>
 

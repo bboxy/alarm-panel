@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=1024, user-scalable=no">
     <link rel="stylesheet" href="map.css"/>
     <script src="leaflet/leaflet-src.js"></script>
-    <script type="text/javascript" src="leaflet/leaflet.ajax.js"></script>
     <script type="text/javascript" src="leaflet/plugins/leaflet-omnivore.min.js"></script>
     <script src="leaflet_map.js"></script>
     </head>
