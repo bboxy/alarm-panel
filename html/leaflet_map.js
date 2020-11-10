@@ -8,14 +8,6 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
 
     L.control.scale().addTo(m);
 
-    m.on('zoomend', function(e) {
-    //    if (m.getZoom() < 14) {
-    //        hydrantenLayer.remove();
-    //    } else {
-    //        hydrantenLayer.addTo(m);
-    //    }
-    });
-
     //Hydranten
     var hydrantOmnivoreStyleHelper = L.geoJSON(null, {
         pointToLayer: function (feature, latlng) {
@@ -23,7 +15,7 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
                 className: 'hy_icon',
                 iconSize:     [32, 38],
                 iconAnchor:   [16, 38],
-                html: '<img class="hy_image" src="hydranten/marker_h.png"/>'
+                html: '<img src="hydranten/marker_h.png"/>'
             })});
         }
     });
@@ -35,7 +27,7 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
                 className: 'rp_icon',
                 iconSize:     [38, 50],
                 iconAnchor:   [19, 18],
-                html: '<img class="rp_image" src="rettungspunkte/marker_r.png"/><div class="rp_div">' + feature.properties["RP_Nr"] + '</div>'
+                html: '<img src="rettungspunkte/marker_r.png"/><div class="rp_div">' + feature.properties["RP_Nr"] + '</div>'
             })});
         }
     });
@@ -68,5 +60,23 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
         iconAnchor:   [25, 63],
        // popupAnchor:  [-3, -76]
     })}).addTo(m);
+
+    m.on('zoomend', function(e) {
+        if (m.getZoom() < 14) {
+            hyLayer.remove();
+        } else {
+            hyLayer.addTo(m);
+        }
+        if (m.getZoom() < 12) {
+            rpLayer.remove();
+        } else {
+            rpLayer.addTo(m);
+        }
+        if (m.getZoom() < 13) {
+            dbLayer.remove();
+        } else {
+            dbLayer.addTo(m);
+        }
+    });
 
 }
