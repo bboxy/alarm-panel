@@ -1,10 +1,44 @@
-function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
-    var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
-    var m = L.map('map', {
-        center: [gps_lat, gps_long],
-        zoom: 17,
-        layers: [osm]
-    });
+function leaflet_map_create(home_town, gps_lat, gps_long, osm, sat) {
+    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, © KWF-Rettungspunkte v2.9, <a href="http://www.rettungspunkte-forst.de">www.rettungspunkte-forst.de</a>, CC-BY_ND 3.0';
+    var satUrl='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+    var satAttrib='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community, © KWF-Rettungspunkte v2.9, <a href="http://www.rettungspunkte-forst.de">www.rettungspunkte-forst.de</a>, CC-BY_ND 3.0';
+
+    if (osm) {
+        var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+    }
+
+    if (sat) {
+        var sat = new L.TileLayer(satUrl, {attribution: satAttrib});
+    }
+
+
+    if (osm && sat) {
+        var m = L.map('map', {
+            center: [gps_lat, gps_long],
+            zoom: 17,
+            layers: [sat, osm]
+        });
+
+        var baseLayers = {
+            "Satellite View": sat,
+            "OpenStreetMap View": osm
+        };
+
+        L.control.layers(baseLayers).addTo(m);
+    } else if (osm) {
+        var m = L.map('map', {
+            center: [gps_lat, gps_long],
+            zoom: 17,
+            layers: osm
+        });
+    } else if (sat) {
+        var m = L.map('map', {
+            center: [gps_lat, gps_long],
+            zoom: 17,
+            layers: sat
+        });
+    }
 
     L.control.scale().addTo(m);
 

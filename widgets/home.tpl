@@ -18,10 +18,8 @@
     var home_town = "%landkreis%";
     var gps_lat = %home_lat%;
     var gps_long = %home_long%;
-    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, © KWF-Rettungspunkte v2.9, <a href="http://www.rettungspunkte-forst.de">www.rettungspunkte-forst.de</a>, CC-BY_ND 3.0';
 
-    leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib);
+    leaflet_map_create(home_town, gps_lat, gps_long, true, true);
 
 </script>
     </body>
