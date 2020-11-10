@@ -306,14 +306,15 @@ div.st_datum {
 	text-align: center;
 }
 
-a.clock.credits {
-	text-decoration: none !important;
+a.clock_credits {
+	color: #0078A8;
+	text-decoration: none;
 }
 
 span.clock_credits {
         color: #000000;
 	background: #ffffff;
-	opacity: 50%;
+	opacity: 75%;
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-top: 1px;
