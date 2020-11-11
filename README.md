@@ -18,6 +18,8 @@ Das Einsatzfax, sowie eine Karte der Umgebung der Einsatzstelle mit einigen Zusa
 
 ### Screenshots
 
-![Idle Dsiplay](https://github.com/bboxy/alarm-panel/raw/master/screenshots/idle.png)
+![Idle Display](https://github.com/bboxy/alarm-panel/raw/master/screenshots/idle.png)
 
-![Active Dsiplay](https://github.com/bboxy/alarm-panel/raw/master/screenshots/active.png)
+![Active Display](https://github.com/bboxy/alarm-panel/raw/master/screenshots/active.png)
+
+![Map View](https://github.com/bboxy/alarm-panel/raw/master/screenshots/map.png)
