@@ -14,9 +14,9 @@ home_long	10.14069
 #Zoomevel für Karten
 zoom_sat	19
 zoom_map	16
-#Empfangene Faxe drucken?
+#Empfangene Faxe wie oft drucken? (0 == kein Druck)
 print_fax	0
-#Karte vom Einsatzrt drucken?
+#Karte vom Einsatzrt wie oft drucken?
 print_map	0
 #Maximale Anzahl angezeigter Mittel
 max_mittel	10

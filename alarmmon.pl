@@ -254,7 +254,7 @@ sub process_fax {
 		# Ausdrucken
 		if ($Config{print_fax} == 1) {
 			print "printing...\n";
-			`lp -o orientation-requested=3 -o position=top $Config{extract_path}/*`;
+			`lp -n $Config{print_fax} -o orientation-requested=3 -o position=top $Config{extract_path}/*`;
 		}
 
 
@@ -309,7 +309,7 @@ sub process_fax {
 	if ($Config{print_map} == 1) {
 		print "printing map...\n";
                 `./map.pl --lat=$Parsed{gps_lat} --lon=$Parsed{gps_long} --width=1443 --height=1024 --zoom=17 --tileBase=$Config{map_server_url} --output=$Config{extract_path}/map.png`;
-		`lp -o orientation-requested=4 -o position=top -o media=A4 $Config{extract_path}/map.png`;
+		`lp -n $Config{print_map} -o orientation-requested=4 -o position=top -o media=A4 $Config{extract_path}/map.png`;
 	}
 	# not idle
 	return 0;
