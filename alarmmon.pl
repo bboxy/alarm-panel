@@ -252,7 +252,7 @@ sub process_fax {
 		copy $dest, $ocr_out || return 1;
 	} else {
 		# Ausdrucken
-		if ($Config{print_fax} == 1) {
+		if ($Config{print_fax} > 1) {
 			print "printing...\n";
 			`lp -n $Config{print_fax} -o orientation-requested=3 -o position=top $Config{extract_path}/*`;
 		}
@@ -306,7 +306,7 @@ sub process_fax {
 	}
 
 	# Karte Ausdrucken
-	if ($Config{print_map} == 1) {
+	if ($Config{print_map} > 0) {
 		print "printing map...\n";
                 `./map.pl --lat=$Parsed{gps_lat} --lon=$Parsed{gps_long} --width=1443 --height=1024 --zoom=17 --tileBase=$Config{map_server_url} --output=$Config{extract_path}/map.png`;
 		`lp -n $Config{print_map} -o orientation-requested=4 -o position=top -o media=A4 $Config{extract_path}/map.png`;
