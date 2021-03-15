@@ -86,7 +86,7 @@ while ($continue) {
 	sleep ($Config{check_interval});
 }
 
-sub check_new_alarm {
+sub check_new_alarm_breaks {
 	if (opendir my($dh), "$Config{fax_path}") {
 		closedir $dh;
 		if (opendir my($dh), "$Config{remote_path}") {
@@ -106,7 +106,9 @@ sub check_new_alarm {
 						print "all done.\n";
 					}
 				}
-			});
+			},
+				{  }
+			);
 		}
 	} else {
 		# Im Fehlerfall versuchen zu mounten
@@ -115,7 +117,7 @@ sub check_new_alarm {
 	}
 }
 
-sub check_new_alarm_old {
+sub check_new_alarm {
 	if (opendir my($dh), "$Config{fax_path}") {
 		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
 		closedir $dh;
@@ -145,8 +147,10 @@ sub check_new_alarm_old {
 				chomp($ffile);
 				if ( my @list = grep /^$ffile$/, @remote_files) {
 			        } else {
-					print "purging $Config{fax_path}/$ffile\n";
-					unlink "$Config{fax_path}/$ffile";
+					if ($Config{purge}) {
+						print "purging $Config{fax_path}/$ffile\n";
+						unlink "$Config{fax_path}/$ffile";
+					}
 				}
 			}
 		} else {
