@@ -330,7 +330,7 @@ sub process_fax {
 
 sub divera_alarm {
 	my %Parsed = %{shift()};
-	my $uri = $Config{divera_uri} . "?accesskey=" . $Config{divera_key} . "&title" . uri_escape($Parsed{schlagwort});
+	my $uri = $Config{divera_uri} . "?accesskey=" . $Config{divera_key} . "&title=" . uri_escape($Parsed{schlagwort});
 	print $uri . "\n";
 	my $result = get($uri);
 	print $result;
