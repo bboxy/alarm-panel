@@ -133,8 +133,11 @@ sub check_new_alarm {
 			for my $rfile (@remote_files) {
 				chomp($rfile);
 				my $lfile = (grep /^$rfile$/, @fax_files)[0];
+				if (!$lfile) {
+					$lfile ="";
+				}
 				$rs = stat("$Config{remote_path}/$rfile");
-				if (!$lfile) $ls = stat("$Config{fax_path}/$lfile");
+				$ls = stat("$Config{fax_path}/$lfile");
 
 				#printf "lfile: %s  rfile: %s\nlsize: %d  rsize: %d\n", $lfile, $rfile, $ls->size, $rs->size;
 
