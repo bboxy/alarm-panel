@@ -138,7 +138,7 @@ sub check_new_alarm {
 
 				#printf "lfile: %s  rfile: %s\nlsize: %d  rsize: %d\n", $lfile, $rfile, $ls->size, $rs->size;
 
-				if ((my @list = grep /^$rfile$/, @fax_files) == 0 || ($rs->size != $ls->size)) {
+				if (!$lfile || ($rs->size != $ls->size)) {
 					if (!process_fax($rfile)) {
 						$idle = 0;
 						print "updating timestamp...\n";
