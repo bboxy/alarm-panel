@@ -137,17 +137,17 @@ sub check_new_alarm {
 						$idle = 0;
 						print "updating timestamp...\n";
 						update_timestamp();
+						print "all done.\n";
 					}
-					print "all done.\n";
 				}
 			}
 
 			# nicht mehr vorhandene Dateien löschen
-			for my $ffile (@fax_files) {
-				chomp($ffile);
-				if ( my @list = grep /^$ffile$/, @remote_files) {
-			        } else {
-					if ($Config{purge}) {
+			if ($Config{purge}) {
+				for my $ffile (@fax_files) {
+					chomp($ffile);
+					if ( my @list = grep /^$ffile$/, @remote_files) {
+				        } else {
 						print "purging $Config{fax_path}/$ffile\n";
 						unlink "$Config{fax_path}/$ffile";
 					}
