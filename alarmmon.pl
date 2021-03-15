@@ -118,6 +118,8 @@ sub check_new_alarm_breaks {
 }
 
 sub check_new_alarm {
+	my $rs;
+	my $ls;
 	if (opendir my($dh), "$Config{fax_path}") {
 		@fax_files = grep { !/^\.\.?$/ } readdir $dh;
 		closedir $dh;
@@ -130,9 +132,13 @@ sub check_new_alarm {
 			# nach neuen Dateien suchen
 			for my $rfile (@remote_files) {
 				chomp($rfile);
-				if ( my @list = grep /^$rfile$/, @fax_files) {
-					# File existiert bereits in fax_path
-			        } else {
+				my $lfile = (grep /^$rfile$/, @fax_files)[0];
+				$rs = stat("$Config{remote_path}/$rfile");
+				$ls = stat("$Config{fax_path}/$lfile");
+
+				#printf "lfile: %s  rfile: %s\nlsize: %d  rsize: %d\n", $lfile, $rfile, $ls->size, $rs->size;
+
+				if ((my @list = grep /^$rfile$/, @fax_files) == 0 || ($rs->size != $ls->size)) {
 					if (!process_fax($rfile)) {
 						$idle = 0;
 						print "updating timestamp...\n";
