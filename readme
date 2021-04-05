@@ -6,7 +6,7 @@ sudo git clone https://github.com/bboxy/alarm-panel.git
 
 cd alarm-panel
 
-sudo apt install alsa-utils apache2 libxml-twig-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libfile-dircompare-perl libmime-tools-perl proj-bin sfftobmp imagemagick libgd-perl poppler-utils
+sudo apt install apache2 libxml-twig-perl libconfig-simple-perl libproc-daemon-perl libmail-pop3client-perl libmime-tools-perl proj-bin sfftobmp imagemagick libgd-perl poppler-utils
 
 Ggf. tesseract installieren:
 sudo apt install tesseract-ocr tesseract-ocr-deu
@@ -21,7 +21,7 @@ Dazu in /etc/auto.master hinzufügen:
 /vol	/etc/auto.fax
 
 /etc/auto.fax mit folgendem Inhalt erstellen:
-fax -fstype=cifs,rw,credentials=/etc/auto.auth,file_mode=0777,dir_mode=0777,vers=1.0 ://192.168.1.1/fritz.nas
+fax -fstype=cifs,rw,credentials=/etc/auto.auth,vers=3.0,noserverino,file_mode=0664,dir_mode=0775 ://192.168.1.1/fritz.nas
 
 /etc/auto.auth mit Username und Passwort anlegen:
 username=user
