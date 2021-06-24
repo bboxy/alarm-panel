@@ -31,6 +31,8 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
 	legend.onAdd = function (m) {
   	  var div = L.DomUtil.create('div', 'info legend'),
 		grades = [
+//			"vorwarnung",
+//			"",
 			"gewitter1",
 			"gewitter2",
 			"gewitter3",
@@ -59,6 +61,8 @@ function leaflet_map_create(home_town, gps_lat, gps_long, osmUrl, osmAttrib) {
 			"glaette"
 		],
 		labels = [
+//			"Vorwarnung Unwetter",
+//			"",
 			"Gewitter",
 			"Starkes Gewitter",
 			"Schweres Gewitter",
@@ -125,6 +129,7 @@ function getColor(x) {
 	       x == "schnee3" ? '#dddddd':
 	       x == "schnee4" ? '#ffffff':
 	       x == "glaette" ? '#ccccff':
+               x == "vorwarnung" ? '#ffff00':
                     '#ffffff';
 }
 
@@ -151,7 +156,15 @@ function warnstyle(feature) {
 			fillOpacity: 0.5,
 			fillColor: getColor("gewitter2")
 		};
-		case "40":		//Gewitter 3
+//		case "40":		//Gewitter 3
+//		return {
+//			weight: 1,
+//			opacity: 1.0,
+//			color: '#000000',
+//			dashArray: '1',
+//			fillOpacity: 0.2,
+//			fillColor: getColor("vorwarnung")
+//		}
 		case "42":
 		case "44":
 		case "46":
